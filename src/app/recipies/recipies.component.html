@@ -1,0 +1,16 @@
+
+
+<div class="card-deck mx-auto">
+    <a *ngFor="let recipe of recipies">
+        <div class="card" style="width: 25rem;">
+            <img class="card-img-top" src="{{recipe.imagePath}}" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">{{recipe.name}}</h5>
+                <p class="card-text">{{recipe.description}}</p>
+                <p class="card-text"><small class="text-muted">{{recipe.grade}}</small></p>
+            </div>
+        </div>
+    </a>
+</div>
+
+
