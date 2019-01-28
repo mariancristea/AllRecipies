@@ -7,6 +7,7 @@ import { HeaderComponent } from './header/header.component';
 import { RecipiesComponent } from './recipies/recipies.component';
 import { AuthComponent } from './auth/auth.component';
 import { AuthModule } from './auth/auth.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -19,7 +20,9 @@ import { AuthModule } from './auth/auth.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AuthModule
+    AuthModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
