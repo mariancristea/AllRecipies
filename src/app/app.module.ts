@@ -5,6 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { RecipiesComponent } from './recipies/recipies.component';
+import { AuthComponent } from './auth/auth.component';
+import { AuthModule } from './auth/auth.module';
 
 
 @NgModule({
@@ -12,10 +14,12 @@ import { RecipiesComponent } from './recipies/recipies.component';
     AppComponent,
     HeaderComponent,
     RecipiesComponent,
+    AuthComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AuthModule
   ],
   providers: [],
   bootstrap: [AppComponent]
