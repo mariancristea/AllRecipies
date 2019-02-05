@@ -8,6 +8,15 @@
             <a [routerLink]="'/register'" *ngIf="authType == 'login'"> Need an account ?</a>
         </p>
         <form [formGroup]="authForm" class="form-control-lg" (ngSubmit)="submitForm()">
+
+            <fieldset class="form-group"> 
+              <input type="username"
+                class="form-control form-control-lg"
+                type="text"
+                placeholder="Username"
+                formControlName='username'
+                *ngIf="authType == 'register'" />
+            </fieldset>
     
             <fieldset class="form-group">
               <input type="email"
