@@ -42,3 +42,5 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+src/mongodb-win32-x86_64-2008plus-ssl-4.0.5-signed.msi
+src/Postman-win64-6.7.2-Setup.exe

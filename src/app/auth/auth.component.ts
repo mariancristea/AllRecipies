@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup} from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { FormBuilder, FormGroup, FormControl, Validators} from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { UserService } from '../core';
 
 @Component({
   selector: 'app-auth',
@@ -11,10 +12,14 @@ export class AuthComponent implements OnInit {
   authForm : FormGroup;
   authType : String;
   title: String;
+  isSubmitting = false;
+  
 
   constructor(
-    private route :ActivatedRoute,
-    private fb : FormBuilder) 
+    private route : ActivatedRoute,
+    private router : Router,
+    private fb : FormBuilder,
+    private userService : UserService) 
     { 
     this.authForm = this.fb.group({
       'email': [''],
@@ -25,10 +30,19 @@ export class AuthComponent implements OnInit {
   ngOnInit() {
     this.authType = this.route.snapshot.url[0].path;
     this.title = (this.authType === 'login') ? 'Sign in' : 'Sign up';
-    console.log(this.authType);
+    if (this.authType === 'register') {
+      console.log(this.authType);
+      this.authForm.addControl('username' as string, new FormControl());
+    }
+   
   }
-  submitForm()
-  {
-    console.log('submit');
+  submitForm() {
+    this.isSubmitting = true;
+    this.userService
+      .attemptAuth(this.authType, this.authForm.value)
+      .subscribe(
+        data => {this.router.navigateByUrl('/');console.log('submit');}
+      )
+    
   }
 }
