@@ -8,8 +8,6 @@ import { RecipiesComponent } from './recipies/recipies.component';
 import { AuthComponent } from './auth/auth.component';
 import { AuthModule } from './auth/auth.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
-import { UserService, ApiService } from './core';
 
 
 @NgModule({
@@ -24,10 +22,9 @@ import { UserService, ApiService } from './core';
     AppRoutingModule,
     AuthModule,
     FormsModule,
-    ReactiveFormsModule,
-    HttpClientModule
+    ReactiveFormsModule
   ],
-  providers: [UserService, ApiService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
