@@ -10,16 +10,17 @@ export class ApiService{
     constructor(private http: HttpClient) { }
 
 
-    // const httpOptions = {
-    //     headers: new HttpHeaders({
-    //         'Content-Type': 'application/json',
-    //         'Accept': 'application/json'
-    //     })
-    // }
+     httpOptions = {
+        headers: new HttpHeaders({
+          'Content-Type':  'application/json',
+          'Authorization': 'my-auth-token'
+        })
+      };
+      
 
     post(path: string, body: Object = {}) : Observable<any> {
         return this.http.post(
             `${environment.api_url}${path}`,
-             JSON.stringify(body))
+             JSON.stringify(body),this.httpOptions);
     }
 }

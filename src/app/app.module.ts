@@ -10,6 +10,7 @@ import { AuthModule } from './auth/auth.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { UserService, ApiService } from './core';
+import { ListErrorsComponent } from './shared/list-errors.component';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { UserService, ApiService } from './core';
     HeaderComponent,
     RecipiesComponent,
     AuthComponent,
+    ListErrorsComponent
   ],
   imports: [
     BrowserModule,
