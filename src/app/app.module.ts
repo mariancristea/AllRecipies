@@ -11,6 +11,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { UserService, ApiService } from './core';
 import { ListErrorsComponent } from './shared/list-errors.component';
+import { ShowAuthedDirective } from './shared/show-authed.directive';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { ListErrorsComponent } from './shared/list-errors.component';
     HeaderComponent,
     RecipiesComponent,
     AuthComponent,
-    ListErrorsComponent
+    ListErrorsComponent,
+    ShowAuthedDirective
   ],
   imports: [
     BrowserModule,
