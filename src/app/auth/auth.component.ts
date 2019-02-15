@@ -52,4 +52,8 @@ export class AuthComponent implements OnInit {
       );
     
   }
+  OnNavigate() {
+    console.log('aaaa')
+    window.open("http://localhost:3000/users/google", "_blank");
+  }
 }

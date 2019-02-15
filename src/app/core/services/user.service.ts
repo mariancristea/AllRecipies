@@ -19,16 +19,32 @@ export class UserService {
     ) {}
 
     setAuth(user : User) {
+        console.log('Set Auth');
         this.currentUserSubject.next(user);
         this.isAuthenticatedSubject.next(true);
     }
 
+    purgeAuth() {
+        this.isAuthenticatedSubject.next(false);
+    }
+
+    logOut() {
+        console.log('From uSEr');
+        return this.apiService.get('/logout')
+            .pipe(map(
+                data => {
+                    console.log(data);
+                    return data;
+                }
+            ));
+    }
+
     attemptAuth(type, credentials): Observable<User> {
         const route = (type === 'login') ? '/login' : '';
-        console.log(credentials);
         return this.apiService.post('/users' + route, {user: credentials})
             .pipe(map(
                 data => {
+                    console.log(data.user);
                     this.setAuth(data.user)
                     return data;
                 }
