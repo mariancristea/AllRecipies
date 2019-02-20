@@ -12,22 +12,25 @@ export class ApiService{
 
      httpOptions = {
         headers: new HttpHeaders({
-          'Content-Type':  'application/json',
-          'Authorization': 'my-auth-token',
-        })
+          'Access-Control-Allow-Origin': 'https://localhost:3000',
+          'Access-Control-Allow-Headers': 'Content-Type, Authorization'
+        }),
+        withCredentials : true
       };
       
 
+
     post(path: string, body: Object = {}) : Observable<any> {
+      console.log('From Post',body);
         return this.http.post(
             `${environment.api_url}${path}`,
-             JSON.stringify(body),this.httpOptions);
+             JSON.stringify(body));
     }
 
     get(path: string, params: HttpParams = new HttpParams()) : Observable<any> {
       console.log(`${environment.api_url}${path}`);
       return this.http.get(
-        `${environment.api_url}`, { params }
+        `${environment.api_url}${path}`, this.httpOptions
       );
       
     }

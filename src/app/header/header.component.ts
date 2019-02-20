@@ -15,6 +15,6 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
   }
   logOut() {
-    this.userService.logOut();
+    this.userService.logOut().subscribe();
   }
 }

@@ -43,17 +43,17 @@ export class AuthComponent implements OnInit {
     this.userService
       .attemptAuth(this.authType, this.authForm.value)
       .subscribe(
-        data => this.router.navigateByUrl('/'),
-        err => {
-          this.errors = err;
-          console.log(this.errors);
-          this.isSubmitting = false;
-        }
+        data => this.router.navigateByUrl('/')
       );
     
   }
   OnNavigate() {
     console.log('aaaa')
-    window.open("http://localhost:3000/users/google", "_blank");
+    window.open("http://localhost:3000/users/google","mywindow","location=1,status=1,scrollbars=1, width=800,height=800");
+    let listener = window.addEventListener('message', (message) => {
+      console.log(message.data);
+      this.userService
+      .setAuth(message.data);
+    });
   }
 }

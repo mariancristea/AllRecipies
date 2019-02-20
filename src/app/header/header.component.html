@@ -9,7 +9,7 @@
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
           <a class="nav-item nav-link active" 
-              href="#">Home <span class="sr-only">(current)</span>
+           routerLink="/">Home <span class="sr-only">(current)</span>
           </a>
           <ul *appShowAuthed="false">
              <li>
@@ -26,9 +26,11 @@
              </li>
           </ul>  
 
+          <ul *appShowAuthed="true">
             <a (click)="logOut()" class="nav-item nav-link">
               Log out
             </a>
+          </ul>
         
           <a class="nav-item nav-link disabled" href="#">Disabled</a>
           <div class="nav-item dropdown">
