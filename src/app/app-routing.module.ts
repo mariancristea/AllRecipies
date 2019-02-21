@@ -6,7 +6,7 @@ import { RecipiesComponent } from './recipies/recipies.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/recipies', pathMatch: 'full'},
-  {path: 'login', component: AuthComponent},
+  
   {path: 'recipies', component: RecipiesComponent}
 ];
 

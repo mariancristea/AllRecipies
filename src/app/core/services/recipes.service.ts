@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 import { ApiService } from './api.service';
 import { map } from 'rxjs/operators';
 
+
 @Injectable({
     providedIn: 'root',
   })
@@ -25,4 +26,7 @@ export class RecipeService {
         return this.apiService.delete('/articles/' + slug + '/favorite');
       }
 
+    save(recipe): Observable<Recipe> {
+        return this.apiService.post('/recipes/', {recipe: recipe});
+    }
 }

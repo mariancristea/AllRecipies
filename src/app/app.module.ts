@@ -10,6 +10,7 @@ import { AuthModule } from './auth/auth.module';
 import { CoreModule } from './core';
 import { SharedModule, ListErrorsComponent } from './shared';
 import { RecipiesComponent } from './recipies/recipies.component';
+import { EditorModule } from './editor/editor.module';
 
 
 
@@ -24,6 +25,7 @@ import { RecipiesComponent } from './recipies/recipies.component';
     AuthModule,
     AppRoutingModule,
     BrowserModule,
+    EditorModule,
     CoreModule,
     SharedModule
   ],
