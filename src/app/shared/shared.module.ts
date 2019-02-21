@@ -4,7 +4,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { ListErrorsComponent } from './list-errors.component';
-import { RecipiesComponent } from './recipies/recipies.component';
 import { ShowAuthedDirective } from './show-authed.directive';
 
 
@@ -19,7 +18,6 @@ import { ShowAuthedDirective } from './show-authed.directive';
     ],
     declarations: [
         ListErrorsComponent,
-        RecipiesComponent,
         ShowAuthedDirective
     ],
     exports: [
@@ -27,7 +25,9 @@ import { ShowAuthedDirective } from './show-authed.directive';
         FormsModule,
         ReactiveFormsModule,
         HttpClientModule,
-        RouterModule
+        RouterModule,
+        ListErrorsComponent,
+        ShowAuthedDirective
     ]
 
 })

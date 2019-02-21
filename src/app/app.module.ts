@@ -9,6 +9,7 @@ import { AuthModule } from './auth/auth.module';
 
 import { CoreModule } from './core';
 import { SharedModule, ListErrorsComponent } from './shared';
+import { RecipiesComponent } from './recipies/recipies.component';
 
 
 
@@ -16,14 +17,14 @@ import { SharedModule, ListErrorsComponent } from './shared';
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent
+    HeaderComponent,
+    RecipiesComponent
   ],
   imports: [
     AuthModule,
     AppRoutingModule,
     BrowserModule,
     CoreModule,
-    ListErrorsComponent,
     SharedModule
   ],
   providers: [],
