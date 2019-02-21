@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { RecipiesComponent } from './recipies/recipies.component';
+import { RecipiesComponent } from './shared/recipies/recipies.component';
 import { AuthComponent } from './auth/auth.component';
 
 const routes: Routes = [

@@ -32,6 +32,11 @@ export class ApiService{
       return this.http.get(
         `${environment.api_url}${path}`, this.httpOptions
       );
-      
+    }
+
+    delete(path): Observable<any> {
+      return this.http.delete(
+        `${environment.api_url}${path}`
+      )
     }
 }

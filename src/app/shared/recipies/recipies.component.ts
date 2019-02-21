@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { RecipeService } from './recipes.service';
-import { Recipe } from './recipe.model';
+import { RecipeService } from '../../core/services/recipes.service';
+import { Recipe } from '../../core/models/recipe.model';
 
 
 @Component({
@@ -15,13 +15,9 @@ export class RecipiesComponent implements OnInit {
 
   ngOnInit() {
     console.log(this.recipies);
-    this.getHereos();
+    
   }
 
-  getHereos(): void {
-    this.recipiesService.getRecipies()
-    .subscribe(recipies => this.recipies = recipies.slice())
-    console.log(this.recipies);
-  }
+
 }
 
