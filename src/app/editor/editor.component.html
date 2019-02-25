@@ -3,10 +3,10 @@
       <div class="row">
         <div class="col-md-10 offset-md-1 col-xs-12">
   
-          <app-list-errors [errors]="errors"></app-list-errors>
+          
   
-          <form [formGroup]="recipeForm">
-            <fieldset [disabled]="isSubmitting">
+          <form [formGroup]="recipeForm" class="form-control-lg" (ngSubmit)="submitForm()">
+           
   
               <fieldset class="form-group">
                 <input class="form-control form-control-lg"
@@ -30,11 +30,11 @@
                 </textarea>
               </fieldset>
   
-              <button class="btn btn-lg pull-xs-right btn-primary" type="button" (click)="submitForm()">
+              <button class="btn btn-lg pull-xs-right btn-primary" type="submit">
                 Publish Article
               </button>
   
-            </fieldset>
+            
           </form>
   
         </div>

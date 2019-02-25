@@ -11,12 +11,12 @@ const routes: Routes = [
     {
         path: '',
         component: EditorComponent,
-        canActivate: [NoAuthGuard]
+        canActivate: [AuthGuard]
     },
     {
         path: ':slug',
         component: EditorComponent,
-        canActivate: [NoAuthGuard]
+        canActivate: [AuthGuard]
     }
 ];
 

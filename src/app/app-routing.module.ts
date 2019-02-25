@@ -1,13 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { AuthComponent } from './auth/auth.component';
-import { RecipiesComponent } from './recipies/recipies.component';
+import { RecipesComponent } from './recipes/recipes.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/recipies', pathMatch: 'full'},
   
-  {path: 'recipies', component: RecipiesComponent}
+  {path: 'recipies', component: RecipesComponent}
 ];
 
 @NgModule({

@@ -27,6 +27,7 @@ export class RecipeService {
       }
 
     save(recipe): Observable<Recipe> {
+        console.log('final',recipe);
         return this.apiService.post('/recipes/', {recipe: recipe});
     }
 }
