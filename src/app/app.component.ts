@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from './core';
+import { UserService, RecipeListConfig } from './core';
+
 
 @Component({
   selector: 'app-root',
@@ -7,8 +8,12 @@ import { UserService } from './core';
 })
 export class AppComponent implements OnInit {
   constructor(private userService : UserService) {}
-  
+  listConfig: RecipeListConfig = {
+    type: 'all',
+    filters: {}
+  };
   ngOnInit() {
     this.userService.populate();
+
   }
 }

@@ -3,6 +3,8 @@ import { Observable, of } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { ApiService } from './api.service';
 import { map } from 'rxjs/operators';
+import { RecipeListConfig } from '../models/recipe-list-config.model';
+import { HttpParams } from '@angular/common/http';
 
 
 @Injectable({
@@ -12,6 +14,18 @@ export class RecipeService {
     constructor(
         private apiService: ApiService
     ) {}
+
+    query(config: RecipeListConfig) : Observable<{recipes: Recipe[], recipesCount: number}>  {
+        const params = {};
+        
+        Object.keys(config.filters)
+            .forEach((key) => {
+                params[key] = config.filters[key];
+            })
+
+        console.log('XXXX',config);
+        return this.apiService.get('/recipes');
+    }
 
     get(slug): Observable<Recipe> {
         return this.apiService.get('/recipies' + slug)

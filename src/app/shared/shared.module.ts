@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { ListErrorsComponent } from './list-errors.component';
 import { ShowAuthedDirective } from './show-authed.directive';
+import { RecipeList, RecipePreviewComponent } from './recipe-helpers';
 
 
 
@@ -18,7 +19,10 @@ import { ShowAuthedDirective } from './show-authed.directive';
     ],
     declarations: [
         ListErrorsComponent,
-        ShowAuthedDirective
+        ShowAuthedDirective,
+        RecipeList,
+        RecipePreviewComponent
+
     ],
     exports: [
         CommonModule,
@@ -27,7 +31,9 @@ import { ShowAuthedDirective } from './show-authed.directive';
         HttpClientModule,
         RouterModule,
         ListErrorsComponent,
-        ShowAuthedDirective
+        ShowAuthedDirective,
+        RecipeList,
+        RecipePreviewComponent
     ]
 
 })

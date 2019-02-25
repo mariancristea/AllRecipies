@@ -1,0 +1,39 @@
+import { Component, Input } from "@angular/core";
+import { RecipeService, Recipe, RecipeListConfig } from 'src/app/core';
+
+
+
+
+
+
+
+@Component({
+    selector: 'app-list',
+    templateUrl: './recipe-list.component.html'
+})
+
+export class RecipeList {
+    constructor(
+        private recipesService: RecipeService
+    )   {}
+
+    @Input()
+    set config(config: RecipeListConfig) {
+        if(config)  {
+            this.query = config;
+            this.runQuery();
+        }
+    }
+    query: RecipeListConfig;
+    results: Recipe[];
+
+    runQuery()  {
+        //this.query.filters.limit = 20;
+        console.log('TTT',this.query);
+        this.recipesService.query(this.query)
+        .subscribe(data => {
+            this.results = data.recipes;
+
+        });
+    }
+}
