@@ -37,7 +37,7 @@ export class RecipeService {
     }
 
     unfavorite(slug): Observable<Recipe> {
-        return this.apiService.delete('/articles/' + slug + '/favorite');
+        return this.apiService.delete('/recipes/' + slug + '/favorites');
       }
 
     save(recipe): Observable<Recipe> {

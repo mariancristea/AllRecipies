@@ -42,14 +42,14 @@ export class FavoriteButtonComponent {
                             }
                         ))
                     } else {
-                        return this.recipeService.favorite(this.recipe.slug)
+                        return this.recipeService.unfavorite(this.recipe.slug)
                         .pipe(tap(
                             data => {
                                 console.log('emit');
-                                this.toggle.emit(true);
+                                this.toggle.emit(false);
                             }
                         ))
-                          } 
+                    } 
                 }
                
             })
