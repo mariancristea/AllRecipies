@@ -3,4 +3,13 @@
         <h1>{{ recipe.title }}</h1>
         <p>{{ recipe.description }}</p>
     </a>
+    <app-favorite-button
+        [recipe]="recipe"
+        (toggle)="onToggleFavorite($event)"
+        class="pull-xs-right">TEST
+       
+    </app-favorite-button>
+    {{ recipe.favoritesCount }}
 </div>
+
+

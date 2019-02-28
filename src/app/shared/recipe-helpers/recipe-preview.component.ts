@@ -9,4 +9,17 @@ import { Recipe } from 'src/app/core';
 
 export class RecipePreviewComponent {
     @Input() recipe: Recipe;
+
+    onToggleFavorite(favorited: boolean)  {
+       this.recipe['favorited'] = favorited;
+      // this.recipe['favoritesCount']=0;
+       console.log("BBBBB",this.recipe['favoritesCount']);
+       if(favorited) {
+           console.log(this.recipe['favoritesCount']);
+           this.recipe['favoritesCount']++;
+       } else {
+        this.recipe['favoritesCount']--;
+       }
+    }
 }
+

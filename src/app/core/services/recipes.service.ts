@@ -28,12 +28,12 @@ export class RecipeService {
     }
 
     get(slug): Observable<Recipe> {
-        return this.apiService.get('/recipies' + slug)
+        return this.apiService.get('/recipes' + slug)
                 .pipe(map(data => data.recipe));
     }
 
     favorite(slug): Observable<Recipe> {
-        return this.apiService.post('/recipies' + slug + 'favorites');
+        return this.apiService.post('/recipes/' + slug + '/favorites');
     }
 
     unfavorite(slug): Observable<Recipe> {

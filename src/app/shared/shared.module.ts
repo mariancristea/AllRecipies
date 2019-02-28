@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { ListErrorsComponent } from './list-errors.component';
 import { ShowAuthedDirective } from './show-authed.directive';
 import { RecipeList, RecipePreviewComponent } from './recipe-helpers';
+import { FavoriteButtonComponent } from './buttons';
 
 
 
@@ -21,7 +22,8 @@ import { RecipeList, RecipePreviewComponent } from './recipe-helpers';
         ListErrorsComponent,
         ShowAuthedDirective,
         RecipeList,
-        RecipePreviewComponent
+        RecipePreviewComponent,
+        FavoriteButtonComponent
 
     ],
     exports: [
@@ -33,7 +35,8 @@ import { RecipeList, RecipePreviewComponent } from './recipe-helpers';
         ListErrorsComponent,
         ShowAuthedDirective,
         RecipeList,
-        RecipePreviewComponent
+        RecipePreviewComponent,
+        FavoriteButtonComponent
     ]
 
 })
