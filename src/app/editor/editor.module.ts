@@ -21,6 +21,6 @@ import { EditableRecipeResolver } from './editable-recipe-resolver.service';
     ]
 })
 
-export class EditorModule { };
+export class EditorModule {};
 
 // 

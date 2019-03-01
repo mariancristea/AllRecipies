@@ -9,8 +9,10 @@ import { AuthModule } from './auth/auth.module';
 
 import { CoreModule } from './core';
 import { SharedModule, ListErrorsComponent } from './shared';
-import { EditorModule } from './editor/editor.module';
-import { RecipesComponent } from './recipes/recipes.component';
+import { HomeModule } from './home/home.module';
+
+
+
 
 
 
@@ -18,16 +20,15 @@ import { RecipesComponent } from './recipes/recipes.component';
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
-    RecipesComponent
+    HeaderComponent
   ],
   imports: [
     AuthModule,
     AppRoutingModule,
     BrowserModule,
-    EditorModule,
     CoreModule,
-    SharedModule
+    SharedModule,
+    HomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

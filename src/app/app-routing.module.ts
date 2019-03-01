@@ -1,16 +1,23 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 
-import { RecipesComponent } from './recipes/recipes.component';
+import { RecipeComponent } from './recipe/recipe.component';
 
 const routes: Routes = [
-  {path: '', redirectTo: '/recipies', pathMatch: 'full'},
-  
-  {path: 'recipies', component: RecipesComponent}
+  {
+    path: 'editor',
+    loadChildren: './editor/editor.module#EditorModule'
+  },
+  {
+    path: 'recipe',
+    loadChildren: './recipe/recipe.module#RecipeModule'
+  }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {
+    preloadingStrategy: PreloadAllModules
+  })],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

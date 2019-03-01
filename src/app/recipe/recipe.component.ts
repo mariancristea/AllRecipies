@@ -3,11 +3,11 @@ import { RecipeService, Recipe } from '../core';
 
 
 @Component({
-  selector: 'app-recipies',
-  templateUrl: './recipes.component.html',
-  styleUrls: ['./recipes.component.css']
+  selector: 'app-recipe',
+  templateUrl: './recipe.component.html',
+  styleUrls: ['./recipe.component.css']
 })
-export class RecipesComponent implements OnInit {
+export class RecipeComponent implements OnInit {
   recipes: Recipe[];
 
   constructor(private recipesService: RecipeService) {}
