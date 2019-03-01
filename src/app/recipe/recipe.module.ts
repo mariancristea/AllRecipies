@@ -3,6 +3,7 @@ import { SharedModule } from '../shared';
 import { RecipeComponent } from './recipe.component';
 import { RecipeRoutingModule } from './recipe-routing.module';
 import { RecipeCommentComponent } from './recipe comment/recipe-comment.component';
+import { RecipeResolver } from './recipe-resolver.service';
 
 
 @NgModule({
@@ -13,6 +14,9 @@ import { RecipeCommentComponent } from './recipe comment/recipe-comment.componen
     declarations: [
         RecipeComponent,
         RecipeCommentComponent
+    ],
+    providers: [
+        RecipeResolver
     ]
 
 })

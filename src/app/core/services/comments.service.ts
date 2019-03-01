@@ -19,6 +19,6 @@ export class CommentsService {
 
     getAll(slug): Observable<Comment[]> {
         return this.apiService.get(`/recipes/${slug}/comments`)
-            .pipe(map(data => data.comments));
+            .pipe(map(data =>{console.log('FROMGETALL',data); return data.comments}));
     }
 }

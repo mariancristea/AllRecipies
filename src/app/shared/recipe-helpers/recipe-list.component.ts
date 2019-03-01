@@ -13,6 +13,7 @@ export class RecipeList {
 
     @Input()
     set config(config: RecipeListConfig) {
+        console.log('AA')
         if(config)  {
             this.query = config;
             this.runQuery();

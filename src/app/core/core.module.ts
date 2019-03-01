@@ -8,7 +8,8 @@ import {
     AuthGuard, 
     JwtService, 
     RecipeService, 
-    UserService 
+    UserService, 
+    CommentsService
 } from './services';
 
 @NgModule({
@@ -18,6 +19,7 @@ import {
     providers: [
         ApiService,
         AuthGuard,
+        CommentsService,
         JwtService,
         RecipeService,
         UserService,

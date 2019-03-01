@@ -26,7 +26,7 @@ export class RecipeService {
     }
 
     get(slug): Observable<Recipe> {
-        return this.apiService.get('/recipes' + slug)
+        return this.apiService.get('/recipes/' + slug)
                 .pipe(map(data => data.recipe));
     }
 
