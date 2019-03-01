@@ -7,9 +7,7 @@ import { RecipeListConfig } from '../models/recipe-list-config.model';
 import { HttpParams } from '@angular/common/http';
 
 
-@Injectable({
-    providedIn: 'root',
-  })
+@Injectable()
 export class RecipeService {
     constructor(
         private apiService: ApiService
