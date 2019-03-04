@@ -1,0 +1,44 @@
+
+<mat-toolbar color="primary">
+    <div fxHide.gt-xs>
+        <button mat-icon-button (click)="onToggleSidenav()">
+            <mat-icon>menu</mat-icon>
+        </button>
+    </div>
+    <div>
+        <a routerLink="/">
+          <img src="../../assets/ARlogo.svg" alt="Logo">
+        </a>
+    </div>
+    <div fxFlex fxLayout fxLayoutAlign="start" fxHide.xs>
+        <ul fxLayout fxLayoutGap="60px" class="navigation-items">
+            <li>
+                <a routerLink="/">Recipes</a>
+            </li>
+
+            <li>
+                <a routerLink="/editor">Edit</a>
+            </li>
+            <li>
+              <a href="#">Categories</a>
+            </li>
+        </ul>
+    </div>
+    <div fxFlex fxLayout fxLayoutAlign="end" fxHide.xs>
+        <ul fxLayout fxLayoutGap="20px" class="navigation-items">
+          <li>
+            <mat-icon>search</mat-icon>
+          </li>
+          <li *appShowAuthed="false">
+            <a routerLink="/register">Sign-up</a>
+          </li>
+          <mat-divider [vertical]="true"></mat-divider>
+          <li *appShowAuthed="false">
+            <a routerLink="/login">Login</a>
+          </li>
+          <li *appShowAuthed="true">
+            <a (click)="logOut()">Log-out</a>
+          </li>
+        </ul>
+    </div>
+</mat-toolbar>

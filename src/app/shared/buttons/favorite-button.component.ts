@@ -3,8 +3,7 @@ import { UserService, RecipeService, Recipe } from 'src/app/core';
 import { Router } from '@angular/router';
 import { map, tap, concatMap, switchMap, first } from 'rxjs/operators';
 import { of } from 'rxjs';
-
-
+import { MaterialModule } from '../../material.module'
 
 
 @Component({

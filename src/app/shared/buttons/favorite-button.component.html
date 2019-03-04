@@ -1,5 +1,8 @@
-<button class="btn btn-sm"
+<button mat-icon-button color="warn"
 
- (click)="toggleFavorite(true)">
-   FAV<ng-content></ng-content>
+ (click)="toggleFavorite()">
+ <mat-icon aria-label="Example icon-button with a heart icon">favorite</mat-icon>
+  <ng-content></ng-content>
 </button>
+
+

@@ -7,6 +7,7 @@ import { ListErrorsComponent } from './list-errors.component';
 import { ShowAuthedDirective } from './show-authed.directive';
 import { RecipeList, RecipePreviewComponent } from './recipe-helpers';
 import { FavoriteButtonComponent } from './buttons';
+import { MaterialModule } from '../material.module';
 
 
 
@@ -16,7 +17,8 @@ import { FavoriteButtonComponent } from './buttons';
         FormsModule,
         ReactiveFormsModule,
         HttpClientModule,
-        RouterModule
+        RouterModule,
+        MaterialModule
     ],
     declarations: [
         ListErrorsComponent,
@@ -36,7 +38,8 @@ import { FavoriteButtonComponent } from './buttons';
         ShowAuthedDirective,
         RecipeList,
         RecipePreviewComponent,
-        FavoriteButtonComponent
+        FavoriteButtonComponent,
+        MaterialModule
     ]
 
 })
