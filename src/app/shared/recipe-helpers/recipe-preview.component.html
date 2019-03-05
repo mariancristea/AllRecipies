@@ -1,15 +1,21 @@
-<div>
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>Test</mat-card-title>
+    </mat-card-header>
     <a [routerLink]="['/recipe', recipe.slug]" class="preview-link">
-        <h1>{{ recipe.title }}</h1>
-        <p>{{ recipe.description }}</p>
+        <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo">
     </a>
-    <app-favorite-button
-        [recipe]="recipe"
-        (toggle)="onToggleFavorite($event)"
-        class="pull-xs-right">
-       
-    </app-favorite-button>
-    {{ recipe.favoritesCount }}
-</div>
+    <mat-card-actions>
+            <app-favorite-button
+            [recipe]="recipe"
+            (toggle)="onToggleFavorite($event)"
+            class="pull-xs-right">
+           
+        </app-favorite-button>
+        {{ recipe.favoritesCount }}
+    </mat-card-actions>
+</mat-card>
+
+
 
 

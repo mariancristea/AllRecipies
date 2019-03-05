@@ -4,7 +4,8 @@ import { Recipe } from 'src/app/core';
 
 @Component({
     selector: 'app-recipe-preview',
-    templateUrl: './recipe-preview.component.html'
+    templateUrl: './recipe-preview.component.html',
+    styleUrls: ['./recipe-preview.component.css']
 })
 
 export class RecipePreviewComponent {

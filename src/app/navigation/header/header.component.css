@@ -13,7 +13,7 @@ a:hover, a:active{
     margin: 0;
 }
 
-.mat-toolbar{
+mat-toolbar{
     border-radius: 3px;
     color: rebeccapurple;
 }

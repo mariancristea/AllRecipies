@@ -8,6 +8,7 @@ import { ShowAuthedDirective } from './show-authed.directive';
 import { RecipeList, RecipePreviewComponent } from './recipe-helpers';
 import { FavoriteButtonComponent } from './buttons';
 import { MaterialModule } from '../material.module';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 
 
@@ -18,7 +19,8 @@ import { MaterialModule } from '../material.module';
         ReactiveFormsModule,
         HttpClientModule,
         RouterModule,
-        MaterialModule
+        MaterialModule,
+        FlexLayoutModule
     ],
     declarations: [
         ListErrorsComponent,
