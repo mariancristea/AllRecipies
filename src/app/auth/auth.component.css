@@ -1,0 +1,40 @@
+.modal-content {
+    text-align: center;
+    min-width: 200px;
+}
+
+.auth-body h1 {
+    margin: 2rem 0 0;
+}
+
+.auth-body p {
+    margin: 1rem 0;
+}
+
+.button--facebook {
+    color: white;
+    height: 40px;
+    max-width: 260px;
+    border: 0;
+    background-image: url('../../assets/icons-facebookx2.svg');
+    text-align: center;
+    background-color: #3a5897;
+    text-align: left;
+    padding: 0 1rem 2px 3rem;
+    background-repeat: no-repeat;
+    background-position: 0;
+    background-size: 45px;
+    background-position-x: 10px;
+    margin: 0;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.button--facebook:hover {
+    opacity: .9;
+}
+
+.footer {
+    font-size: .875rem;
+    color: #464646;
+}

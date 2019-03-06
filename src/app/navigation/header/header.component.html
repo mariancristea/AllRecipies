@@ -30,11 +30,11 @@
             <mat-icon>search</mat-icon>
           </li>
           <li *appShowAuthed="false">
-            <a routerLink="/register">Sign-up</a>
+              <button mat-raised-button (click)="openDialog('register')">Sign Up</button>
           </li>
           <mat-divider [vertical]="true"></mat-divider>
           <li *appShowAuthed="false">
-            <a routerLink="/login">Login</a>
+              <button mat-raised-button (click)="openDialog('login')">LogIn</button>
           </li>
           <li *appShowAuthed="true">
             <a (click)="logOut()">Log-out</a>

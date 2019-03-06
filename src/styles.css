@@ -15,6 +15,15 @@ mat-card img{
     width: 100%; /* Here you can use wherever you want to specify the width and also the height of the <img>*/
     height: 100%;
   }
+  dialog { 
+    border: none !important;
+  }
+  mat-dialog-content {
+    overflow-y: hidden !important;
+}
+  .div {
+      border: none;
+  }
 .mat-divider {
     border-color: white;
 } 

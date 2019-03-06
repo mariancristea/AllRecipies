@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { map, tap, concatMap, switchMap, first } from 'rxjs/operators';
 import { of } from 'rxjs';
 import { MaterialModule } from '../../material.module'
+import { MatDialog } from '@angular/material';
+import { AuthComponent } from 'src/app/auth/auth.component';
 
 
 @Component({
@@ -14,7 +16,8 @@ export class FavoriteButtonComponent {
     constructor(
         private userService: UserService,
         private recipeService: RecipeService,
-        private router: Router
+        private router: Router,
+        private dialog: MatDialog
     )   {}
 
     @Input() recipe: Recipe;
@@ -27,7 +30,11 @@ export class FavoriteButtonComponent {
             switchMap(authenticated => {
                 console.log('no',this.recipe.title);
                 if(!authenticated)  {
-                    this.router.navigateByUrl('/login');
+                    const dialogRef = this.dialog.open(AuthComponent ,{
+                        width: '600px',
+                        height: '600px',
+                        data: 'login'
+                      });
                     return of(null);
                 }
                 else{

@@ -1,50 +1,40 @@
 
-  <div class="container">
-    <div class="row ">
-      <div class="col-md-6 offset-md-3">
-        <h1 class="text-center"> {{title}} </h1>
-        <p class="text-center">
-            <a [routerLink]="'/login'" *ngIf="authType == 'register'"> Have an account ?</a>
-            <a [routerLink]="'/register'" *ngIf="authType == 'login'"> Need an account ?</a>
-        </p>
-        <app-list-errors [errors]="errors"></app-list-errors>
-        <form [formGroup]="authForm" class="form-control-lg" (ngSubmit)="submitForm()">
-
-            <fieldset class="form-group"> 
-              <input type="username"
-                class="form-control form-control-lg"
-                type="text"
-                placeholder="Username"
-                formControlName='username'
-                *ngIf="authType == 'register'" />
-            </fieldset>
-    
-            <fieldset class="form-group">
-              <input type="email"
-                class="form-control form-control-lg" 
-                id="exampleInputEmail1"
-                aria-describedby="emailHelp" 
-                placeholder="Enter email"
-                formControlName="email">
-            </fieldset>
-        
-            <fieldset class="form-group">
-              <input type="password"
-                class="form-control form-control-lg" 
-                id="exampleInputPassword1" 
-                placeholder="Password"
-                formControlName="password">
-            </fieldset>
-        
-            <button type="submit" class="btn btn-lg btn-primary pull-xs-right">Submit</button>
-         
-        </form>
-  
+<div mat-dialog-content class="modal-content">
+  <div class="auth-content">
+    <div  class="auth-body">
+      <div *ngIf="authType == 'register'">
+          <h1 >Welcome to Kitchen!</h1>
+          <p>Create your Account</p>
       </div>
-    </div>
-</div>
+      <div *ngIf="authType == 'login'">
+          <h1 >Welcome Back!</h1>
+          <p>Log in to your account</p>
+      </div>
+      <button class="button button--facebook">Log in with Facebook</button>
+      <p>or</p>
+      <form [formGroup]="authForm" fxLayout="column"  fxLayoutAlign="start center" fxclass="form" (ngSubmit)="submitForm()">
+        <mat-form-field *ngIf="authType == 'register'">
+          <input matInput placeholder="Enter your username" formControlName="username" required>
+        </mat-form-field> 
+        <mat-form-field>
+          <input matInput placeholder="Enter your email" formControlName="email" required>
+        </mat-form-field> 
+        <mat-form-field>
+          <input matInput placeholder="Enter your password" formControlName="password" [type]="hide ? 'password' : 'text'">
+          <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </mat-form-field> 
+        <button type="submit" class="btn btn-lg btn-primary pull-xs-right">Submit</button>
 
-<div>
-    <button (click)="OnNavigate()" class="btn btn-lg btn-primary pull-xs-right" >
-      Goog</button>
+      </form>
+    </div>
+  </div>
+  <div class="footer">
+    <p>I don't have an account 
+      <a *ngIf="authType == 'register'" (click)="changeAuthType()" >Sign-up!</a>
+      <a *ngIf="authType == 'login'" (click)="changeAuthType()" >Log-in!</a>
+    </p>
+    
+  </div>
 </div>
+  
+  
