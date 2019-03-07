@@ -1,10 +1,11 @@
 a {
     text-decoration: none;
-    color: white;
+    color: black;
+    font-family: 'Oswald', sans-serif;
 }
  
 a:hover, a:active{
-    color: black;
+    text-decoration: underline;
 }
  
 .navigation-items{
@@ -13,9 +14,12 @@ a:hover, a:active{
     margin: 0;
 }
 
-mat-toolbar{
-    border-radius: 3px;
-    color: rebeccapurple;
+.mat-toolbar {
+    height: 80px;
+  }
+
+.row2 {
+    height: 222px;
 }
  
 @media(max-width: 959px){
