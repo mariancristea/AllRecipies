@@ -1,20 +1,26 @@
-<mat-card>
-    <mat-card-header>
-        <mat-card-title>Test</mat-card-title>
-    </mat-card-header>
-    <a  [routerLink]="['/recipe', recipe.slug]">
-        <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo">
-    </a>
-    <mat-card-actions>
-            <app-favorite-button
-            [recipe]="recipe"
-            (toggle)="onToggleFavorite($event)"
-            class="pull-xs-right">
-           
-        </app-favorite-button>
-        {{ recipe.favoritesCount }}
-    </mat-card-actions>
-</mat-card>
+<div class='cards-container'>
+  <mat-card class="card-recepie" id='card' fxLayout="column" fxLayoutAlign="space-between center" >
+    <!-- <img src="../../../assets/imgs/recepie1.png" class="img-food-preview"> -->
+    <div class="preview-header">
+      <i class="material-icons btn-play">play_circle_outline</i>
+    </div>
+    <div class="preview-footer"  fxLayout="row" fxLayoutAlign="space-between end" >
+      <div fxLayout="row">
+          <i class="material-icons btn-like">favorite_border</i>
+          <span class="footer-text">69</span>
+      </div>
+
+      <div>
+        <span class="footer-text">33 min.</span>
+      </div>
+
+    </div>
+  </mat-card>
+  <div class="text-under">
+    Reteta lu Marean: 5 ingrediente pentru un mic dejun al oamenilor de succes
+  </div>
+</div>
+
 
 
 

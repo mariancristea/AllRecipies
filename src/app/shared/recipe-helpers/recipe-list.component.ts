@@ -1,4 +1,4 @@
-import { Component, Input } from "@angular/core";
+import { Component, Input, OnInit } from "@angular/core";
 import { RecipeService, Recipe, RecipeListConfig } from 'src/app/core';
 
 @Component({
@@ -6,7 +6,7 @@ import { RecipeService, Recipe, RecipeListConfig } from 'src/app/core';
     templateUrl: './recipe-list.component.html'
 })
 
-export class RecipeList {
+export class RecipeList implements OnInit {
     constructor(
         private recipesService: RecipeService
     )   {}
@@ -30,5 +30,12 @@ export class RecipeList {
             this.results = data.recipes;
             console.log('AHA',this.results);
         });
+    }
+    setBackground(){
+      document.getElementById('card').style.backgroundImage = "url('../../../assets/imgs/recepie1.png')";
+      console.log('background set');
+    }
+    ngOnInit(){
+      // this.setBackground();
     }
 }
