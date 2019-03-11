@@ -3,7 +3,8 @@ import { RecipeService, Recipe, RecipeListConfig } from 'src/app/core';
 
 @Component({
     selector: 'app-list',
-    templateUrl: './recipe-list.component.html'
+    templateUrl: './recipe-list.component.html',
+    styleUrls: ['./recipe-list.component.css']
 })
 
 export class RecipeList implements OnInit {

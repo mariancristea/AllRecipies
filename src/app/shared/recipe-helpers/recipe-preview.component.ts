@@ -35,9 +35,8 @@ export class RecipePreviewComponent {
        }
     }
 
-    toggleFavorite(click: boolean) {
-        console.log('fav',click)
-        click= false;
+    toggleFavorite() {
+        
        var sub = this.userService.isAuthenticated.pipe(first(),
             switchMap(authenticated => {
                 console.log('no',this.recipe.title);
@@ -50,6 +49,7 @@ export class RecipePreviewComponent {
                     return of(null);
                 }
                 else{
+                    this.onToggleFavorite(!this.recipe.favorited);
                     console.log('2222');
                     if(!this.recipe.favorited)  { console.log('3333');
                         return this.recipeService.favorite(this.recipe.slug)
