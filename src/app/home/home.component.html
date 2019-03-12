@@ -1,8 +1,13 @@
-<div class="search">
-
+<div *ngIf="homeType=='/search'" class="search-container">
+    <form class="search-bar" >
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Favorite food" value="Sushi" (input)="onSearchChange($event.target.value)">
+        </mat-form-field>
+    
+     </form>
 </div>
 
 <div>
-    <app-list [config]="listConfig"></app-list>
+    <app-list [config]="listConfig" [searchValue]="searchParam"></app-list>
 </div>
 

@@ -28,7 +28,7 @@
     <div fxFlex fxLayout fxLayoutAlign="end" fxHide.xs>
         <ul fxLayout fxLayoutGap="20px" class="navigation-items">
           <li>
-            <mat-icon>search</mat-icon>
+            <mat-icon routerLink="/search">search</mat-icon>
           </li>
           <li *appShowAuthed="false">
               <button mat-raised-button (click)="openDialog('register')">Sign Up</button>

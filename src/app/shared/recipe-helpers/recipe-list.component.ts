@@ -1,5 +1,8 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { RecipeService, Recipe, RecipeListConfig } from 'src/app/core';
+import { Observable, observable, Subject } from 'rxjs';
+import { SearchService } from 'src/app/core/services/search.service';
+import { nextContext } from '@angular/core/src/render3';
 
 @Component({
     selector: 'app-list',
@@ -9,17 +12,38 @@ import { RecipeService, Recipe, RecipeListConfig } from 'src/app/core';
 
 export class RecipeList implements OnInit {
     constructor(
-        private recipesService: RecipeService
-    )   {}
-
+        private recipesService: RecipeService,
+        private searchService: SearchService
+    )   {
+        console.log('Recipe-lIST CONSTRUCTOR');
+       
+    }
+    searchTerm$ = new Subject<string>();
     @Input()
     set config(config: RecipeListConfig) {
         console.log('AA')
         if(config)  {
             this.query = config;
             this.runQuery();
+            if(config.search){
+                console.log(config.search);
+                this.searchService.search(this.searchService.searchTerm$)
+                .subscribe(results => {
+                    console.log('!!!',results)
+                });
+            }
         }
     }
+    @Input()
+    set searchValue(search: String){
+        this.searchInput = search;
+        this.searchService.search(Observable.create(this.searchValue))
+        .subscribe(result => {
+            console.log('!!!!!!!!!!!!!!!!!!!',result);
+        })
+    }
+    searchInput: String;
+
     query: RecipeListConfig;
     results: Recipe[];
 
@@ -37,6 +61,7 @@ export class RecipeList implements OnInit {
       console.log('background set');
     }
     ngOnInit(){
+        
       // this.setBackground();
     }
 }

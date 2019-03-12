@@ -4,3 +4,4 @@ export * from './auth-guard.service';
 export * from './jwt.service';
 export * from './recipes.service';
 export * from './comments.service';
+export * from './recipes.service';

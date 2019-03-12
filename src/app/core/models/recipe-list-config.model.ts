@@ -1,5 +1,6 @@
 export interface RecipeListConfig {
     type: string;
+    search: boolean;
   
     filters: {
      // tag?: string,

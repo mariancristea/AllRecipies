@@ -11,6 +11,7 @@ import {
     UserService, 
     CommentsService
 } from './services';
+import { SearchService } from './services/search.service';
 
 @NgModule({
     imports: [
@@ -23,6 +24,7 @@ import {
         JwtService,
         RecipeService,
         UserService,
+        SearchService,
         { provide: HTTP_INTERCEPTORS, useClass: HttpTokenInterceptor, multi: true}
     ],
     declarations: []
