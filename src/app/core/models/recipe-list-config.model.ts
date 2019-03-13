@@ -3,7 +3,7 @@ export interface RecipeListConfig {
     search: boolean;
   
     filters: {
-     // tag?: string,
+      tag?: string[],
       author?: string,
       //favorited?: string,
       limit?: number,

@@ -19,6 +19,7 @@ export class HomeComponent implements OnInit {
       };
     homeType: String;
     searchParam : String;
+    filters: Object = {}
 
     constructor(
         private route: ActivatedRoute,
@@ -30,12 +31,23 @@ export class HomeComponent implements OnInit {
         this.route.url.subscribe(data => {
             console.log('TEEEEEEEEEE',this.router.url)
             this.homeType = this.router.url;
-            if(this.homeType === '/search') this.listConfig.search = true;
+            if(this.homeType === '/search') {
+                this.listConfig.search = true;
+                this.searchService.searchTerm$.next('');
+                this.filters = {tag: 'asian'};
+                this.listConfig = {type: 'all',search: true, filters: this.filters};
+                this.searchService.tags.next(this.listConfig);
+            }
+
         })
     }
     onSearchChange(searchValue : String) {  
-        console.log('TRiGGGERR !!!');
+        console.log('TRiGGGERR !!!!!!!!!!!!!!!!!!!!!!!!');
        this.searchService.searchTerm$.next(searchValue);
+    }
+
+    onChangeListConfig() {
+
     }
     
 }

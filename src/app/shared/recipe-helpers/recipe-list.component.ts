@@ -18,7 +18,7 @@ export class RecipeList implements OnInit {
         console.log('Recipe-lIST CONSTRUCTOR');
        
     }
-    searchTerm$ = new Subject<string>();
+   
     @Input()
     set config(config: RecipeListConfig) {
         console.log('AA')
@@ -30,18 +30,12 @@ export class RecipeList implements OnInit {
                 this.searchService.search(this.searchService.searchTerm$)
                 .subscribe(results => {
                     console.log('!!!',results)
+                    this.results = results.recipes;
                 });
             }
         }
     }
-    @Input()
-    set searchValue(search: String){
-        this.searchInput = search;
-        this.searchService.search(Observable.create(this.searchValue))
-        .subscribe(result => {
-            console.log('!!!!!!!!!!!!!!!!!!!',result);
-        })
-    }
+ 
     searchInput: String;
 
     query: RecipeListConfig;

@@ -15,6 +15,8 @@ export class RecipeService {
 
     query(config: RecipeListConfig) : Observable<{recipes: Recipe[], recipesCount: number}>  {
         const params = {};
+        config.filters.tag=[];
+        config.filters.tag.push('asian');
         
         Object.keys(config.filters)
             .forEach((key) => {
@@ -22,7 +24,7 @@ export class RecipeService {
             })
 
         console.log('XXXX',config);
-        return this.apiService.get('/recipes');
+        return this.apiService.get('/recipes', new HttpParams({ fromObject: params }));
     }
 
     get(slug): Observable<Recipe> {
