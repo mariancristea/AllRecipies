@@ -37,7 +37,6 @@ export class EditorComponent implements OnInit {
     submitForm() {
         this.isSubmitting = true;
         Object.assign(this.recipe, this.recipeForm.value);
-        console.log('TEST',this.recipe)
         this.recipeService
             .save(this.recipe)
             .subscribe(recipe => this.router.navigateByUrl('/recipe/' + recipe.slug));

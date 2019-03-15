@@ -18,8 +18,7 @@ export class UserService {
         private apiService: ApiService,
         private jwtService: JwtService
         
-    ) { console.log('Calll!Q!!!!!!!!')
-        }
+    ) { }
     
     populate()  {
         if(this.jwtService.getToken())  {
@@ -36,7 +35,6 @@ export class UserService {
 
 
     setAuth(user : User) {
-        console.log('Set Auth',user);
         this.jwtService.saveToken(user.token);
         this.currentUserSubject.next(user);
         this.isAuthenticatedSubject.next(true);
@@ -49,12 +47,10 @@ export class UserService {
     }
 
     logOut(): Observable<any> {
-        console.log('From uSEr');
         return this.apiService.get('/logout')
             .pipe(map(
                 data => {
                     this.purgeAuth();
-                    console.log('asdd',data);
                     return data;
                 }
             ));
@@ -65,8 +61,6 @@ export class UserService {
         return this.apiService.post('/users' + route, {user: credentials})
             .pipe(map(
                 data => {
-                    console.log('Ayempy');
-                    console.log(data.user);
                     this.setAuth(data.user)
                     return data;
                 }

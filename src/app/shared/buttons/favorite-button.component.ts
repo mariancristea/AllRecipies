@@ -24,11 +24,9 @@ export class FavoriteButtonComponent {
     @Output() toggle = new EventEmitter<boolean>();
 
     toggleFavorite(click: boolean) {
-        console.log('fav',click)
         click= false;
        var sub = this.userService.isAuthenticated.pipe(first(),
             switchMap(authenticated => {
-                console.log('no',this.recipe.title);
                 if(!authenticated)  {
                     const dialogRef = this.dialog.open(AuthComponent ,{
                         width: '600px',
@@ -38,12 +36,10 @@ export class FavoriteButtonComponent {
                     return of(null);
                 }
                 else{
-                    console.log('2222');
-                    if(!this.recipe.favorited)  { console.log('3333');
+                    if(!this.recipe.favorited)  { 
                         return this.recipeService.favorite(this.recipe.slug)
                         .pipe(tap(
                             data => {
-                                console.log('emit');
                                 this.toggle.emit(true);
                             }
                         ))
@@ -51,7 +47,6 @@ export class FavoriteButtonComponent {
                         return this.recipeService.unfavorite(this.recipe.slug)
                         .pipe(tap(
                             data => {
-                                console.log('emit');
                                 this.toggle.emit(false);
                             }
                         ))

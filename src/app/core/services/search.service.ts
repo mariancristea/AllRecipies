@@ -22,7 +22,6 @@ export class SearchService {
     constructor(private apiService: ApiService) {}
 
     search(terms: Observable<String>) : Observable<{recipes: Recipe[], recipesCount: number}>  {
-        console.log('SEARCH START', console.log(terms));
         return terms.pipe(
             debounceTime(300),
             distinctUntilChanged(),
@@ -34,16 +33,13 @@ export class SearchService {
 
     searchEntries(term) : Observable<{recipes: Recipe[], recipesCount: number}> {
         const params = {};
+        console.log('Search Service, searchEntries', this.tags.getValue());
         const config = this.tags.getValue();
-        console.log(config, this.tags.getValue());
         Object.keys(config.filters)
         .forEach((key) => {
-            console.log(key);
             params[key] = config.filters[key];
         })
-        console.log('params',params);
 
-        console.log('SearchEntries', term)
         return this.apiService
             .get('/recipes' + this.queryUrl + term, new HttpParams({ fromObject: params }))
             .pipe(map(res => res));

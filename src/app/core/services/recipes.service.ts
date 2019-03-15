@@ -18,12 +18,13 @@ export class RecipeService {
         config.filters.tag=[];
         config.filters.tag.push('asian');
         
+        console.log('Recipe Service', config);
         Object.keys(config.filters)
             .forEach((key) => {
                 params[key] = config.filters[key];
             })
 
-        console.log('XXXX',config);
+       
         return this.apiService.get('/recipes', new HttpParams({ fromObject: params }));
     }
 

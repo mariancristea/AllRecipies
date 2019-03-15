@@ -26,9 +26,7 @@ export class RecipePreviewComponent {
     onToggleFavorite(favorited: boolean)  {
        this.recipe['favorited'] = favorited;
       // this.recipe['favoritesCount']=0;
-       console.log("BBBBB",this.recipe['favoritesCount']);
        if(favorited) {
-           console.log(this.recipe['favoritesCount']);
            this.recipe['favoritesCount']++;
        } else {
         this.recipe['favoritesCount']--;
@@ -39,7 +37,6 @@ export class RecipePreviewComponent {
         
        var sub = this.userService.isAuthenticated.pipe(first(),
             switchMap(authenticated => {
-                console.log('no',this.recipe.title);
                 if(!authenticated)  {
                     const dialogRef = this.dialog.open(AuthComponent ,{
                         width: '600px',
@@ -50,8 +47,7 @@ export class RecipePreviewComponent {
                 }
                 else{
                     this.onToggleFavorite(!this.recipe.favorited);
-                    console.log('2222');
-                    if(!this.recipe.favorited)  { console.log('3333');
+                    if(!this.recipe.favorited)  {
                         return this.recipeService.favorite(this.recipe.slug)
                        
                     } else {

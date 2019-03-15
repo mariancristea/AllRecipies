@@ -26,7 +26,6 @@ export class RecipeComponent implements OnInit {
   ngOnInit() {
     this.route.data.subscribe(
       (data: { recipe: Recipe }) => {
-        console.log('Recipe:', data)
         this.recipe = data.recipe;
 
         this.populateComments();
@@ -35,30 +34,25 @@ export class RecipeComponent implements OnInit {
 
     this.userService.currentUser.subscribe(
       (userData: User) => {
-        console.log('User:', userData)
         this.currentUser = userData;
       }
     )
   }
 
   populateComments(){
-    console.log('Populate');
     this.commentsService.getAll(this.recipe.slug)
         .subscribe(comments => {
-          console.log('COMM get',comments);
         })
   }
 
 
   addComment() {
-    console.log('TEST COMMENT',this.commentControl.value);
     const commentBody = this.commentControl.value;
 
     this.commentsService
       .add(this.recipe.slug, commentBody)
       .subscribe(data =>
         {
-          console.log('Test Comment 2',data)
         })
 
 

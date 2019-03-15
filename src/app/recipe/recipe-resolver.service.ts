@@ -17,7 +17,6 @@ export class RecipeResolver implements Resolve<Recipe>  {
         route: ActivatedRouteSnapshot,
         state: RouterStateSnapshot
     ): Observable<any> {
-        console.log('Resolver test');
         return this.recipeService.get(route.params['slug'])
             .pipe(catchError((err) => this.router.navigateByUrl('/')));
     }

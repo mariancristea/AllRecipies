@@ -37,17 +37,14 @@ export class AuthComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log('INIT',this.data);
     this.authType = this.data;
     this.title = (this.authType === 'login') ? 'Sign in' : 'Sign up';
     if (this.authType === 'register') {
-      console.log(this.authType);
       this.authForm.addControl('username' as string, new FormControl());
     }
    
   }
   submitForm() {
-    console.log('AA');
     this.isSubmitting = true;
     this.errors ={error : {}};
     this.userService
@@ -60,11 +57,9 @@ export class AuthComponent implements OnInit {
     
   }
   changeAuthType() {
-    console.log('TEST');
     this.authType = (this.authType === 'register') ? 'login' : 'register'
     this.title = (this.authType === 'login') ? 'Sign in' : 'Sign up';
     if (this.authType === 'register') {
-      console.log(this.authType);
       this.authForm.addControl('username' as string, new FormControl());
     }
     else this.authForm.removeControl('username');
@@ -72,10 +67,8 @@ export class AuthComponent implements OnInit {
   }
 
   OnNavigate() {
-    console.log('aaaa')
     window.open("http://localhost:3000/users/google","mywindow","location=1,status=1,scrollbars=1, width=800,height=800");
     let listener = window.addEventListener('message', (message) => {
-      console.log(message.data);
       this.userService
       .setAuth(message.data);
     });

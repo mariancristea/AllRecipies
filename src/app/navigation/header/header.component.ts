@@ -32,7 +32,6 @@ export class HeaderComponent implements OnInit {
   }
 
   public onToggleSidenav = () => {
-    console.log('Small')
     this.sidenavToggle.emit();
   }
 }

@@ -12,12 +12,10 @@ export class ListErrorsComponent {
 
     @Input()
     set errors(errorList : Errors) {
-        console.log('BAU:::',errorList.error.errors);
         this.formattedErrors = Object.keys(errorList.error.errors || {})
-            .map(key => { console.log(key);
+            .map(key => { 
                 return `${key + ' '}${errorList.error.errors[key]}`
             });
-        console.log('ERR:::',this.formattedErrors);
 
 
     }

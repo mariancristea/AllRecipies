@@ -19,3 +19,7 @@
                 /* (853 / 1280 * 100) */
     
 }
+
+.fill-height-or-more{
+  flex: column;
+}

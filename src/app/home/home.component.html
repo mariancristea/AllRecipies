@@ -5,9 +5,33 @@
         </mat-form-field>
     
      </form>
+     <div class="filters-bar">
+        <button mat-button [matMenuTriggerFor]="menuCategory">Category</button>
+        <button mat-button [matMenuTriggerFor]="menuCuisine">Main Ingredients</button>
+        <button mat-button [matMenuTriggerFor]="menuCuisine">Cuisine</button>
+        <mat-menu #menuCategory="matMenu">
+          <div *ngFor="let unit of categories[0];let i=index">
+              <mat-checkbox  [checked]="unit.checked" (click)="onCheck($event,categories[0],unit)">{{ unit.name }}</mat-checkbox>
+          </div>
+        </mat-menu>
+        <mat-menu #menuCuisine="matMenu">
+            <div *ngFor="let unit of categories[1];let i=index">
+                <mat-checkbox  [checked]="unit.checked" (click)="onCheck($event,categories[0],unit)">{{ unit.name }}</mat-checkbox>
+            </div>
+          </mat-menu>
+     </div>
+     <div>
+
+     </div>
+     
+      <div>
+        <app-list [config]="listConfig" ></app-list>
+      </div>
+     
 </div>
 
-<div>
-    <app-list [config]="listConfig" ></app-list>
+<div *ngIf="homeType!='/search'">
+  <app-list [config]="listConfig" ></app-list>
 </div>
+
 

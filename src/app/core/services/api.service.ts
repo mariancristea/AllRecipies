@@ -21,14 +21,12 @@ export class ApiService{
 
 
     post(path: string, body: Object = {}) : Observable<any> {
-      console.log('From Post',body);
         return this.http.post(
             `${environment.api_url}${path}`,
              JSON.stringify(body));
     }
 
     get(path: string, params: HttpParams = new HttpParams()) : Observable<any> {
-      console.log(`${environment.api_url}${path}`);
       return this.http.get(
         `${environment.api_url}${path}`, { params }
       );
