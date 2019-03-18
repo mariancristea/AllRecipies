@@ -9,6 +9,7 @@ import { RecipeList, RecipePreviewComponent } from './recipe-helpers';
 import { FavoriteButtonComponent } from './buttons';
 import { MaterialModule } from '../material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { CategoryList, CategoryPreviewComponent } from './categories-helpers';
 
 
 
@@ -26,7 +27,9 @@ import { FlexLayoutModule } from '@angular/flex-layout';
         ListErrorsComponent,
         ShowAuthedDirective,
         RecipeList,
+        CategoryList,
         RecipePreviewComponent,
+        CategoryPreviewComponent,
         FavoriteButtonComponent
 
     ],
@@ -39,7 +42,9 @@ import { FlexLayoutModule } from '@angular/flex-layout';
         ListErrorsComponent,
         ShowAuthedDirective,
         RecipeList,
+        CategoryList,
         RecipePreviewComponent,
+        CategoryPreviewComponent,
         FavoriteButtonComponent,
         MaterialModule
     ]

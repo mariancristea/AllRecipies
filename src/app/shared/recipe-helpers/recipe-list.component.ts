@@ -45,7 +45,7 @@ export class RecipeList implements OnInit {
         });
     }
     setBackground(){
-      document.getElementById('card').style.backgroundImage = "url('../../../assets/imgs/recepie1.png')";
+     // document.getElementById('card').style.backgroundImage = "url('../../../assets/imgs/recepie1.png')";
     }
     ngOnInit(){
         

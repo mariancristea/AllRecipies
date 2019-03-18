@@ -71,7 +71,7 @@ export class HomeComponent implements OnInit {
       
        $event.stopPropagation();
      // categories[checkedName].checked = $event.checked;
-      this.listConfig.type = 'allx';
+      
       console.log(checkedName, pos);
        var pos = this.listConfig.filters.tag.indexOf(checkedName.name)
        if(pos > -1) {

@@ -16,6 +16,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { HeaderComponent } from './navigation/header/header.component';
 import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.component';
+import { CategoriesComponent } from './categories/categories.component';
+import { CategoriesModule } from './categories/categories.module';
 
 
 
@@ -33,6 +35,7 @@ import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.com
     CoreModule,
     SharedModule,
     HomeModule,
+    CategoriesModule,
     MaterialModule,
     BrowserAnimationsModule,
     FlexLayoutModule 
