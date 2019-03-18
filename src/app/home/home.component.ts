@@ -31,7 +31,7 @@ export class HomeComponent implements OnInit {
         ],
         [
             new Categories("Doi","Chinese",false),
-            new Categories("Trei","Italian",false)
+            new Categories("Trei","italian",false)
         ]
 
     ];
@@ -48,8 +48,6 @@ export class HomeComponent implements OnInit {
     
     ngOnInit()  {
         this.listConfig.filters.tag = [];
-        this.checked.starter1 = 'true';
-        this.checked.starter2 = 'true';
         this.route.url.subscribe(data => {
             this.homeType = this.router.url;
             if(this.homeType === '/search') {
@@ -69,19 +67,24 @@ export class HomeComponent implements OnInit {
 
     }
 
-    onCheck($event:any, categories, checkedName) {
+    onCheck($event:any, categories, checkedName, index) {
       
        $event.stopPropagation();
      // categories[checkedName].checked = $event.checked;
       this.listConfig.type = 'allx';
-       this.listConfig.filters.tag.push(checkedName.name as string);
-      // this.filters = {tag: 'asian'};
+      console.log(checkedName, pos);
+       var pos = this.listConfig.filters.tag.indexOf(checkedName.name)
+       if(pos > -1) {
+           this.listConfig.filters.tag.splice(pos, 1);
+           console.log('!!!!',this.listConfig.filters.tag);
+       }else this.listConfig.filters.tag.push(checkedName.name as string);
+       //this.filters = this.listConfig.filters.tag;
       // console.log(this.listConfig);
-       //this.filters = {tag: 'asian'};
-      //his.listConfig = {type: 'allx',search: true, filters: this.filters};
-       console.log(this.listConfig);
-       var list = this.listConfig;
-       this.searchService.tags.next(list);
+        this.filters = {tag: this.listConfig.filters.tag};
+        this.listConfig = {type: 'allx',search: true, filters: this.filters};
+ 
+       this.searchService.tags.next(this.listConfig);
+       
     }
     
 }

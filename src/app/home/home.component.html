@@ -11,17 +11,17 @@
         <button mat-button [matMenuTriggerFor]="menuCuisine">Cuisine</button>
         <mat-menu #menuCategory="matMenu">
           <div *ngFor="let unit of categories[0];let i=index">
-              <mat-checkbox  [checked]="unit.checked" (click)="onCheck($event,categories[0],unit)">{{ unit.name }}</mat-checkbox>
+              <mat-checkbox  [(ngModel)]="unit.checked" (click)="onCheck($event,categories[0],unit,i)">{{ unit.name }}</mat-checkbox>
           </div>
         </mat-menu>
         <mat-menu #menuCuisine="matMenu">
             <div *ngFor="let unit of categories[1];let i=index">
-                <mat-checkbox  [checked]="unit.checked" (click)="onCheck($event,categories[0],unit)">{{ unit.name }}</mat-checkbox>
+                <mat-checkbox  [(ngModel)]="unit.checked" (click)="onCheck($event,categories[0],unit,i)">{{ unit.name }}</mat-checkbox>
             </div>
           </mat-menu>
      </div>
      <div>
-
+        <mat-icon>close</mat-icon>
      </div>
      
       <div>

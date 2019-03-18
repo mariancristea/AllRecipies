@@ -17,7 +17,7 @@ export class RecipeService {
         const params = {};
         config.filters.tag=[];
         config.filters.tag.push('asian');
-        
+        config.filters.tag.push('italian');
         console.log('Recipe Service', config);
         Object.keys(config.filters)
             .forEach((key) => {
