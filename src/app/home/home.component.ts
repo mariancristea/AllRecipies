@@ -16,11 +16,12 @@ export class HomeComponent implements OnInit {
     listConfig: RecipeListConfig = {
         type: 'all',
         search: true,
-        filters: {}
+        filters: {limit: 0}
       };
     homeType: String;
     searchParam : String;
     filters: Object = {}
+    offset : number = 0;
     categories = [
         [
             new Categories("Category","asian",false),
@@ -35,10 +36,6 @@ export class HomeComponent implements OnInit {
         ]
 
     ];
-    checked = {
-        starter1: 'false',
-        starter2: 'false'
-    }
 
     constructor(
         private route: ActivatedRoute,
@@ -47,6 +44,7 @@ export class HomeComponent implements OnInit {
     ) {}
     
     ngOnInit()  {
+        console.log(this.offset);
         this.listConfig.filters.tag = [];
         this.route.url.subscribe(data => {
             this.homeType = this.router.url;
@@ -80,12 +78,17 @@ export class HomeComponent implements OnInit {
        }else this.listConfig.filters.tag.push(checkedName.name as string);
        //this.filters = this.listConfig.filters.tag;
       // console.log(this.listConfig);
-        this.filters = {tag: this.listConfig.filters.tag};
+        this.filters = {tag: this.listConfig.filters.tag, limit: 0};
         this.listConfig = {type: 'allx',search: true, filters: this.filters};
- 
-       this.searchService.tags.next(this.listConfig);
+        console.log(this.listConfig);
+        this.searchService.tags.next(this.listConfig);
        
     }
-    
+    onMore() {
+        console.log('more');
+        this.offset = this.offset + 1;
+        this.filters = {tag: this.listConfig.filters.tag, offset: this.offset, limit: 1};
+        this.listConfig= {type:'all',search:false,filters:this.filters};
+    }
 }
 

@@ -39,9 +39,13 @@ export class RecipeList implements OnInit {
 
     runQuery()  {
         //this.query.filters.limit = 20;
+        
         this.recipesService.query(this.query)
         .subscribe(data => {
-            this.results = data.recipes;
+            this.results = this.results.concat(data.recipes);
+            console.log(this.results.concat(data.recipes));
+            
+            console.log(data.recipes);
         });
     }
     setBackground(){
@@ -49,6 +53,6 @@ export class RecipeList implements OnInit {
     }
     ngOnInit(){
         
-      // this.setBackground();
+        this.results = [];
     }
 }
