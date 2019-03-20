@@ -15,12 +15,23 @@ a:hover, a:active{
 }
 
 .mat-toolbar {
-    height: 80px;
+   
   }
-
-.row2 {
-    height: 222px;
+#row1 {
+    height: 50px;
 }
+#row2 {
+    display: none;
+    height: 200px;
+    
+}
+
+.plMenuCSS { 
+    background-color:lightgreen;
+    display: inline-block;
+    min-width:500px;
+}
+
  
 @media(max-width: 959px){
     mat-toolbar{

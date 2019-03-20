@@ -1,45 +1,52 @@
 
 <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
 <mat-toolbar color="white">
-    <div fxHide.gt-xs>
-        <button mat-icon-button (click)="onToggleSidenav()">
-            <mat-icon>menu</mat-icon>
-        </button>
-    </div>
-    <div>
-        <a routerLink="/">
-          <img src="../../assets/ARlogo.svg" alt="Logo">
-        </a>
-    </div>
-    <div fxFlex fxLayout fxLayoutAlign="start" fxHide.xs style="padding:40px;">
-        <ul fxLayout fxLayoutGap="80px" class="navigation-items">
-            <li>
-                <a routerLink="/">Recipes</a>
-            </li>
+    <mat-toolbar-row id="row1">
+        <div fxHide.gt-xs>
+            <button mat-icon-button (click)="onToggleSidenav()">
+                <mat-icon>menu</mat-icon>
+            </button>
+        </div>
+        <div>
+            <a routerLink="/">
+            <img src="../../assets/ARlogo.svg" alt="Logo">
+            </a>
+        </div>
+        <div fxFlex fxLayout fxLayoutAlign="start" fxHide.xs style="padding:40px;">
+            <ul fxLayout fxLayoutGap="80px" class="navigation-items">
+                <li>
+                    <a routerLink="/">Recipes</a>
+                </li>
 
+                <li>
+                    <a routerLink="/editor">Edit</a>
+                </li>
+                <li>
+                 <a (mouseover)="showCategories()" (mouseleave)="hideCategories()" routerLink="/categories">Categories</a>
+                </li>
+            </ul>
+        </div>
+        <div fxFlex fxLayout fxLayoutAlign="end" fxHide.xs>
+            <ul fxLayout fxLayoutGap="20px" class="navigation-items">
             <li>
-                <a routerLink="/editor">Edit</a>
+                <mat-icon routerLink="/search">search</mat-icon>
             </li>
-            <li>
-              <a routerLink="/categories">Categories</a>
+            <li *appShowAuthed="false">
+                <button mat-raised-button (click)="openDialog('register')">Sign Up</button>
             </li>
-        </ul>
-    </div>
-    <div fxFlex fxLayout fxLayoutAlign="end" fxHide.xs>
-        <ul fxLayout fxLayoutGap="20px" class="navigation-items">
-          <li>
-            <mat-icon routerLink="/search">search</mat-icon>
-          </li>
-          <li *appShowAuthed="false">
-              <button mat-raised-button (click)="openDialog('register')">Sign Up</button>
-          </li>
-          <mat-divider [vertical]="true"></mat-divider>
-          <li *appShowAuthed="false">
-              <button mat-raised-button (click)="openDialog('login')">LogIn</button>
-          </li>
-          <li *appShowAuthed="true">
-            <a (click)="logOut()">Log-out</a>
-          </li>
-        </ul>
-    </div>
+            <mat-divider [vertical]="true"></mat-divider>
+            <li *appShowAuthed="false">
+                <button mat-raised-button (click)="openDialog('login')">LogIn</button>
+            </li>
+            <li *appShowAuthed="true">
+                <a (click)="logOut()">Log-out</a>
+            </li>
+            </ul>
+        </div>
+    </mat-toolbar-row>
+    <mat-toolbar-row id="row2" (mouseover)="inCategories = true;showCategories()" (mouseleave)="inCategories = false; hideCategories()">
+        <div (click)="hideCategories(); inCategories=false;">
+                <a routerLink="/categories">Recipes</a>
+        </div>
+    </mat-toolbar-row>
 </mat-toolbar>
