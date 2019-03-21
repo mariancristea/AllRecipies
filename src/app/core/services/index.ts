@@ -5,3 +5,4 @@ export * from './jwt.service';
 export * from './recipes.service';
 export * from './comments.service';
 export * from './recipes.service';
+export * from './profiles.service';

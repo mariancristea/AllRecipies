@@ -11,6 +11,10 @@ const routes: Routes = [
   {
     path: 'recipe',
     loadChildren: './recipe/recipe.module#RecipeModule'
+  },
+  {
+    path: 'profile',
+    loadChildren: './profile/profile.module#ProfileModule'
   }
 ];
 

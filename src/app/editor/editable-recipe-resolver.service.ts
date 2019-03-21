@@ -18,7 +18,7 @@ export class EditableRecipeResolver implements Resolve<Recipe> {
     ): Observable<any> {
         return this.recipeService.get(route.params['slug'])
                 .pipe(map( recipe => {
-                    
+                    console.log(recipe);
                 }));
     }
 }

@@ -5,7 +5,7 @@ export interface RecipeListConfig {
     filters: {
       tag?: string[],
       author?: string,
-      //favorited?: string,
+      favorited?: string,
       limit?: number,
       offset?: number
     };

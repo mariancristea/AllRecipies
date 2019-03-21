@@ -46,11 +46,12 @@ export class RecipePreviewComponent {
                     return of(null);
                 }
                 else{
-                    this.onToggleFavorite(!this.recipe.favorited);
-                    if(!this.recipe.favorited)  {
+                    this.onToggleFavorite(!this.recipe['favorited']);
+                    console.log(this.recipe['favorited']);
+                    if(this.recipe['favorited'])  {console.log('FAVVV')
                         return this.recipeService.favorite(this.recipe.slug)
                        
-                    } else {
+                    } else {console.log('UNNFAVVV')
                         return this.recipeService.unfavorite(this.recipe.slug)
                     } 
                 }

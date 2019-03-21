@@ -9,7 +9,8 @@ import {
     JwtService, 
     RecipeService, 
     UserService, 
-    CommentsService
+    CommentsService,
+    ProfileServices
 } from './services';
 import { SearchService } from './services/search.service';
 
@@ -25,6 +26,7 @@ import { SearchService } from './services/search.service';
         RecipeService,
         UserService,
         SearchService,
+        ProfileServices,
         { provide: HTTP_INTERCEPTORS, useClass: HttpTokenInterceptor, multi: true}
     ],
     declarations: []

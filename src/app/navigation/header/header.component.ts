@@ -1,5 +1,5 @@
 import { Component, OnInit, EventEmitter, Output, ViewEncapsulation } from '@angular/core';
-import { UserService } from 'src/app/core';
+import { UserService, User } from 'src/app/core';
 import { MatDialog } from '@angular/material';
 import { AuthComponent } from 'src/app/auth/auth.component';
 
@@ -14,11 +14,17 @@ export class HeaderComponent implements OnInit {
 
   @Output() public sidenavToggle = new EventEmitter();
   inCategories: boolean = false;
-
+  currentUser : User;
   constructor(private userService : UserService,
               private dialog: MatDialog) { }
 
   ngOnInit() {
+    this.userService.currentUser.subscribe(
+      (userData) => {
+        this.currentUser = userData;
+        console.log('ddddddddd',this.currentUser.image);
+      }
+    );
   }
 
   openDialog(authType: String) : void {

@@ -39,20 +39,18 @@ export class RecipeList implements OnInit {
 
     runQuery()  {
         //this.query.filters.limit = 20;
-        
         this.recipesService.query(this.query)
         .subscribe(data => {
+            console.log('!!!!',this.results);
             this.results = this.results.concat(data.recipes);
-            console.log(this.results.concat(data.recipes));
             
-            console.log(data.recipes);
         });
     }
     setBackground(){
      // document.getElementById('card').style.backgroundImage = "url('../../../assets/imgs/recepie1.png')";
     }
     ngOnInit(){
-        
+        console.log('init');
         this.results = [];
     }
 }

@@ -6,8 +6,8 @@
     </div>
     <div class="preview-footer"  fxLayout="row" fxLayoutAlign="space-between end" >
       <div fxLayout="row">
-          <i *ngIf="recipe.favorited" class="material-icons btn-like" (click)="toggleFavorite()">favorite_border</i>
-          <i *ngIf="!recipe.favorited" class="material-icons btn-like" (click)="toggleFavorite()" style="color:wheat;">
+          <i *ngIf="!recipe.favorited" class="material-icons btn-like" (click)="toggleFavorite()">favorite_border</i>
+          <i *ngIf="recipe.favorited" class="material-icons btn-like" (click)="toggleFavorite()" style="color:wheat;">
                 favorite
                 </i>
           <span class="footer-text">{{recipe.favoritesCount}}</span>
