@@ -1,44 +1,32 @@
-<div class="editor-page">
-    <div class="container page">
-      <div class="row">
-        <div class="col-md-10 offset-md-1 col-xs-12">
-  
-          
-  
-          <form [formGroup]="recipeForm" class="form-control-lg" (ngSubmit)="submitForm()">
-           
-  
-              <fieldset class="form-group">
-                <input class="form-control form-control-lg"
-                  formControlName="title"
-                  type="text"
-                  placeholder="Article Title" />
-              </fieldset>
-  
-              <fieldset class="form-group">
-                <input class="form-control"
-                  formControlName="description"
-                  type="text"
-                  placeholder="What's this article about?" />
-              </fieldset>
-  
-              <fieldset class="form-group">
-                <textarea class="form-control"
-                  formControlName="body"
-                  rows="8"
-                  placeholder="Write your article (in markdown)">
-                </textarea>
-              </fieldset>
-  
-              <button class="btn btn-lg pull-xs-right btn-primary" type="submit">
-                Publish Article
-              </button>
-  
-            
-          </form>
-  
-        </div>
-      </div>
-    </div>
-  </div>
-  
+
+
+  <form fxFlex fxLayout="column"  [formGroup]="recipeForm" (ngSubmit)="submitForm()">
+    <mat-form-field>
+        <input matInput placeholder="URL Image" formControlName="image">
+    </mat-form-field>
+
+    <mat-form-field>
+        <input matInput placeholder="Title" formControlName="title">
+    </mat-form-field>
+
+    <mat-form-field>
+        <input matInput placeholder="Prep Time" formControlName="prep-time">
+    </mat-form-field>
+
+    <mat-form-field>
+        <input matInput placeholder="Cook Time" formControlName="cook-time">
+    </mat-form-field>
+
+    <mat-form-field>
+        <input matInput placeholder="Servings" formControlName="servings">
+    </mat-form-field>
+    
+    <mat-form-field>
+        <textarea matInput rows="5" cols="40" placeholder="Description" formControlName="description"></textarea>
+    </mat-form-field>
+
+    <mat-form-field>
+        <textarea matInput placeholder="Ingredients one" formControlName="ingredients"></textarea>
+    </mat-form-field>
+    <button type="submit" mat-button>Submit</button>
+</form>

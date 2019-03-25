@@ -7,11 +7,13 @@ import { NgModule } from '@angular/core';
 import { SharedModule } from '../shared';
 import { EditorRoutingModule } from './editor-routing.module';
 import { EditableRecipeResolver } from './editable-recipe-resolver.service';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
     imports: [
         EditorRoutingModule,
-        SharedModule
+        SharedModule,
+        FlexLayoutModule
     ],
     declarations: [
         EditorComponent

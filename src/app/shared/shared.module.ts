@@ -46,7 +46,8 @@ import { CategoryList, CategoryPreviewComponent } from './categories-helpers';
         RecipePreviewComponent,
         CategoryPreviewComponent,
         FavoriteButtonComponent,
-        MaterialModule
+        MaterialModule,
+        FlexLayoutModule
     ]
 
 })

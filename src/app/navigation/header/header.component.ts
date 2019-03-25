@@ -1,5 +1,5 @@
 import { Component, OnInit, EventEmitter, Output, ViewEncapsulation } from '@angular/core';
-import { UserService, User } from 'src/app/core';
+import { UserService, User, RecipeListConfig } from 'src/app/core';
 import { MatDialog } from '@angular/material';
 import { AuthComponent } from 'src/app/auth/auth.component';
 
@@ -15,6 +15,11 @@ export class HeaderComponent implements OnInit {
   @Output() public sidenavToggle = new EventEmitter();
   inCategories: boolean = false;
   currentUser : User;
+  listConfig: RecipeListConfig = {
+    type: 'all',
+    search: false,
+    filters: {'limit': 3}
+  };
   constructor(private userService : UserService,
               private dialog: MatDialog) { }
 

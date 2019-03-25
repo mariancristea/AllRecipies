@@ -24,7 +24,12 @@ a:hover, a:active{
 #row2 {
     display: none;
     height: 200px;
-    
+}
+#recipes {
+    width: 100px;
+    height: 100px;
+    display: inline-block;
+    position: absolute;
 }
 
 .plMenuCSS { 

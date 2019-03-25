@@ -23,8 +23,12 @@ export class EditorComponent implements OnInit {
     ) {
         this.recipeForm = this.fb.group({
             'title': [''],
+            'image': [''],
             'description': [''],
-            'body':[ '']
+            'prep-time': [''],
+            'cook-time': [''],
+            'servings': [''],
+            'ingredients': ['']
         });
 
       }  
@@ -36,7 +40,19 @@ export class EditorComponent implements OnInit {
 
     submitForm() {
         this.isSubmitting = true;
-        Object.assign(this.recipe, this.recipeForm.value);
+        console.log(this.recipeForm.value[0]);
+        for (const [key, value] of Object.entries(this.recipeForm.value)) {
+            if(key != 'ingredients') this.recipe[key] = value;
+          }
+        var x = this.recipeForm.value.ingredients;
+        var y = x.split('\n');
+        console.log(Object.keys(y).length);
+        this.recipe.tagList = [];
+        for(var i = 0; i < Object.keys(y).length; i++) {
+            this.recipe.tagList.push(y[i]);
+        }
+        
+       
         this.recipeService
             .save(this.recipe)
             .subscribe(recipe => this.router.navigateByUrl('/recipe/' + recipe.slug));
