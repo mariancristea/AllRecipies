@@ -1,6 +1,8 @@
 .modal-content {
     text-align: center;
-    min-width: 200px;
+    align-content: center;
+    width: auto;
+    overflow-y: hidden !important;
 }
 
 .auth-body h1 {

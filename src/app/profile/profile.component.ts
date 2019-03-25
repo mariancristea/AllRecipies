@@ -3,18 +3,23 @@ import { ActivatedRoute } from '@angular/router';
 import { UserService, User, Profile, RecipeListConfig } from '../core';
 
 import { concatMap, tap } from 'rxjs/operators';
+import { MatDialog } from '@angular/material';
+import { SettingsComponent } from '../settings/settings.component';
+import { AuthComponent } from '../auth/auth.component';
 
 
 
 
 @Component({
     selector: 'app-profile-page',
-    templateUrl: './profile.component.html'
+    templateUrl: './profile.component.html',
+    styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
     constructor(
         private route: ActivatedRoute,
-        private userService: UserService
+        private userService: UserService,
+        private dialog: MatDialog
     )   { }
 
     profile: Profile;
@@ -60,9 +65,11 @@ export class ProfileComponent implements OnInit {
         ).subscribe();
     }
 
-    tabChange($event){
-       
- 
+    openSettingsDialog() : void {
+        this.dialog.open(SettingsComponent, {
+            width: '500px',
+            height: '500px'
+        })
     }
 
 }

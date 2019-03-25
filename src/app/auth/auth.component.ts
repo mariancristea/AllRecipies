@@ -28,7 +28,8 @@ export class AuthComponent implements OnInit {
     private fb : FormBuilder,
     private userService : UserService,
     public dialogRef: MatDialogRef<HeaderComponent, FavoriteButtonComponent>,
-    @Inject(MAT_DIALOG_DATA) public data) 
+    @Inject(MAT_DIALOG_DATA) public data
+    ) 
     { 
     this.authForm = this.fb.group({
       'email': [''],

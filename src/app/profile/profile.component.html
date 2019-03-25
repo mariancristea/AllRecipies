@@ -1,4 +1,9 @@
-<mat-tab-group (selectedTabChange)="tabChange($event)">
-    <mat-tab label="Favorites"> <app-list [config]="listConfig"></app-list> </mat-tab>
-    <mat-tab label="Your Recipes"> <app-list [config]="listConfig2"></app-list> </mat-tab>
- </mat-tab-group>
+<div>
+    <img id="image" [src]="currentUser.image" *ngIf="currentUser.image" class="user-pic" />
+    <button mat-button (click)="openSettingsDialog()"> Settings </button>
+    <mat-tab-group>
+        <mat-tab label="Favorites"> <app-list [config]="listConfig"></app-list> </mat-tab>
+        <mat-tab label="Your Recipes"> <app-list [config]="listConfig2"></app-list> </mat-tab>
+    </mat-tab-group>
+</div>
+

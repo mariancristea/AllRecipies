@@ -18,6 +18,7 @@ import { HeaderComponent } from './navigation/header/header.component';
 import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { CategoriesModule } from './categories/categories.module';
+import { SettingsModule } from './settings/settings.module';
 
 
 
@@ -35,6 +36,7 @@ import { CategoriesModule } from './categories/categories.module';
     CoreModule,
     SharedModule,
     HomeModule,
+    SettingsModule,
     CategoriesModule,
     MaterialModule,
     BrowserAnimationsModule,

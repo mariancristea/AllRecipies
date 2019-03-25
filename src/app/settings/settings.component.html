@@ -1,0 +1,49 @@
+<div *ngIf="!editActivated && !changeActivated" class="main-container">
+    <div class="settings-component">
+        <h1 class="settings-component-headline">Settings</h1>
+        <button (click)="switchToUserEdit()"class="Edit" mat-button>Edit profile</button>
+        <button (click)="switchToChangePassword()" class="Change" mat-button>Change Password</button>
+        <button (click)="logOut()" class="Log-out" mat-button>Log out</button>
+    </div>
+</div>
+
+<div *ngIf="changeActivated">
+    <form [formGroup]="passwordForm" (ngSubmit)="submitPasswordForm()">
+        <mat-form-field>
+            <input matInput placeholder="New password" formControlName="password" required
+            [type]="hide ? 'password' : 'text'">
+            <mat-error *ngIf="passwordForm.hasError('required', 'password')">
+                Please enter your newpassword
+            </mat-error>
+            <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </mat-form-field>
+    
+        <mat-form-field>
+            <input matInput placeholder="Confirm password" formControlName="confirmPassword" 
+            [errorStateMatcher]="matcher" 
+            [type]="hide ? 'password' : 'text'">
+                <mat-error *ngIf="passwordForm.hasError('notSame')">
+                Passwords do not match
+            </mat-error>  
+            <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </mat-form-field>
+        <button type="submit" mat-button *ngIf="!passwordForm.hasError('notSame') && !passwordForm.hasError('required', 'password')">Submit</button>
+    </form>
+    <button (click)="cancel()" mat-button>Cancel</button>
+</div>
+
+<div *ngIf="editActivated">
+    <form [formGroup]="editUserForm" (ngSubmit)="submitEditForm()">
+        <mat-form-field>
+            <input matInput placeholder="URL Image" formControlName="image">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Username" formControlName="username">
+        </mat-form-field>
+        <mat-form-field>
+            <textarea matInput placeholder="Textarea" formControlName="bio"></textarea>
+        </mat-form-field>
+        <button type="submit" mat-button>Submit</button>
+    </form>
+    <button (click)="cancel()" mat-button>Cancel</button>
+</div>

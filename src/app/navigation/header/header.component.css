@@ -14,9 +14,10 @@ a:hover, a:active{
     margin: 0;
 }
 
-.mat-toolbar {
-   
-  }
+#ima {
+    height: 30px;
+    width: 30px;
+}
 #row1 {
     height: 50px;
 }
