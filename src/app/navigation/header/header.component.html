@@ -50,7 +50,7 @@
             </ul>
         </div>
     </mat-toolbar-row>
-    <mat-toolbar-row id="row2" (mouseover)="inCategories = true;showCategories()" (mouseleave)="inCategories = false; hideCategories()">
+    <mat-toolbar-row  id="row2" (mouseover)="inCategories = true;showCategories()" (mouseleave)="inCategories = false; hideCategories()" *ngIf="inCategories==true">
         <div (click)="hideCategories(); inCategories=false;">
                 <a routerLink="/categories">Recipes</a>
                

@@ -13,6 +13,7 @@ import {
     MatInputModule,
     MatMenuModule,
     MatCheckboxModule,
+    MatSelectModule,
 
 } from '@angular/material'
 
@@ -30,7 +31,8 @@ import {
         MatFormFieldModule,
         MatInputModule,
         MatMenuModule,
-        MatCheckboxModule
+        MatCheckboxModule,
+        MatSelectModule
     ],
     exports: [
         MatButtonModule,
@@ -45,7 +47,8 @@ import {
         MatFormFieldModule,
         MatInputModule,
         MatMenuModule,
-        MatCheckboxModule
+        MatCheckboxModule,
+        MatSelectModule
         
     ]
 })

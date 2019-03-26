@@ -46,6 +46,7 @@ export class HeaderComponent implements OnInit {
 
   showCategories() {
     console.log('test');
+    this.inCategories = true;
     document.getElementById('row2').style.display = 'block';
   }
 

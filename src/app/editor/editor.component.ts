@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Recipe } from '../core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { RecipeService } from '../core/services/recipes.service';
 
 
@@ -14,6 +14,8 @@ export class EditorComponent implements OnInit {
     recipe: Recipe = {} as Recipe;
     recipeForm: FormGroup;
     isSubmitting : boolean = false;
+    categoryFormControl = new FormControl('', Validators.required);
+    cuisineFormControl = new FormControl('', Validators.required);
 
     constructor(
         private recipeService: RecipeService,
@@ -28,7 +30,7 @@ export class EditorComponent implements OnInit {
             'prep-time': [''],
             'cook-time': [''],
             'servings': [''],
-            'ingredients': ['']
+            'ingredients': [''],
         });
 
       }  
@@ -40,7 +42,7 @@ export class EditorComponent implements OnInit {
 
     submitForm() {
         this.isSubmitting = true;
-        console.log(this.recipeForm.value[0]);
+        
         for (const [key, value] of Object.entries(this.recipeForm.value)) {
             if(key != 'ingredients') this.recipe[key] = value;
           }
@@ -51,7 +53,8 @@ export class EditorComponent implements OnInit {
         for(var i = 0; i < Object.keys(y).length; i++) {
             this.recipe.tagList.push(y[i]);
         }
-        
+        this.recipe.tagList.push(this.categoryFormControl.value);
+        this.recipe.tagList.push(this.cuisineFormControl.value);
        
         this.recipeService
             .save(this.recipe)
