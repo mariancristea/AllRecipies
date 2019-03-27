@@ -1,3 +1,10 @@
+
+mat-toolbar {
+    position: fixed; /* Set the navbar to fixed position */
+    top: 0; /* Position the navbar at the top of the page */
+    width: 100%; /* Full width */
+    z-index: 1;
+}
 a {
     text-decoration: none;
     color: black;
@@ -22,7 +29,7 @@ a:hover, a:active{
     height: 50px;
 }
 #row2 {
-    display: none;
+    display: none !important;
     height: 200px;
 }
 #recipes {
@@ -37,8 +44,24 @@ a:hover, a:active{
     display: inline-block;
     min-width:500px;
 }
-
- 
+.dropdown {
+    position: relative;
+    display: inline-block;
+    float:left;
+  }
+  
+  .dropdown-content {
+    display: none;
+    width: 100vw;
+    position:absolute;
+    background-color: white;
+    left:0px;
+  }
+  .dropdown:hover .dropdown-content {
+    display: block;
+    position: absolute;
+   float: left;
+  }
 @media(max-width: 959px){
     mat-toolbar{
         border-radius: 0px;

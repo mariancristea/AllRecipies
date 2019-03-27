@@ -1,0 +1,23 @@
+* {
+   
+    box-sizing: border-box;
+}
+form{
+    margin: auto;
+    max-width: 55.5rem;
+   
+    
+    margin-top: 150px;
+}
+.left-column {
+    width: 35%;
+    float: left;
+}
+.right-column{
+    width: 75%;
+    float:right;
+    
+}
+.button-div {
+    display: block;
+}

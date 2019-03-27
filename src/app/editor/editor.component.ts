@@ -8,7 +8,8 @@ import { RecipeService } from '../core/services/recipes.service';
 
 @Component({
     selector: 'editor-page',
-    templateUrl: './editor.component.html'
+    templateUrl: './editor.component.html',
+    styleUrls: ['./editor.component.css']
 })
 export class EditorComponent implements OnInit {
     recipe: Recipe = {} as Recipe;

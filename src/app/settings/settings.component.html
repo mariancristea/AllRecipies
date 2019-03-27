@@ -1,5 +1,5 @@
 <div *ngIf="!editActivated && !changeActivated" class="main-container">
-    <div class="settings-component">
+    <div fxFlex fxLayout="column" class="settings-component">
         <h1 class="settings-component-headline">Settings</h1>
         <button (click)="switchToUserEdit()"class="Edit" mat-button>Edit profile</button>
         <button (click)="switchToChangePassword()" class="Change" mat-button>Change Password</button>

@@ -1,5 +1,15 @@
+
+*{
+    margin: auto;
+    padding: auto;
+    width: 100%;
+}
 .main-container {
     text-align: center;
     display: block;
+    margin: auto;
 }
 
+button {
+    margin-top: 30px;
+}

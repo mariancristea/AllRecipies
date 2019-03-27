@@ -2,3 +2,10 @@
     height: 200px;
     width: 200px;
 }
+
+div {
+    margin: auto;
+    padding-top: 100px;
+    max-width: 55.5rem;
+    width: 100%;
+}

@@ -22,7 +22,7 @@
                     <a routerLink="/editor">Edit</a>
                 </li>
                 <li>
-                 <a (mouseover)="showCategories()" (mouseleave)="hideCategories()" routerLink="/categories">Categories</a>
+                 <a (mouseover)="showCategories()" (mouseleave)="inCategories = false; hideCategories()" routerLink="/categories">Categories</a>
                 </li>
             </ul>
         </div>
@@ -50,7 +50,7 @@
             </ul>
         </div>
     </mat-toolbar-row>
-    <mat-toolbar-row  id="row2" (mouseover)="inCategories = true;showCategories()" (mouseleave)="inCategories = false; hideCategories()" *ngIf="inCategories==true">
+    <mat-toolbar-row  id="row2" (mouseover)="inCategories = true;showCategories()" (mouseleave)="inCategories = false; hideCategories()">
         <div (click)="hideCategories(); inCategories=false;">
                 <a routerLink="/categories">Recipes</a>
                

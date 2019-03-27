@@ -1,64 +1,72 @@
 
 
-  <form fxFlex fxLayout="column"  [formGroup]="recipeForm" (ngSubmit)="submitForm()">
-    <mat-form-field>
-        <input matInput placeholder="URL Image" formControlName="image">
-    </mat-form-field>
-
-    <mat-form-field>
-        <input matInput placeholder="Title" formControlName="title">
-    </mat-form-field>
-
-    <mat-form-field>
-        <input matInput placeholder="Prep Time" formControlName="prep-time">
-    </mat-form-field>
-
-    <mat-form-field>
-        <input matInput placeholder="Cook Time" formControlName="cook-time">
-    </mat-form-field>
-
-    <mat-form-field>
-        <input matInput placeholder="Servings" formControlName="servings">
-    </mat-form-field>
+  <form  [formGroup]="recipeForm" (ngSubmit)="submitForm()">
+    <div class="left-column">
+        <mat-form-field>
+            <input matInput placeholder="URL Image" formControlName="image">
+        </mat-form-field>
     
-    <mat-form-field>
-        <textarea matInput rows="5" cols="40" placeholder="Description" formControlName="description"></textarea>
-    </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Title" formControlName="title">
+        </mat-form-field>
+    
+        <mat-form-field>
+            <input matInput placeholder="Prep Time" formControlName="prep-time">
+        </mat-form-field>
+    
+        <mat-form-field>
+            <input matInput placeholder="Cook Time" formControlName="cook-time">
+        </mat-form-field>
+    
+        <mat-form-field>
+            <input matInput placeholder="Servings" formControlName="servings">
+        </mat-form-field>
+    </div>
+    
+    <div fxFlex fxLayout="column" class="right-column">
+        <mat-form-field>
+            <textarea matInput rows="5" cols="40" placeholder="Description" formControlName="description"></textarea>
+        </mat-form-field>
+    
+        <mat-form-field>
+            <textarea matInput placeholder="Ingredients one" formControlName="ingredients"></textarea>
+        </mat-form-field>
+    
+        <mat-form-field>
+          <mat-label>Select Category (required)</mat-label>
+          <mat-select  required [formControl]="categoryFormControl">
+              <mat-option>Category</mat-option>
+              <mat-option value="starter">Starter</mat-option>
+              <mat-option value="main">Main</mat-option>
+              <mat-option value="dessert">Dessert</mat-option>
+              <mat-option value="snack">Snack</mat-option>
+              <mat-option value="breakfast">Breakfast</mat-option>
+              <mat-option value="drink">Drink</mat-option>
+          </mat-select>
+          <mat-error *ngIf="categoryFormControl.hasError('required')">
+              This field is required
+          </mat-error>
+        </mat-form-field>
+       
+        <mat-form-field>
+          <mat-label>Select Cuisine (required)</mat-label>
+          <mat-select required [formControl]="cuisineFormControl">
+              <mat-option>Category</mat-option>
+              <mat-option value="chinese">Chinese</mat-option>
+              <mat-option value="italian">Italian</mat-option>
+              <mat-option value="indian">Indian</mat-option>
+              <mat-option value="spanish">Spanish</mat-option>
+              <mat-option value="american">American</mat-option>
+              <mat-option value="french">French</mat-option>
+          </mat-select>
+          <mat-error *ngIf="cuisineFormControl.hasError('required')">
+              This field is required
+          </mat-error>
+        </mat-form-field>
+    </div>
 
-    <mat-form-field>
-        <textarea matInput placeholder="Ingredients one" formControlName="ingredients"></textarea>
-    </mat-form-field>
-
-    <mat-form-field>
-      <mat-label>Select Category (required)</mat-label>
-      <mat-select  required [formControl]="categoryFormControl">
-          <mat-option>Category</mat-option>
-          <mat-option value="starter">Starter</mat-option>
-          <mat-option value="main">Main</mat-option>
-          <mat-option value="dessert">Dessert</mat-option>
-          <mat-option value="snack">Snack</mat-option>
-          <mat-option value="breakfast">Breakfast</mat-option>
-          <mat-option value="drink">Drink</mat-option>
-      </mat-select>
-      <mat-error *ngIf="categoryFormControl.hasError('required')">
-          This field is required
-      </mat-error>
-    </mat-form-field>
+    <div class="button-div">
+        <button type="submit" mat-button>Submit</button>
+    </div>
    
-    <mat-form-field>
-      <mat-label>Select Cuisine (required)</mat-label>
-      <mat-select required [formControl]="cuisineFormControl">
-          <mat-option>Category</mat-option>
-          <mat-option value="chinese">Chinese</mat-option>
-          <mat-option value="italian">Italian</mat-option>
-          <mat-option value="indian">Indian</mat-option>
-          <mat-option value="spanish">Spanish</mat-option>
-          <mat-option value="american">American</mat-option>
-          <mat-option value="french">French</mat-option>
-      </mat-select>
-      <mat-error *ngIf="cuisineFormControl.hasError('required')">
-          This field is required
-      </mat-error>
-    </mat-form-field>
-    <button type="submit" mat-button>Submit</button>
 </form>

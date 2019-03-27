@@ -24,6 +24,7 @@ export class HeaderComponent implements OnInit {
               private dialog: MatDialog) { }
 
   ngOnInit() {
+    document.getElementById('row2').style.display = 'none';
     this.userService.currentUser.subscribe(
       (userData) => {
         this.currentUser = userData;
@@ -47,14 +48,14 @@ export class HeaderComponent implements OnInit {
   showCategories() {
     console.log('test');
     this.inCategories = true;
-    document.getElementById('row2').style.display = 'block';
+    document.getElementById('row2').style.cssText = 'display:block !important';
   }
 
   hideCategories() {
     setTimeout(() => {
       console.log('leave');
       console.log(this.inCategories);
-      if(!this.inCategories) document.getElementById('row2').style.display = 'none';
+      if(!this.inCategories) document.getElementById('row2').style.cssText = 'display: none !important;';
     }, 200)
     
   }
