@@ -12,8 +12,8 @@
             <img src="../../assets/ARlogo.svg" alt="Logo">
             </a>
         </div>
-        <div fxFlex fxLayout fxLayoutAlign="start" fxHide.xs style="padding:40px;">
-            <ul fxLayout fxLayoutGap="80px" class="navigation-items">
+        <div  fxHide fxShow.gt-xs style="width:100%;">
+            <ul fxFlex fxLayout fxLayoutAlign="start" fxLayoutGap="3vw" class="navigation-items">
                 <li>
                     <a routerLink="/">Recipes</a>
                 </li>
@@ -24,31 +24,30 @@
                 <li>
                  <a (mouseover)="showCategories()" (mouseleave)="inCategories = false; hideCategories()" routerLink="/categories">Categories</a>
                 </li>
+
+            </ul>
+            <ul fxLayout fxLayoutAlign="end" fxLayoutGap="20px" style="margin-right:10px;" class="navigation-items">
+                <li>
+                    <mat-icon routerLink="/search">search</mat-icon>
+                </li>
+                <li *appShowAuthed="false">
+                    <button mat-raised-button (click)="openDialog('register')">Sign Up</button>
+                </li>
+                <mat-divider [vertical]="true"></mat-divider>
+                <li *appShowAuthed="false">
+                    <button mat-raised-button (click)="openDialog('login')">LogIn</button>
+                </li>
+                <li *appShowAuthed="true">
+                    <a [routerLink]="['/profile', currentUser.username]"
+                        [routerLink]="['/profile', currentUser.username]"
+                        routerLinkActive="active">
+                        <img id="ima" [src]="currentUser.image" *ngIf="currentUser.image" class="user-pic" />
+                        {{ currentUser.username }}
+                    </a>
+                </li>
             </ul>
         </div>
-        <div fxFlex fxLayout fxLayoutAlign="end" fxHide.xs>
-            <ul fxLayout fxLayoutGap="20px" class="navigation-items">
-            <li>
-                <mat-icon routerLink="/search">search</mat-icon>
-            </li>
-            <li *appShowAuthed="false">
-                <button mat-raised-button (click)="openDialog('register')">Sign Up</button>
-            </li>
-            <mat-divider [vertical]="true"></mat-divider>
-            <li *appShowAuthed="false">
-                <button mat-raised-button (click)="openDialog('login')">LogIn</button>
-            </li>
-            <li *appShowAuthed="true">
-                <a [routerLink]="['/profile', currentUser.username]"
-                    [routerLink]="['/profile', currentUser.username]"
-                    routerLinkActive="active">
-                    <img id="ima" [src]="currentUser.image" *ngIf="currentUser.image" class="user-pic" />
-                    {{ currentUser.username }}
-                </a>
-                <a (click)="logOut()">Log-out</a>
-            </li>
-            </ul>
-        </div>
+
     </mat-toolbar-row>
     <mat-toolbar-row  id="row2" (mouseover)="inCategories = true;showCategories()" (mouseleave)="inCategories = false; hideCategories()">
         <div (click)="hideCategories(); inCategories=false;">

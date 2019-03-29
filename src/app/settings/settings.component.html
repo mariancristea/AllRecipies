@@ -7,8 +7,8 @@
     </div>
 </div>
 
-<div *ngIf="changeActivated">
-    <form [formGroup]="passwordForm" (ngSubmit)="submitPasswordForm()">
+<div *ngIf="changeActivated" class="password-div">
+    <form class="password-form" [formGroup]="passwordForm" (ngSubmit)="submitPasswordForm()">
         <mat-form-field>
             <input matInput placeholder="New password" formControlName="password" required
             [type]="hide ? 'password' : 'text'">
@@ -27,9 +27,9 @@
             </mat-error>  
             <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
         </mat-form-field>
-        <button type="submit" mat-button *ngIf="!passwordForm.hasError('notSame') && !passwordForm.hasError('required', 'password')">Submit</button>
+        <button class="button-submit-password" type="submit" mat-button *ngIf="!passwordForm.hasError('notSame') && !passwordForm.hasError('required', 'password')">Submit</button>
     </form>
-    <button (click)="cancel()" mat-button>Cancel</button>
+    <button class="button-cancel" (click)="cancel()" mat-button>Cancel</button>
 </div>
 
 <div *ngIf="editActivated">

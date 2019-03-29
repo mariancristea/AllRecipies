@@ -5,19 +5,40 @@
 form{
     margin: auto;
     max-width: 55.5rem;
-   
-    
     margin-top: 150px;
 }
-.left-column {
-    width: 35%;
-    float: left;
+@media only screen and (min-width: 768px) {
+    .left-column {
+        width: 35%;
+        float: left;        
+    }
+    .left-column mat-form-field {
+        width: 65%;
+    }
+    .right-column{
+        width: 65%;
+        float:left;
+        
+    }
+    .time mat-form-field
+    {
+        padding-right: 5px;
+        width: 30%;
+    }
 }
-.right-column{
-    width: 75%;
-    float:right;
-    
+@media only screen and (max-width: 768px) {
+    .left-column{
+        width: 100%;
+    }
+    .right-column{
+        width: 100%;
+    }
 }
+
+
+  .row {
+      padding: 20px;
+  }
 .button-div {
     display: block;
 }

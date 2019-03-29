@@ -1,15 +1,32 @@
 
 *{
-    margin: auto;
-    padding: auto;
     width: 100%;
 }
 .main-container {
     text-align: center;
-    display: block;
-    margin: auto;
+
+  
+}
+.password-div{
+    position: relative;
+    height: 100%;
 }
 
+.password-form {
+    margin: 0;
+    position: absolute;
+    top: 35%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+.button-submit-password{
+    margin: 105px;
+}
+.button-cancel {
+    top: 75%;
+}
 button {
-    margin-top: 30px;
+    margin-top: 60px;
+    height: 50px;
+    
 }

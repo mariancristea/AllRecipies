@@ -7,7 +7,7 @@
 html, body { 
     padding: auto;
     
-    height: 100%;
+ 
 }
 mat-card {
     width: calc(75% - 16x);

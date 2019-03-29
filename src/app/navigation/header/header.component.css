@@ -30,6 +30,8 @@ a:hover, a:active{
 }
 #row2 {
     display: none !important;
+    margin: auto;
+    width: 50%;
     height: 200px;
 }
 #recipes {

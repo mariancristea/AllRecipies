@@ -1,11 +1,14 @@
 <div *ngIf="homeType=='/search'" class="search-container">
-    <form class="search-bar" >
-        <mat-form-field class="example-full-width">
-          <input matInput placeholder="Favorite food" value="Sushi" (input)="onSearchChange($event.target.value)">
-        </mat-form-field>
-    
-     </form>
-     <div class="filters-bar">
+    <header>
+      <div class="header-content">
+        <h1>Find recipes</h1>
+        <form class="search-bar" >
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Favorite food" value="Sushi" (input)="onSearchChange($event.target.value)">
+          </mat-form-field>
+       </form>
+      </div>
+      <div class="filters-bar" fxLayout="row" fxLayoutAlign="center" fxLayoutGap="50px">
         <button mat-button [matMenuTriggerFor]="menuCategory">Category</button>
         <button mat-button [matMenuTriggerFor]="menuCuisine">Main Ingredients</button>
         <button mat-button [matMenuTriggerFor]="menuCuisine">Cuisine</button>
@@ -20,19 +23,21 @@
             </div>
           </mat-menu>
      </div>
-     <div>
+    </header>
+
+   <!--  <div>
         <mat-icon>close</mat-icon>
-     </div>
+     </div> -->
      
-      <div>
-        <app-list [config]="listConfig" ></app-list>
+      <div class="recipe-list">
+        <app-list  [config]="listConfig" ></app-list>
       </div>
       <button mat-button (click)="onMore()">More</button>
 </div>
 
 
 
-<div *ngIf="homeType!='/search'">
+<div class="recipe-list" *ngIf="homeType!='/search'">
   <app-list [config]="listConfig" ></app-list>
   <button mat-button (click)="onMore()">More</button>
 </div>
