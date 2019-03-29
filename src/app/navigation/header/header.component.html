@@ -50,8 +50,11 @@
 
     </mat-toolbar-row>
     <mat-toolbar-row  id="row2" (mouseover)="inCategories = true;showCategories()" (mouseleave)="inCategories = false; hideCategories()">
-        <div (click)="hideCategories(); inCategories=false;">
+        <div class="dropdown-categories" (click)="hideCategories(); inCategories=false;">
                 <a routerLink="/categories">Recipes</a>
+                <a routerLink="/categories/Asian">Asian</a>
+                <a routerLink="/categories/Asian">Breakfast</a>
+                <a routerLink="/categories/Asian">One-Pot</a>
                
         </div>
         <div id="recipes" fxFlex fxLayout="row">
