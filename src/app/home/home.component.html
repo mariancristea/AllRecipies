@@ -29,16 +29,33 @@
         <mat-icon>close</mat-icon>
      </div> -->
      
-      <div class="recipe-list">
-        <app-list  [config]="listConfig" ></app-list>
+      <div class="recipe-list" fxLayout="row wrap" fxLayoutGap="32px" fxLayoutAlign="space-between center">
+          <ng-container *ngFor="let recipe of results" >
+              <app-recipe-preview
+              fxFlex="0 1 calc(33.3% - 32px)"
+              fxFlex.lt-md="0 1 calc(50% - 32px)"
+              fxFlex.lt-sm="0 1 calc(50% - 32px)"
+              style="padding-bottom: 50px;"
+                  [recipe] = "recipe">
+              </app-recipe-preview>
+          </ng-container> 
       </div>
       <button mat-button (click)="onMore()">More</button>
 </div>
 
 
 
-<div class="recipe-list" *ngIf="homeType!='/search'">
-  <app-list [config]="listConfig" ></app-list>
+<div class="recipe-list" fxLayout="row wrap" fxLayoutGap="32px" fxLayoutAlign="space-between center" *ngIf="homeType!='/search'">
+  
+  <ng-container *ngFor="let recipe of results" >
+      <app-recipe-preview
+      fxFlex="0 1 calc(33.3% - 32px)"
+      fxFlex.lt-md="0 1 calc(50% - 32px)"
+      fxFlex.lt-sm="0 1 calc(50% - 32px)"
+      style="padding-bottom: 50px;"
+          [recipe] = "recipe">
+      </app-recipe-preview>
+  </ng-container> 
   <button mat-button (click)="onMore()">More</button>
 </div>
 

@@ -1,0 +1,31 @@
+<div class='cards-container' [routerLink]="['/recipe', recipe.slug]">
+    <mat-card class="card-recepie" id='card' fxLayout="column" fxLayoutAlign="space-between center" >
+      <!-- <img src="../../../assets/imgs/recepie1.png" class="img-food-preview"> -->
+      <div class="preview-header">
+       <!-- <i class="material-icons btn-play">play_circle_outline</i>-->
+      </div>
+      <div class="preview-footer"  fxLayout="row" fxLayoutAlign="space-between end" >
+        <div fxLayout="row">
+            <i *ngIf="!recipe.favorited" class="material-icons btn-like" (click)="toggleFavorite();$event.stopPropagation()">favorite_border</i>
+            <i *ngIf="recipe.favorited" class="material-icons btn-like" (click)="toggleFavorite();$event.stopPropagation()" style="color:wheat;">
+                  favorite
+                  </i>
+            <span class="footer-text">{{recipe.favoritesCount}}</span>
+        </div>
+  
+        <div>
+          <span class="footer-text">33 min.</span>
+        </div>
+  
+      </div>
+    </mat-card>
+    <div class="text-under" [routerLink]="['/recipe', recipe.slug]">
+     {{recipe.title}}
+    </div>
+  </div>
+  
+  
+  
+  
+  
+  

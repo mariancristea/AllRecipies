@@ -8,7 +8,9 @@
     max-width: 55.5rem;
     width: 100%;
     padding: 0;
+    height: 100%;
     top: 50px;
+    padding: 5vw;
   }
 
 .header-content {

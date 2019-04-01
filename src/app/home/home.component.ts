@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { RecipeListConfig, Categories } from '../core';
+import { RecipeListConfig, Categories, RecipeService, Recipe } from '../core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Route } from '@angular/compiler/src/core';
 import { SearchService } from '../core/services/search.service';
@@ -22,6 +22,7 @@ export class HomeComponent implements OnInit {
     searchParam : String;
     filters: Object = {}
     offset : number = 0;
+    results: Recipe[];
     categories = [
         [
             new Categories("Category","asian",false),
@@ -40,11 +41,12 @@ export class HomeComponent implements OnInit {
     constructor(
         private route: ActivatedRoute,
         private router: Router,
-        private searchService: SearchService
+        private searchService: SearchService,
+        private recipesService: RecipeService
     ) {}
     
     ngOnInit()  {
-        console.log(this.offset);
+        this.results = [];
         this.listConfig.filters.tag = [];
         this.route.url.subscribe(data => {
             this.homeType = this.router.url;
@@ -53,16 +55,23 @@ export class HomeComponent implements OnInit {
                 this.searchService.searchTerm$.next('');
             }
             else this.listConfig.search = false;
-
+            console.log('111');
+            this.onChangeListConfig();
         })
     }
     onSearchChange(searchValue : String) {  
-       this.searchService.searchTerm$.next(searchValue);
-      
+       this.searchService.searchTerm$.next(searchValue); 
     }
 
     onChangeListConfig() {
-
+        console.log('Recipe-List, Set config',this.listConfig);
+        if(this.listConfig.search){
+            // this.searchService.tags.subscribe(data => console.log('Subscribe',data));
+            this.searchService.search(this.searchService.searchTerm$)
+            .subscribe(results => {
+                this.results = results.recipes;
+            });
+        } else this.runQuery();
     }
 
     onCheck($event:any, categories, checkedName, index) {
@@ -82,6 +91,7 @@ export class HomeComponent implements OnInit {
         this.listConfig = {type: 'allx',search: true, filters: this.filters};
         console.log(this.listConfig);
         this.searchService.tags.next(this.listConfig);
+        this.onChangeListConfig();
        
     }
     onMore() {
@@ -89,6 +99,16 @@ export class HomeComponent implements OnInit {
         this.offset = this.offset + 1;
         this.filters = {tag: this.listConfig.filters.tag, offset: this.offset, limit: 1};
         this.listConfig= {type:'all',search:false,filters:this.filters};
+    }
+
+    runQuery()  {
+        //this.query.filters.limit = 20;
+        this.recipesService.query(this.listConfig)
+        .subscribe(data => {
+            console.log('!!!!',this.results);
+            this.results = this.results.concat(data.recipes);
+            
+        });
     }
 }
 
