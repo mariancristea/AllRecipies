@@ -51,7 +51,7 @@ export class HeaderComponent implements OnInit {
   showCategories() {
     console.log('test');
     this.inCategories = true;
-    document.getElementById('row2').style.cssText = 'display:block !important';
+    document.getElementById('row2').style.cssText = 'display:inline-block !important';
   }
 
   hideCategories() {
