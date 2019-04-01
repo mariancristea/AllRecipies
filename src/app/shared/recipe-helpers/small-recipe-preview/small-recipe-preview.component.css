@@ -11,7 +11,7 @@
     color: white;
     font-size: 25px;
     cursor: pointer;
-    
+
   }
   .btn-play{
     color: white;
@@ -41,8 +41,8 @@
     background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(250,250,250,0) 68%);
     }
   .card-recepie{
-    
-    height: 35vh;
+
+    height: 200px;
     padding: 0;
     border-radius: 20px;
     border-radius: 20px;
@@ -60,7 +60,7 @@
     width: 100%;
     display: inline-block;
     float: none;
-    
+
    /* height: 50vh;*/
   }
   .text-under{
