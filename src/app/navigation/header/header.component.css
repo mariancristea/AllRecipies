@@ -5,6 +5,10 @@ mat-toolbar {
     width: 100%; /* Full width */
     z-index: 1;
 }
+.list{
+    width: 100vw;
+    height: fit-content;
+}
 a {
     display: block;
     text-decoration: none;
@@ -23,6 +27,7 @@ a:hover, a:active{
 }
 .dropdown-categories{
     padding: 20px 0;
+    float: left;
 }
 
 #ima {
@@ -45,11 +50,6 @@ a:hover, a:active{
     position: absolute;
 }
 
-.plMenuCSS { 
-    background-color:lightgreen;
-    display: inline-block;
-    min-width:500px;
-}
 .dropdown {
     position: relative;
     display: inline-block;
@@ -66,11 +66,7 @@ a:hover, a:active{
   .dropdown:hover .dropdown-content {
     display: block;
     position: absolute;
-   float: left;
+    float: left;
   }
-@media(max-width: 959px){
-    mat-toolbar{
-        border-radius: 0px;
-    }
-}
+
 
