@@ -57,9 +57,16 @@
                 <a routerLink="/categories/Asian">One-Pot</a>
                
         </div>
-        <div class="list">
-            <app-list [config]="listConfig"></app-list>
-            aAAA
+        <div class="list" fxLayout="row wrap" fxLayoutGap="32px" fxLayoutAlign="space-between center">
+                <ng-container *ngFor="let recipe of results" >
+                        <app-recipe-preview
+                        fxFlex="0 1 calc(33.3% - 32px)"
+                        fxFlex.lt-md="0 1 calc(50% - 32px)"
+                        fxFlex.lt-sm="0 1 calc(50% - 32px)"
+                        style="padding-bottom: 50px;"
+                            [recipe] = "recipe">
+                        </app-recipe-preview>
+                    </ng-container> 
         </div>
         <div id="recipes" fxFlex fxLayout="row">
             
