@@ -49,22 +49,19 @@
         </div>
 
     </mat-toolbar-row>
-    <mat-toolbar-row  fxLayout="row" id="row2" (mouseover)="inCategories = true;showCategories()" (mouseleave)="inCategories = false; hideCategories()">
-        <div class="dropdown-categories" (click)="hideCategories(); inCategories=false;">
+    <mat-toolbar-row  id="row2" (mouseover)="inCategories = true;showCategories()" (mouseleave)="inCategories = false; hideCategories()">
+        <div class="toolbar-container">
+            <div fxLayout="column" class="dropdown-categories" (click)="hideCategories(); inCategories=false;">
                 <a routerLink="/categories">Recipes</a>
                 <a routerLink="/categories/Asian">Asian</a>
                 <a routerLink="/categories/Asian">Breakfast</a>
                 <a routerLink="/categories/Asian">One-Pot</a>
-               
-        </div>
-        <div class="list"  fxLayout="row" fxLayoutGap="30px" fxLayoutAlign="end">
-            <ng-container *ngFor="let recipe of results" >
-                <app-small-recipe-preview
+            </div>
+            <div class="list" fxLayout="row wrap" fxLayoutGap="32px" fxLayoutAlign="center">
+                <app-small-recipe-preview *ngFor="let recipe of results"
                     [recipe] = "recipe">
                 </app-small-recipe-preview>
-            </ng-container> 
-        </div>
-        <div id="recipes" fxFlex fxLayout="row">
+            </div>
             
         </div>
     </mat-toolbar-row>

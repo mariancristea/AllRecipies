@@ -42,7 +42,7 @@
     }
   .card-recepie{
     
-    height: 200px;
+    height: 150px;
     padding: 0;
     border-radius: 20px;
     border-radius: 20px;
@@ -66,8 +66,8 @@
   .text-under{
     width: 90%;
     height: 15%;
-    padding-top: 15px;
-    font-weight: 500;
+    padding-top: 5px;
+    font-weight: 200;
   }
   /* .img-food-preview{
     width: 100%;
