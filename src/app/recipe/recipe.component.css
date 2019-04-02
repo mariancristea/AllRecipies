@@ -1,0 +1,65 @@
+.width-wrapper{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-flow: column;
+    flex-flow: column;
+    margin: 0 auto;
+    max-width: 55.5rem;
+    padding: 0 .6rem;
+    width: 100%;
+    margin-top: 100px;
+}
+
+.row{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-flow: row;
+    flex-flow: row;
+}
+
+.column {
+    width: 100%;
+    float: left;
+}
+
+.page-header {
+    clear: both;
+    text-align: center;
+    padding-bottom: .5rem;
+}
+.photo{
+    height: 500px;
+    padding: 0;
+    border-radius: 20px;
+    border-radius: 20px;
+    background-image: url(../../assets/imgs/nou.jpg);
+    background-position: center;
+    /* background-color: white; */
+    background-size: cover;
+    overflow: hidden;
+}
+
+.left-col {
+    width: 66.66667%;
+    float: left;
+    padding-left: .28409rem;
+    padding-right: .28409rem;
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 66.66667%;
+    flex: 0 0 66.66667%;
+}
+
+.right-col {
+    width: 33.33333%;
+    padding-left: 1rem;
+    padding-right: 0;
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 33.33333%;
+    flex: 0 0 33.33333%;
+}
