@@ -1,3 +1,5 @@
+import { Profile } from './profile.model';
+
 export interface Recipe {
     slug: string;
     title: string;
@@ -6,5 +8,5 @@ export interface Recipe {
     tagList: string[];
     favorited: boolean;
     favoritesCount: number;
-    author: string;
+    author: Profile;
 }

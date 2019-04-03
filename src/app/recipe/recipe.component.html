@@ -13,17 +13,46 @@
         </div>
         <div class="row">
             <div class="left-col">
-                SSS
+                <div class="recipe-information">
+                    <h1 class="recipe-title">
+                    <!-- {{recipe.title}} -->5-ingredient grilled Za’atar chicken burger
+                    </h1>
+                    <i *ngIf="!recipe.favorited" class="material-icons btn-like" (click)="toggleFavorite();$event.stopPropagation()">favorite_border</i>
+                    <i *ngIf="recipe.favorited" class="material-icons btn-like" (click)="toggleFavorite();$event.stopPropagation()" style="color:wheat;">
+                        favorite
+                        </i>
+                    <span>{{recipe.favoritesCount}}</span>
+                </div>
+                <section class="recipe-information">
+                    <div class="author-information-bio">
+                        <img id="author-image" [src]="recipe.author.image" class="user-pic" />
+                        <div>{{recipe.author.username}}</div>
+                    </div>
+                    <p class="author-information-description">{{recipe.description}}</p>
+                </section>
+                <div class="recipe-difficulty dotted-line">
+                    <h2>Difficulty </h2>
+                    <span> Easy </span>
+                </div>
+
             </div>
             <div class="right-col">
-                RRR
+                <div class="recipe-information">
+                    <h4> More delicious ideas for you </h4>
+                    <div class="recipes">
+                        <app-small-recipe-preview *ngFor="let recipe of results"
+                            [recipe] = "recipe">
+                        </app-small-recipe-preview>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
 
 </div>
 
-<!--
+<!--https://www.kitchenstories.com/images/dot.287a5c7a075bb7a70d7f3040231aa66b.png
 <div class="container page">
     <div class="row">
         <div class="col-xs-12 col-md-8 offset-md-2">

@@ -37,6 +37,7 @@ export class ProfileComponent implements OnInit {
       };
 
     ngOnInit() {
+        
         this.route.data.pipe(
             concatMap((data: { profile: Profile }) => {
                 this.profile = data.profile;

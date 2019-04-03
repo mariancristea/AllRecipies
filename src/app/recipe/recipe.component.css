@@ -62,4 +62,58 @@
     -webkit-box-flex: 0;
     -ms-flex: 0 0 33.33333%;
     flex: 0 0 33.33333%;
+    height: 100%;
+    justify-content: center;
+}
+.recipes{
+    width: 50%;
+    margin-left: 10%;
+}
+.dotted-line{
+    background-image: url(https://www.kitchenstories.com/images/dot.287a5c7a075bb7a70d7f3040231aa66b.png);
+    background-position: bottom;
+    background-size: 6px 3px;
+    background-repeat: repeat-x;
+    padding: 0 0 1.5rem;
+}
+
+.recipe-information  {
+    
+    background-image: url(https://www.kitchenstories.com/images/dot.287a5c7a075bb7a70d7f3040231aa66b.png);
+    background-position: bottom;
+    background-size: 6px 3px;
+    background-repeat: repeat-x;
+    padding: 0 0 1.5rem;
+}
+
+h4 {
+    font-weight: 600!important;
+    font-size: 1rem;
+}
+
+.author-information-bio {
+    display: flex;
+    align-items: flex-start;
+    width: 100%;
+    padding: 1rem 0;
+    
+}
+
+#author-image {
+    border-radius: 50%;
+    height: 4.26136rem;
+    width: 4.26136rem;
+    margin-right: 1rem;
+}
+
+.recipe-difficulty {
+    padding: 1.36364rem 0;
+    font-weight: 600;
+    font-size: 1.5em;
+}
+
+.recipe-difficulty h2 {
+    display: inline;
+    
+    margin: 0 2rem 0 0;
 }

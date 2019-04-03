@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RecipeService, Recipe, UserService, User, CommentsService } from '../core';
+import { RecipeService, Recipe, UserService, User, CommentsService, RecipeListConfig } from '../core';
 import { FormControl } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 
@@ -12,9 +12,17 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class RecipeComponent implements OnInit {
   currentUser: User;
+  author: User;
   recipe: Recipe;
   comments: Comment[];
   commentControl = new FormControl();
+
+  results: Recipe[];
+  listConfig: RecipeListConfig = {
+    type: 'all',
+    search: false,
+    filters: {'limit': 3}
+  };
 
   constructor(
     private recipesService: RecipeService,
@@ -24,6 +32,7 @@ export class RecipeComponent implements OnInit {
     ) {}
 
   ngOnInit() {
+    this.runQuery();
     this.route.data.subscribe(
       (data: { recipe: Recipe }) => {
         this.recipe = data.recipe;
@@ -31,6 +40,7 @@ export class RecipeComponent implements OnInit {
         this.populateComments();
       }
     )
+    console.log('RECIPE',this.recipe.author)
 
     this.userService.currentUser.subscribe(
       (userData: User) => {
@@ -54,9 +64,18 @@ export class RecipeComponent implements OnInit {
       .subscribe(data =>
         {
         })
-
-
    }
+
+   runQuery()  {
+    //this.query.filters.limit = 20;
+    console.log("TTT");
+    this.recipesService.query(this.listConfig)
+    .subscribe(data => {
+        console.log('!!!!',this.results);
+        this.results = data.recipes;
+        
+    });
+}
 
 
 }

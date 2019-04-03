@@ -61,6 +61,7 @@ export class UserService {
         return this.apiService.post('/users' + route, {user: credentials})
             .pipe(map(
                 data => {
+                    console.log(data.user);
                     this.setAuth(data.user)
                     return data;
                 }
@@ -76,6 +77,7 @@ export class UserService {
         .put('/user', { user })
         .pipe(map(data => {
           // Update the currentUser observable
+          console.log(data.user);
           this.currentUserSubject.next(data.user);
           return data.user;
         }));
