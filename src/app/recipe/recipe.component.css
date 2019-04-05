@@ -117,3 +117,30 @@ h4 {
     
     margin: 0 2rem 0 0;
 }
+
+.recipe-time {
+    display: table;
+    max-width: 68.18182rem;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    padding: 2em 0;
+    overflow: hidden;
+    width: 100%;
+    
+}
+
+.col-1 {
+    position: absolute;
+    width: 80px;
+    left: 50%;
+    margin-left: -40px;
+}
+
+.col-2 {
+
+    width: 50%;
+    float: left;
+    padding-left: .28409rem;
+    padding-right: .28409rem;
+}

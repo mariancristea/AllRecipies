@@ -19,7 +19,7 @@ export class HeaderComponent implements OnInit {
   listConfig: RecipeListConfig = {
     type: 'all',
     search: false,
-    filters: {'limit': 3}
+    filters: {'limit': 3, 'offset': 2}
   };
   constructor(private userService : UserService,
               private dialog: MatDialog,
