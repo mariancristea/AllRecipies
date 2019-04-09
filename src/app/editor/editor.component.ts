@@ -3,6 +3,7 @@ import { Recipe } from '../core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { RecipeService } from '../core/services/recipes.service';
+import { forEach } from '@angular/router/src/utils/collection';
 
 
 
@@ -32,6 +33,7 @@ export class EditorComponent implements OnInit {
             'cook-time': [''],
             'servings': [''],
             'ingredients': [''],
+            'steps': [''],
             'category': ['', Validators.required],
             'cuisine': ['', Validators.required]
         });
@@ -47,18 +49,23 @@ export class EditorComponent implements OnInit {
         if(this.recipeForm.valid)
         {
             this.isSubmitting = true;
-            console.log(this.recipeForm.valid);
-            
-            for (const [key, value] of Object.entries(this.recipeForm.value)) {
-                if(key != 'ingredients') this.recipe[key] = value;
-              }
-            var x = this.recipeForm.value.ingredients;
-            var y = x.split('\n');
-            console.log(Object.keys(y).length);
+            console.log(this.recipeForm.value.steps);
             this.recipe.tagList = [];
-/*             for (var i = 0; i < Object.keys(y).length; i++) {
-                this.recipe.tagList.push(y[i]);
-            } */
+            this.recipe.ingredients = [];
+            this.recipe.steps = [];
+            for (const [key, value] of Object.entries(this.recipeForm.value)) {
+                if(key != 'ingredients' && key != 'steps') this.recipe[key] = value;
+                else {
+                    console.log(key, this.recipeForm.value[key]);
+                    var splitIngredients = this.recipeForm.value[key].split('\n');
+                    console.log(splitIngredients);
+                    
+                    for (var i = 0; i < Object.keys(splitIngredients).length; i++) {
+                        this.recipe[key].push(splitIngredients[i]);
+                    } 
+                }
+              }
+
             this.recipe.tagList.push(this.recipeForm.value.category);
             this.recipe.tagList.push(this.recipeForm.value.cuisine);
            

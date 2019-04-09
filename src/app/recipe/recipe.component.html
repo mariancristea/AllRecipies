@@ -28,14 +28,14 @@
                         <img id="author-image" [src]="recipe.author.image" class="user-pic" />
                         <div>{{recipe.author.username}}</div>
                     </div>
-                    <p class="author-information-description">{{recipe.description}}</p>
+                    <p class="author-information-description">“Za’atar is a fantastic Middle Eastern spice mix that usually contains dried thyme, oregano, sesame seeds, coriander, and sumac. Nearly blackened on the grill, it tastes even more delicious and pairs extremely well with a refreshing swipe of cucumber yogurt. Served with fries, chips, or enjoyed on its own, don’t be surprised if random wanderers follow their noses to your next barbecue.”</p>
                 </section>
                 <div class="recipe-difficulty dotted-line">
                     <h2>Difficulty </h2>
                     <span> Easy </span>
                 </div>
-                <div class="recipe-time">
-                    <div class="col-1"> 
+                <div class="recipe-time dotted-line">
+                    <div class="col1"> 
                         <div class="time-container"> 
                             <div class="time">25 </div>
                             <div class="unit">min. </div>
@@ -44,7 +44,7 @@
                             <div class="time">Preparation </div>
                         </div>
                     </div>
-                    <div class="col-2">
+                    <div class="col2">
                         <div class="time-container"> 
                             <div class="time">25 </div>
                             <div class="unit">min. </div>
@@ -52,6 +52,12 @@
                         <div class="title">
                             <div class="time">Preparation </div>
                         </div>
+                    </div>
+                </div>
+                <div class="recipe-ingredients dotted-line">
+                    <h2>Ingredients</h2>
+                    <div *ngFor="let ingredient of recipe.ingredients">
+                        {{ingredient}}
                     </div>
                 </div>
 
@@ -68,36 +74,66 @@
 
             </div>
         </div>
-    </div>
-
-</div>
-
-<!--https://www.kitchenstories.com/images/dot.287a5c7a075bb7a70d7f3040231aa66b.png
-<div class="container page">
-    <div class="row">
-        <div class="col-xs-12 col-md-8 offset-md-2">
-            <form class="card comment-form" (ngSubmit)="addComment()">
-                <div class="card-block">
-                    <textarea
-                     placeholder="Write..."
-                     rows="3"
-                     [formControl]="commentControl"
-                    >
-                    </textarea>
+        <div class="row">
+            <div class="left-col">
+                <ul class="recipe-steps">
+                    <li class="step" *ngFor="let step of recipe.steps;let i=index">
+                        <h2> Step {{i+1}}/{{recipe.steps.length}}</h2>
+                        {{step}}
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="left-col">
+                <div>
+                    <div *appShowAuthed="true">
+                        
+                        <form  (ngSubmit)="addComment()">
+                        <fieldset [disabled]="isSubmitting">
+                            <div class="card-block">
+                            <textarea class="form-control"
+                                placeholder="Write a comment..."
+                                rows="3"
+                                [formControl]="commentControl"
+                            ></textarea>
+                            </div>
+                            <div class="card-footer">
+                            <img id="author-image" [src]="currentUser.image" />
+                            <button class="btn btn-sm btn-primary" type="submit">
+                                Post Comment
+                            </button>
+                            </div>
+                        </fieldset>
+                        </form>
+                    </div>
+            
+                    <div *appShowAuthed="false">
+                        <a [routerLink]="['/login']">Sign in</a> or <a [routerLink]="['/register']">sign up</a> to add comments on this article.
+                    </div>
+            
+                    <app-recipe-comment
+                        *ngFor="let comment of comments"
+                        [comment]="comment"
+                        (deleteComment)="onDeleteComment(comment)">
+                    </app-recipe-comment>
+            
+                    </div>
                 </div>
-                <div class="card-footer">
-                    <button class="btn btn-sm btn-primary" type="submit">
-                        Post Comment
-                    </button>
-                </div>
-            </form>
         </div>
     </div>
 
-    <app-recipe-comment>
-        
-    </app-recipe-comment>
-
 </div>
 
--->
+<div class="recommendations">
+    <div class="width-wrapper">
+        <h2>Ideas for you !</h2>
+        <div class="item-archive">
+            <ng-container *ngFor="let recipe of suggestions" >
+                <app-recipe-preview
+                    [recipe] = "recipe">
+                </app-recipe-preview>
+            </ng-container> 
+        </div>
+    </div>
+</div>

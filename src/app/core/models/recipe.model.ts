@@ -6,6 +6,8 @@ export interface Recipe {
     description: string;
     body: string;
     tagList: string[];
+    ingredients: string[];
+    steps: string[];
     favorited: boolean;
     favoritesCount: number;
     author: Profile;

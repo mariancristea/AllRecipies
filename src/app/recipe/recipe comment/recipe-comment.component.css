@@ -1,0 +1,13 @@
+img {
+    border-radius: 50%;
+    height: 1.26136rem;
+    width: 1.26136rem;
+    margin-right: 1rem;
+}
+a{
+    display: inline;
+}
+
+.card-block {
+    padding: 1rem;
+}

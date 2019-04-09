@@ -54,6 +54,17 @@
     -ms-flex: 0 0 66.66667%;
     flex: 0 0 66.66667%;
 }
+@media screen and (max-width: 735px){
+    .left-col {
+        width: 100%;
+        float: left;
+        padding-left: .28409rem;
+        padding-right: .28409rem;
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 100%;
+        flex: 0 0 100%;
+    }
+    }
 
 .right-col {
     width: 33.33333%;
@@ -84,6 +95,11 @@
     background-size: 6px 3px;
     background-repeat: repeat-x;
     padding: 0 0 1.5rem;
+}
+
+h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
 }
 
 h4 {
@@ -130,17 +146,29 @@ h4 {
     
 }
 
-.col-1 {
+.col1 {
     position: absolute;
-    width: 80px;
-    left: 50%;
+    width: 50%;
     margin-left: -40px;
 }
 
-.col-2 {
-
-    width: 50%;
+.col2 {
+    left: 50%;
     float: left;
     padding-left: .28409rem;
     padding-right: .28409rem;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.steps {
+    clear: both;
+    padding: 1rem 0
+}
+.step{
+    margin-bottom: 3rem;
 }

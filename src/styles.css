@@ -6,9 +6,34 @@
 
 html, body { 
     padding: auto;
-    
- 
 }
+
+
+.item-archive {
+  display:grid;
+  grid-template-columns: repeat(2,1fr);
+  grid-column-gap: 1.1363666rem;
+  grid-row-gap: 1rem;
+  
+}
+@media (min-width: 350px){
+  .item-archive {
+      grid-column-gap: .75rem;
+      grid-row-gap: 1.5rem;
+  }
+  }
+@media (min-width: 430px){
+.item-archive {
+    grid-template-columns: repeat(3,1fr);
+}
+}
+@media (min-width: 590px){
+.item-archive {
+    grid-template-columns: repeat(4,1fr);
+    grid-column-gap: 1.1363666rem;
+}
+}
+
 mat-card {
     width: calc(75% - 16x);
     height: calc(75% - 16px);

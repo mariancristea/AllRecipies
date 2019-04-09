@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RecipeService, Recipe, UserService, User, CommentsService, RecipeListConfig } from '../core';
+import { RecipeService, Recipe, UserService, User, CommentsService, RecipeListConfig, Comment } from '../core';
 import { FormControl } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 
@@ -18,10 +18,16 @@ export class RecipeComponent implements OnInit {
   commentControl = new FormControl();
 
   results: Recipe[];
+  suggestions: Recipe[];
   listConfig: RecipeListConfig = {
     type: 'all',
     search: false,
     filters: {'limit': 3}
+  };
+  listConfig2: RecipeListConfig = {
+    type: 'all',
+    search: false,
+    filters: {'limit': 8}
   };
 
   constructor(
@@ -32,6 +38,7 @@ export class RecipeComponent implements OnInit {
     ) {}
 
   ngOnInit() {
+    this.comments = [];
     this.runQuery();
     this.route.data.subscribe(
       (data: { recipe: Recipe }) => {
@@ -51,8 +58,7 @@ export class RecipeComponent implements OnInit {
 
   populateComments(){
     this.commentsService.getAll(this.recipe.slug)
-        .subscribe(comments => {
-        })
+        .subscribe(comments => this.comments = comments)
   }
 
 
@@ -61,9 +67,13 @@ export class RecipeComponent implements OnInit {
 
     this.commentsService
       .add(this.recipe.slug, commentBody)
-      .subscribe(data =>
-        {
-        })
+      .subscribe(
+        comment => {
+          this.comments.unshift(comment);
+          this.commentControl.reset('');
+        //  this.isSubmitting = false;
+        }
+      );
    }
 
    runQuery()  {
@@ -73,7 +83,11 @@ export class RecipeComponent implements OnInit {
     .subscribe(data => {
         console.log('!!!!',this.results);
         this.results = data.recipes;
-        
+    });
+    this.recipesService.query(this.listConfig2)
+    .subscribe(data => {
+        console.log('!!!!',this.results);
+        this.suggestions = data.recipes;
     });
 }
 
