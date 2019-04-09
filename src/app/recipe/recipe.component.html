@@ -57,14 +57,16 @@
 
             </div>
             <div class="right-col">
-                <div class="recipe-information">
-                    <h4> More delicious ideas for you </h4>
-                    <div class="recipes">
-                        <app-small-recipe-preview *ngFor="let recipe of results"
-                            [recipe] = "recipe">
-                        </app-small-recipe-preview>
+                <aside class="recommendation">
+                    <div class="recipe-information">
+                        <h4> More delicious ideas for you </h4>
+                        <div class="recipes">
+                            <app-small-recipe-preview *ngFor="let recipe of results"
+                                [recipe] = "recipe">
+                            </app-small-recipe-preview>
+                        </div>
                     </div>
-                </div>
+                </aside>
 
             </div>
         </div>
