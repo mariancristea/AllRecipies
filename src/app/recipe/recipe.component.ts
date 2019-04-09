@@ -31,10 +31,10 @@ export class RecipeComponent implements OnInit {
   };
 
   constructor(
-    private recipesService: RecipeService,
+    private recipeService: RecipeService,
     private route: ActivatedRoute,
     private userService: UserService,
-    private commentsService: CommentsService
+    private commentsService: CommentsService,
     ) {}
 
   ngOnInit() {
@@ -79,7 +79,7 @@ export class RecipeComponent implements OnInit {
    runQuery()  {
     //this.query.filters.limit = 20;
     console.log("TTT");
-    this.recipesService.query(this.listConfig)
+    this.recipeService.query(this.listConfig)
     .subscribe(data => {
         console.log('!!!!',this.results);
         this.results = data.recipes;
@@ -91,6 +91,26 @@ export class RecipeComponent implements OnInit {
     });
 }
 
+onToggleFavorite(favorited: boolean)  {
+  this.recipe['favorited'] = favorited;
+ // this.recipe['favoritesCount']=0;
+  if(favorited) {
+      this.recipe['favoritesCount']++;
+  } else {
+   this.recipe['favoritesCount']--;
+  }
+}
+  toggleFavorite() {
+    this.onToggleFavorite(!this.recipe['favorited']);
+    if(this.recipe['favorited'])  {
+        console.log('FAVVV')
+         this.recipeService.favorite(this.recipe.slug).subscribe();
+    } else {
+        console.log('UNNFAVVV')
+         this.recipeService.unfavorite(this.recipe.slug).subscribe();
+    } 
+
+}
 
 }
 

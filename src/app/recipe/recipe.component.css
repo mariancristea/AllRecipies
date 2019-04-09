@@ -102,6 +102,13 @@ h2 {
     font-weight: 600;
 }
 
+.recommendation {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 90px;
+}
+
+
 h4 {
     font-weight: 600!important;
     font-size: 1rem;
@@ -152,8 +159,8 @@ h4 {
     margin-left: -40px;
 }
 
-.col2 {
-    left: 50%;
+.col-2 {
+    width: 50%;
     float: left;
     padding-left: .28409rem;
     padding-right: .28409rem;
