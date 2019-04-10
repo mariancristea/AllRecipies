@@ -84,7 +84,7 @@ export class RecipeComponent implements OnInit {
         console.log('!!!!',this.results);
         this.results = data.recipes;
     });
-    this.recipesService.query(this.listConfig2)
+    this.recipeService.query(this.listConfig2)
     .subscribe(data => {
         console.log('!!!!',this.results);
         this.suggestions = data.recipes;

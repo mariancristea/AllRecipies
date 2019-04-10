@@ -10,7 +10,7 @@
           <h1 >Welcome Back!</h1>
           <p>Log in to your account</p>
       </div>
-      <button class="button button--facebook">Log in with Facebook</button>
+      <button class="button button--facebook" (click)="OnNavigate()">Log in with Facebook</button>
       <p>or</p>
       <form [formGroup]="authForm" fxLayout="column"  fxLayoutAlign="start center" fxclass="form" (ngSubmit)="submitForm()">
         <mat-form-field *ngIf="authType == 'register'">

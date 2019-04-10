@@ -35,12 +35,15 @@ export class UserService {
 
 
     setAuth(user : User) {
+        console.log('bauuuu :',user);
+        console.log(user.token);
         this.jwtService.saveToken(user.token);
         this.currentUserSubject.next(user);
         this.isAuthenticatedSubject.next(true);
     }
 
     purgeAuth() {
+        console.log('purge');
         this.jwtService.destroyToken();
         this.currentUserSubject.next({} as User);
         this.isAuthenticatedSubject.next(false);

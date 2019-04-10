@@ -20,7 +20,7 @@ export class AuthComponent implements OnInit {
   title: String;
   isSubmitting = false;
   errors: Errors = {error: {}};
-  
+  navigated : boolean = false;
 
   constructor(
     private route : ActivatedRoute,
@@ -43,7 +43,21 @@ export class AuthComponent implements OnInit {
     if (this.authType === 'register') {
       this.authForm.addControl('username' as string, new FormControl());
     }
-   
+
+    let listener = window.addEventListener('message', (message) => {
+      console.log(this.userService.isAuthenticated);
+
+       var sub = this.userService.isAuthenticated.subscribe((authenticated) => {
+          if(!authenticated){
+            console.log('MERRRRGEEE');
+            return this.userService
+            .setAuth(message.data);
+          }
+        })
+        sub.unsubscribe();
+
+      
+    });
   }
   submitForm() {
     this.isSubmitting = true;
@@ -68,10 +82,10 @@ export class AuthComponent implements OnInit {
   }
 
   OnNavigate() {
-    window.open("http://localhost:3000/users/google","mywindow","location=1,status=1,scrollbars=1, width=800,height=800");
-    let listener = window.addEventListener('message', (message) => {
-      this.userService
-      .setAuth(message.data);
-    });
+    window.open("http://localhost:3000/users/facebook","mywindow","location=1,status=1,scrollbars=1, width=800,height=800");
+    console.log('navigate');
+
+    
+    this.navigated = true;
   }
 }
