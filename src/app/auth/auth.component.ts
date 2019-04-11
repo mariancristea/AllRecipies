@@ -32,7 +32,7 @@ export class AuthComponent implements OnInit {
     ) 
     { 
     this.authForm = this.fb.group({
-      'email': [''],
+      'email': ['', [Validators.required, Validators.email]],
       'password': ['']
     });
   }
@@ -45,7 +45,7 @@ export class AuthComponent implements OnInit {
     }
 
     let listener = window.addEventListener('message', (message) => {
-      console.log(this.userService.isAuthenticated);
+
 
        var sub = this.userService.isAuthenticated.subscribe((authenticated) => {
           if(!authenticated){
@@ -59,7 +59,14 @@ export class AuthComponent implements OnInit {
       
     });
   }
+  getErrorMessage() {
+    return this.authForm.hasError('required') ? 'You must enter a value' :
+        this.authForm.hasError('email') ? 'Not a valid email' :
+            '';
+  }
+
   submitForm() {
+    console.log(this.authType)
     this.isSubmitting = true;
     this.errors ={error : {}};
     this.userService
@@ -67,8 +74,25 @@ export class AuthComponent implements OnInit {
       .subscribe(
         data => {
           this.dialogRef.close();
-          return null;}
-      );
+          return null;
+      }, err => {
+        if(err.status == 422)
+        {
+          const validationErrors = err.error.errors;
+          console.log(validationErrors);
+          Object.keys(validationErrors).forEach(prop => {
+            prop = 'email';
+            const formControl = this.authForm.get(prop);
+            if (formControl) {
+              console.log(prop);
+              formControl.setErrors({
+                serverError: validationErrors[prop]
+              });
+            }
+          })
+          console.log('ssdd',err);
+        }
+      });
     
   }
   changeAuthType() {
