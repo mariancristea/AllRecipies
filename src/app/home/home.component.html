@@ -29,7 +29,7 @@
         <mat-icon>close</mat-icon>
      </div> -->
      
-      <div class="item-archive recipe-list">
+      <div class="item-archive grid-list">
           <ng-container *ngFor="let recipe of results" >
               <app-recipe-preview
               style="padding-bottom: 50px;"
@@ -42,7 +42,7 @@
 
 
 
-<div class="item-archive recipe-list" *ngIf="homeType!='/search'">
+<div class="item-archive grid-list" *ngIf="homeType!='/search'">
   <ng-container *ngFor="let recipe of results" >
       <app-recipe-preview
           [recipe] = "recipe">

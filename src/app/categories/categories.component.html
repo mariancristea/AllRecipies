@@ -1,3 +1,19 @@
-<category-list *ngIf="currentCategory == 'categories'" ></category-list>
 
-<app-list *ngIf="currentCategory != 'categories'" [config]="listConfig" ></app-list>
+<div class="item-archive grid-list" *ngIf="currentCategory == 'categories'">
+    <ng-container *ngFor="let category of categories">
+        <category-preview
+            [category] = "category">
+        </category-preview>
+    </ng-container> 
+</div>
+
+<div class="item-archive grid-list" *ngIf="currentCategory != 'categories'">
+    <ng-container *ngFor="let recipe of results">
+        <app-recipe-preview
+            style="padding-bottom: 50px;"
+            [recipe] = "recipe">
+        </app-recipe-preview>
+    </ng-container> 
+</div>
+
+

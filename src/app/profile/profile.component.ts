@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from '@angular/router';
-import { UserService, User, Profile, RecipeListConfig } from '../core';
+import { UserService, User, Profile, RecipeListConfig, Recipe, RecipeService } from '../core';
 
 import { concatMap, tap } from 'rxjs/operators';
 import { MatDialog } from '@angular/material';
@@ -19,45 +19,42 @@ export class ProfileComponent implements OnInit {
     constructor(
         private route: ActivatedRoute,
         private userService: UserService,
+        private recipeService: RecipeService,
         private dialog: MatDialog
     )   { }
 
     profile: Profile;
     currentUser: User;
     isUser: boolean;
-    listConfig: RecipeListConfig = {
-        type: 'all',
-        search: false,
-        filters: {}
-      };
-      listConfig2: RecipeListConfig = {
-        type: 'all',
-        search: false,
-        filters: {}
-      };
+    listFavorites: RecipeListConfig;
+    listYourRecipes: RecipeListConfig;
+    favoritesRecipes: Recipe[];
+    yourRecipes: Recipe[];
 
     ngOnInit() {
         
         this.route.data.pipe(
             concatMap((data: { profile: Profile }) => {
                 this.profile = data.profile;
-                this.listConfig = {
+                this.listFavorites = {
                     type: 'all',
                     search: false,
                     filters: {}
                 };
-                this.listConfig.filters.favorited = this.profile.username;
+                this.listFavorites.filters.favorited = this.profile.username;
 
-                this.listConfig2 = {
+                this.listYourRecipes = {
                     type: 'all',
                     search: false,
                     filters: {}
                 };
-                this.listConfig2.filters.author = this.profile.username;
-                console.log('Profile',data);
+                this.listYourRecipes.filters.author = this.profile.username;
+
+                this.runQueryFavorites();
+                this.runQueryYourRecipes();
+
                 return this.userService.currentUser.pipe(tap(
                     (userData: User) => {
-                        console.log('userdata',userData);
                         this.currentUser = userData;
                         this.isUser = (this.currentUser.username === this.profile.username)
                     }
@@ -72,5 +69,17 @@ export class ProfileComponent implements OnInit {
             height: '500px'
         })
     }
+    runQueryFavorites(){
+        this.recipeService.query(this.listFavorites)
+        .subscribe(data => {
+            this.favoritesRecipes = data.recipes;
+        });
+    }
 
+    runQueryYourRecipes(){
+        this.recipeService.query(this.listYourRecipes)
+        .subscribe(data => {
+            this.yourRecipes = data.recipes;
+        });
+    }
 }
