@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { RecipeService, Recipe, UserService, User, CommentsService, RecipeListConfig, Comment } from '../core';
 import { FormControl } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { AuthComponent } from '../auth/auth.component';
+import { MatDialog } from '@angular/material';
 
 
 
@@ -35,6 +37,7 @@ export class RecipeComponent implements OnInit {
     private route: ActivatedRoute,
     private userService: UserService,
     private commentsService: CommentsService,
+    private dialog: MatDialog
     ) {}
 
   ngOnInit() {
@@ -47,6 +50,7 @@ export class RecipeComponent implements OnInit {
         this.populateComments();
       }
     )
+    
     console.log('RECIPE',this.recipe.author)
 
     this.userService.currentUser.subscribe(
@@ -111,6 +115,10 @@ onToggleFavorite(favorited: boolean)  {
     } 
 
 }
+openAuthDialog(authType: string) : void {
+  this.userService.openAuthDialog(authType);
+}
 
 }
+
 

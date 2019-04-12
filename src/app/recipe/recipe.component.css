@@ -179,3 +179,9 @@ ul {
 .step{
     margin-bottom: 3rem;
 }
+.auth-part{
+    margin: 1rem 0;
+}
+.auth-part a{
+    display: inline;
+}

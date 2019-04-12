@@ -10,7 +10,8 @@ import {
     RecipeService, 
     UserService, 
     CommentsService,
-    ProfileServices
+    ProfileServices,
+    DialogService
 } from './services';
 import { SearchService } from './services/search.service';
 
@@ -22,6 +23,7 @@ import { SearchService } from './services/search.service';
         ApiService,
         AuthGuard,
         CommentsService,
+        DialogService,
         JwtService,
         RecipeService,
         UserService,

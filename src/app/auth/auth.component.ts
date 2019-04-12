@@ -7,6 +7,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { HeaderComponent } from '../navigation/header/header.component';
 import { TouchSequence } from 'selenium-webdriver';
 import { FavoriteButtonComponent } from '../shared/buttons';
+import { RecipeCommentComponent } from '../recipe/recipe comment/recipe-comment.component';
 
 @Component({
   selector: 'app-auth',
@@ -27,7 +28,7 @@ export class AuthComponent implements OnInit {
     private router : Router,
     private fb : FormBuilder,
     private userService : UserService,
-    public dialogRef: MatDialogRef<HeaderComponent, FavoriteButtonComponent>,
+    public dialogRef: MatDialogRef<HeaderComponent>,
     @Inject(MAT_DIALOG_DATA) public data
     ) 
     { 
@@ -39,6 +40,7 @@ export class AuthComponent implements OnInit {
 
   ngOnInit() {
     this.authType = this.data;
+    console.log('!ss!',this.authType);
     this.title = (this.authType === 'login') ? 'Sign in' : 'Sign up';
     if (this.authType === 'register') {
       this.authForm.addControl('username' as string, new FormControl());

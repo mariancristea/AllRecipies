@@ -110,8 +110,8 @@
                         </form>
                     </div>
             
-                    <div *appShowAuthed="false">
-                        <a [routerLink]="['/login']">Sign in</a> or <a [routerLink]="['/register']">sign up</a> to add comments on this article.
+                    <div class="auth-part" *appShowAuthed="false">
+                        <a (click)="openAuthDialog('login')">Sign in</a> or <a (click)="openAuthDialog('register')">sign up</a> to add comments on this article.
                     </div>
             
                     <app-recipe-comment

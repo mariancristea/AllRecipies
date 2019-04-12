@@ -1,4 +1,4 @@
-import { Observable ,  BehaviorSubject ,  ReplaySubject } from 'rxjs';
+import { Observable ,  BehaviorSubject ,  ReplaySubject, Subject } from 'rxjs';
 import { map ,  distinctUntilChanged } from 'rxjs/operators';
 import { User } from '../models';
 import { ApiService } from './api.service';
@@ -13,6 +13,9 @@ export class UserService {
 
     private isAuthenticatedSubject = new ReplaySubject<boolean>(1);
     public isAuthenticated = this.isAuthenticatedSubject.asObservable();
+
+    private openDialogSubject = new Subject<string>();
+    public openDialog = this.openDialogSubject.asObservable();
 
     constructor(
         private apiService: ApiService,
@@ -84,5 +87,8 @@ export class UserService {
           this.currentUserSubject.next(data.user);
           return data.user;
         }));
+      }
+      openAuthDialog(type: string){
+          this.openDialogSubject.next(type);
       }
 }

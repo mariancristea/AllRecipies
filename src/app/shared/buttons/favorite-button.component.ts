@@ -28,11 +28,7 @@ export class FavoriteButtonComponent {
        var sub = this.userService.isAuthenticated.pipe(first(),
             switchMap(authenticated => {
                 if(!authenticated)  {
-                    const dialogRef = this.dialog.open(AuthComponent ,{
-                        width: '600px',
-                        height: '600px',
-                        data: 'login'
-                      });
+                    this.userService.openAuthDialog('login');
                     return of(null);
                 }
                 else{

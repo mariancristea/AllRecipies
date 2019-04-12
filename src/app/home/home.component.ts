@@ -16,7 +16,7 @@ export class HomeComponent implements OnInit {
     listConfig: RecipeListConfig = {
         type: 'all',
         search: true,
-        filters: {limit: 0}
+        filters: {limit: 8}
       };
     homeType: String;
     searchParam : String;
@@ -97,15 +97,16 @@ export class HomeComponent implements OnInit {
     onMore() {
         console.log('more');
         this.offset = this.offset + 1;
-        this.filters = {tag: this.listConfig.filters.tag, offset: this.offset, limit: 1};
+        this.filters = {tag: this.listConfig.filters.tag, offset: this.offset, limit: 8};
         this.listConfig= {type:'all',search:false,filters:this.filters};
+        this.runQuery();
     }
 
     runQuery()  {
         //this.query.filters.limit = 20;
         this.recipesService.query(this.listConfig)
         .subscribe(data => {
-            console.log('!!!!',this.results);
+            console.log('!!!!',data.recipesCount);
             this.results = this.results.concat(data.recipes);
             
         });

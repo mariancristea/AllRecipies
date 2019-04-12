@@ -6,3 +6,4 @@ export * from './recipes.service';
 export * from './comments.service';
 export * from './recipes.service';
 export * from './profiles.service';
+export { DialogService } from './dialog.service';

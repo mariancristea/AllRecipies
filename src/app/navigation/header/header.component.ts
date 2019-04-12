@@ -34,6 +34,12 @@ export class HeaderComponent implements OnInit {
         console.log('ddddddddd',this.currentUser.image);
       }
     );
+    this.userService.openDialog.subscribe(
+      type => {
+        console.log(type);
+        this.openDialog(type);
+      }
+    )
   }
 
   openDialog(authType: String) : void {
