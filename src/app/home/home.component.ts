@@ -18,10 +18,12 @@ export class HomeComponent implements OnInit {
         search: true,
         filters: {limit: 8}
       };
+    recipeCount: number;
     homeType: String;
     searchParam : String;
     filters: Object = {}
     offset : number = 0;
+    showMoreButton : boolean = true;
     results: Recipe[];
     categories = [
         [
@@ -63,31 +65,30 @@ export class HomeComponent implements OnInit {
        this.searchService.searchTerm$.next(searchValue); 
     }
 
-    onChangeListConfig() {
+    onChangeListConfig(fromOnMore = false) {
         console.log('Recipe-List, Set config',this.listConfig);
         if(this.listConfig.search){
-            // this.searchService.tags.subscribe(data => console.log('Subscribe',data));
+            this.searchService.tags.next(this.listConfig);
             this.searchService.search(this.searchService.searchTerm$)
-            .subscribe(results => {
-                this.results = results.recipes;
+            .subscribe(data => {
+                this.offset += data.recipes.length;
+                if(data.recipes.length <= 3 || this.offset === data.recipesCount) this.showMoreButton = false;
+                if(fromOnMore) this.results = this.results.concat(data.recipes);
+                else this.results = data.recipes;
             });
         } else this.runQuery();
     }
 
     onCheck($event:any, categories, checkedName, index) {
-      
+      console.log('oncheck');
        $event.stopPropagation();
-     // categories[checkedName].checked = $event.checked;
-      
-      console.log(checkedName, pos);
+
        var pos = this.listConfig.filters.tag.indexOf(checkedName.name)
        if(pos > -1) {
            this.listConfig.filters.tag.splice(pos, 1);
-           console.log('!!!!',this.listConfig.filters.tag);
        }else this.listConfig.filters.tag.push(checkedName.name as string);
-       //this.filters = this.listConfig.filters.tag;
-      // console.log(this.listConfig);
-        this.filters = {tag: this.listConfig.filters.tag, limit: 0};
+
+        this.filters = {tag: this.listConfig.filters.tag, limit: 8};
         this.listConfig = {type: 'allx',search: true, filters: this.filters};
         console.log(this.listConfig);
         this.searchService.tags.next(this.listConfig);
@@ -95,20 +96,19 @@ export class HomeComponent implements OnInit {
        
     }
     onMore() {
-        console.log('more');
-        this.offset = this.offset + 1;
-        this.filters = {tag: this.listConfig.filters.tag, offset: this.offset, limit: 8};
-        this.listConfig= {type:'all',search:false,filters:this.filters};
-        this.runQuery();
+        this.filters = {tag: this.listConfig.filters.tag, offset: this.offset, limit: 3};
+        this.listConfig= {type:'all',search:this.listConfig.search, filters:this.filters};
+        this.onChangeListConfig(true);
     }
 
     runQuery()  {
-        //this.query.filters.limit = 20;
+        //this.query.filters.limit = 20;c
+        console.log(this.listConfig);
         this.recipesService.query(this.listConfig)
         .subscribe(data => {
-            console.log('!!!!',data.recipesCount);
+            this.offset += data.recipes.length;
+            if(data.recipes.length < 3 || this.offset === data.recipesCount) this.showMoreButton = false;
             this.results = this.results.concat(data.recipes);
-            
         });
     }
 }
