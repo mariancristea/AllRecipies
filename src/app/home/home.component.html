@@ -41,14 +41,16 @@
 </div>
 
 
-
-<div class="item-archive grid-list" *ngIf="homeType!='/search'">
-  <ng-container *ngFor="let recipe of results" >
-      <app-recipe-preview
-          [recipe] = "recipe">
-      </app-recipe-preview>
-  </ng-container> 
- 
+<div class="grid-list" *ngIf="homeType!='/search'">
+    <h1 class="main-headline">Recipes</h1>
+    <div class="item-archive">
+      <ng-container *ngFor="let recipe of results" >
+          <app-recipe-preview
+              [recipe] = "recipe">
+          </app-recipe-preview>
+      </ng-container> 
+    
+    </div>
 </div>
 
 <button *ngIf="showMoreButton" class="button item-archive" mat-button (click)="onMore()">More</button>

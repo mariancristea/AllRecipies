@@ -9,24 +9,24 @@
         </div>
         <div>
             <a routerLink="/">
-            <img src="../../assets/ARlogo.svg" alt="Logo">
+            <img class="logo" src="../../assets/ARlogo.svg" alt="Logo">
             </a>
         </div>
-        <div  fxHide fxShow.gt-xs style="width:100%;">
-            <ul fxFlex fxLayout fxLayoutAlign="start" fxLayoutGap="3vw" class="navigation-items">
+        <div fxLayout fxLayoutAlign="end" style="width:100%;" >
+            <ul fxHide fxShow.gt-xs fxFlex fxLayout fxLayoutAlign="start" fxLayoutGap="3vw" class="navigation-items">
                 <li>
                     <a routerLink="/">Recipes</a>
                 </li>
 
                 <li>
-                    <a routerLink="/editor">Edit</a>
+                    <a (click)="isAuth ? false : openDialog('login')" routerLink="/editor">Edit</a>
                 </li>
                 <li>
                  <a (mouseover)="showCategories()" (mouseleave)="inCategories = false; hideCategories()" routerLink="/categories">Categories</a>
                 </li>
 
             </ul>
-            <ul fxLayout fxLayoutAlign="end" fxLayoutGap="20px" style="margin-right:10px;" class="navigation-items">
+            <ul fxLayout fxLayoutAlign="end" fxLayoutGap="1vw" style="margin-right:10px;" class="navigation-items">
                 <li>
                     <mat-icon routerLink="/search">search</mat-icon>
                 </li>

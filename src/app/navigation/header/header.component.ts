@@ -15,6 +15,7 @@ export class HeaderComponent implements OnInit {
   @Output() public sidenavToggle = new EventEmitter();
   inCategories: boolean = false;
   currentUser : User;
+  isAuth: boolean = false;
   results: Recipe[];
   listConfig: RecipeListConfig = {
     type: 'all',
@@ -26,17 +27,17 @@ export class HeaderComponent implements OnInit {
               private recipesService: RecipeService) { }
 
   ngOnInit() {
+    
     this.runQuery();
     document.getElementById('row2').style.display = 'none';
+    this.userService.isAuthenticated.subscribe(data => this.isAuth = data)
     this.userService.currentUser.subscribe(
       (userData) => {
         this.currentUser = userData;
-        console.log('ddddddddd',this.currentUser.image);
       }
     );
     this.userService.openDialog.subscribe(
       type => {
-        console.log(type);
         this.openDialog(type);
       }
     )
@@ -55,26 +56,20 @@ export class HeaderComponent implements OnInit {
   }
 
   showCategories() {
-    console.log('test');
     this.inCategories = true;
     document.getElementById('row2').style.cssText = 'display:inline-block !important';
   }
 
   hideCategories() {
     setTimeout(() => {
-      console.log('leave');
-      console.log(this.inCategories);
       if(!this.inCategories) document.getElementById('row2').style.cssText = 'display: none !important;';
     }, 200)
     
   }
 
   runQuery()  {
-    //this.query.filters.limit = 20;
-    console.log("TTT");
     this.recipesService.query(this.listConfig)
     .subscribe(data => {
-        console.log('!!!!',this.results);
         this.results = data.recipes;
         
     });

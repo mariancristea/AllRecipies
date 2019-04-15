@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Output, OnInit } from "@angular/core";
+import { UserService } from 'src/app/core';
 
 
 @Component({
@@ -10,9 +11,11 @@ import { Component, EventEmitter, Output, OnInit } from "@angular/core";
 export class SidenavListComponent implements OnInit{
     @Output() sidenavClose = new EventEmitter();
 
-    constructor() { }
+    constructor(private userService : UserService) { }
 
-    ngOnInit(){}
+    ngOnInit(){
+        this.userService.isAuthenticated.subscribe(data => console.log(data))
+    }
 
     public onSidenavClose = () => {
         this.sidenavClose.emit();

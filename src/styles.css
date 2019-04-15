@@ -48,6 +48,16 @@ html, body {
 }
 }
 
+ul {
+  list-style: none;
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding-inline-start: 40px;
+}
+
 mat-card {
     width: calc(75% - 16x);
     height: calc(75% - 16px);
@@ -69,3 +79,13 @@ mat-card img{
 .mat-divider {
     border-color: white;
 } 
+
+.main-headline {
+  display: block;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  margin-top: 0;
+  font-family: LyonDisplay,serif;
+  font-weight: 700;
+  line-height: 1.5;
+}

@@ -71,6 +71,7 @@ export class HomeComponent implements OnInit {
             this.searchService.tags.next(this.listConfig);
             this.searchService.search(this.searchService.searchTerm$)
             .subscribe(data => {
+                console.log('here',fromOnMore);
                 this.offset += data.recipes.length;
                 if(data.recipes.length <= 3 || this.offset === data.recipesCount) this.showMoreButton = false;
                 if(fromOnMore) this.results = this.results.concat(data.recipes);
