@@ -1,5 +1,5 @@
 <div class='cards-container' [routerLink]="['/recipe', recipe.slug]">
-  <mat-card class="card-recepie" id='card' fxLayout="column" fxLayoutAlign="space-between center" >
+  <mat-card class="card-recepie" id='card' [ngStyle]="{'background-image': 'url(' + recipe.image + ')'}"fxLayout="column" fxLayoutAlign="space-between center" >
     <!-- <img src="../../../assets/imgs/recepie1.png" class="img-food-preview"> -->
     <div class="preview-header">
      <!-- <i class="material-icons btn-play">play_circle_outline</i>-->
@@ -14,7 +14,7 @@
       </div>
 
       <div>
-        <span class="footer-text">33 min.</span>
+        <span class="footer-text">{{recipe.time}} min.</span>
       </div>
 
     </div>

@@ -5,8 +5,8 @@
         <div class="row">
             <div class="column">
                 <div class="page-header">
-                    <div class="photo">
-
+                    <div [ngStyle]="{'background-image': 'url(' + recipe.image + ')'}" class="photo">
+                        
                     </div>
                 </div>
             </div>
@@ -15,7 +15,7 @@
             <div class="left-col">
                 <div class="recipe-information">
                     <h1 class="recipe-title">
-                    <!-- {{recipe.title}} -->5-ingredient grilled Za’atar chicken burger
+                    {{recipe.title}}
                     </h1>
                     <i *ngIf="!recipe.favorited" class="material-icons btn-like" (click)="toggleFavorite();$event.stopPropagation()">favorite_border</i>
                     <i *ngIf="recipe.favorited" class="material-icons btn-like" (click)="toggleFavorite();$event.stopPropagation()" style="color:wheat;">
@@ -28,7 +28,7 @@
                         <img id="author-image" [src]="recipe.author.image" class="user-pic" />
                         <div>{{recipe.author.username}}</div>
                     </div>
-                    <p class="author-information-description">“Za’atar is a fantastic Middle Eastern spice mix that usually contains dried thyme, oregano, sesame seeds, coriander, and sumac. Nearly blackened on the grill, it tastes even more delicious and pairs extremely well with a refreshing swipe of cucumber yogurt. Served with fries, chips, or enjoyed on its own, don’t be surprised if random wanderers follow their noses to your next barbecue.”</p>
+                    <p class="author-information-description">{{recipe.description}}</p>
                 </section>
                 <div class="recipe-difficulty dotted-line">
                     <h2>Difficulty </h2>
@@ -37,22 +37,14 @@
                 <div class="recipe-time dotted-line">
                     <div class="col1"> 
                         <div class="time-container"> 
-                            <div class="time">25 </div>
+                            <div class="time">{{recipe.time}} </div>
                             <div class="unit">min. </div>
                         </div>
                         <div class="title">
                             <div class="time">Preparation </div>
                         </div>
                     </div>
-                    <div class="col2">
-                        <div class="time-container"> 
-                            <div class="time">25 </div>
-                            <div class="unit">min. </div>
-                        </div>
-                        <div class="title">
-                            <div class="time">Preparation </div>
-                        </div>
-                    </div>
+
                 </div>
                 <div class="recipe-ingredients dotted-line">
                     <h2>Ingredients</h2>

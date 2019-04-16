@@ -16,26 +16,32 @@ export class HomeComponent implements OnInit {
     listConfig: RecipeListConfig = {
         type: 'all',
         search: true,
-        filters: {limit: 8}
+        filters: {limit:4}
       };
-    recipeCount: number;
     homeType: String;
-    searchParam : String;
     filters: Object = {}
-    offset : number = 0;
     showMoreButton : boolean = true;
     results: Recipe[];
     categories = [
         [
-            new Categories("Category","asian",false),
-            new Categories("Category","Main",false),
-            new Categories("Category","Dessert",false),
-            new Categories("Category","Breakfast",false),
-            new Categories("Category","Snack",false)
+            new Categories("Starter",false),
+            new Categories("Main",false),
+            new Categories("Dessert",false),
+            new Categories("Breakfast",false),
+            new Categories("Snack",false)
         ],
         [
-            new Categories("Doi","Chinese",false),
-            new Categories("Trei","italian",false)
+            new Categories("Beef",false),
+            new Categories("Pasta",false),
+            new Categories("Poultry",false),
+            new Categories("Pork",false),
+        ],
+        [
+            new Categories("Chinese",false),
+            new Categories("Indian",false),
+            new Categories("Italian",false),
+            new Categories("Spanish",false),
+            new Categories("American",false),
         ]
 
     ];
@@ -54,52 +60,49 @@ export class HomeComponent implements OnInit {
             this.homeType = this.router.url;
             if(this.homeType === '/search') {
                 this.listConfig.search = true;
+                this.searchService.tags.next(this.listConfig);
                 this.searchService.searchTerm$.next('');
+                this.searchService.search(this.searchService.searchTerm$)
+                .subscribe(data => {
+                    console.log('data');
+                    this.results = data.recipes;
+                });
             }
-            else this.listConfig.search = false;
-            console.log('111');
-            this.onChangeListConfig();
+            else {
+                this.listConfig.search = false;
+                this.runQuery();
+            }
         })
     }
-    onSearchChange(searchValue : String) {  
+    onSearchChange(searchValue : String) { 
+       this.listConfig.filters.offset = 0; 
+       this.showMoreButton = true;
+       this.searchService.tags.next(this.listConfig);
        this.searchService.searchTerm$.next(searchValue); 
     }
 
-    onChangeListConfig(fromOnMore = false) {
-        console.log('Recipe-List, Set config',this.listConfig);
-        if(this.listConfig.search){
-            this.searchService.tags.next(this.listConfig);
-            this.searchService.search(this.searchService.searchTerm$)
-            .subscribe(data => {
-                console.log('here',fromOnMore);
-                this.offset += data.recipes.length;
-                if(data.recipes.length <= 3 || this.offset === data.recipesCount) this.showMoreButton = false;
-                if(fromOnMore) this.results = this.results.concat(data.recipes);
-                else this.results = data.recipes;
-            });
-        } else this.runQuery();
-    }
 
     onCheck($event:any, categories, checkedName, index) {
-      console.log('oncheck');
-       $event.stopPropagation();
+        console.log('oncheck');
+        $event.stopPropagation();
 
-       var pos = this.listConfig.filters.tag.indexOf(checkedName.name)
-       if(pos > -1) {
-           this.listConfig.filters.tag.splice(pos, 1);
-       }else this.listConfig.filters.tag.push(checkedName.name as string);
+        var pos = this.listConfig.filters.tag.indexOf((checkedName.name as string).toLowerCase())
+        if(pos > -1) this.listConfig.filters.tag.splice(pos, 1);
+            else this.listConfig.filters.tag.push((checkedName.name as string).toLowerCase());
 
-        this.filters = {tag: this.listConfig.filters.tag, limit: 8};
+        this.results = [];
+        this.filters = {tag: this.listConfig.filters.tag, limit: 4, offset: 0};
         this.listConfig = {type: 'allx',search: true, filters: this.filters};
-        console.log(this.listConfig);
-        this.searchService.tags.next(this.listConfig);
-        this.onChangeListConfig();
-       
+        if(this.listConfig.search) this.runQuerySearch();
+            else this.runQuery();
+        console.log(this.filters);
     }
+
     onMore() {
-        this.filters = {tag: this.listConfig.filters.tag, offset: this.offset, limit: 3};
-        this.listConfig= {type:'all',search:this.listConfig.search, filters:this.filters};
-        this.onChangeListConfig(true);
+        this.filters = {tag: this.listConfig.filters.tag, offset: this.results.length, limit: 4};
+        this.listConfig= {type:'all', search:this.listConfig.search, filters: this.filters};
+        if(this.listConfig.search) this.runQuerySearch();
+            else this.runQuery();
     }
 
     runQuery()  {
@@ -107,9 +110,20 @@ export class HomeComponent implements OnInit {
         console.log(this.listConfig);
         this.recipesService.query(this.listConfig)
         .subscribe(data => {
-            this.offset += data.recipes.length;
-            if(data.recipes.length < 3 || this.offset === data.recipesCount) this.showMoreButton = false;
             this.results = this.results.concat(data.recipes);
+            if(data.recipes.length < 4 || this.results.length === data.recipesCount) this.showMoreButton = false;
+                else this.showMoreButton = true;
+        });
+    }
+
+    runQuerySearch() {
+        this.searchService.tags.next(this.listConfig);
+        this.searchService.searchEntries(this.searchService.searchTerm$.getValue())
+        .subscribe(data =>{
+            console.log(data.recipes);
+            this.results = this.results.concat(data.recipes);
+            if(data.recipes.length < 4 || this.results.length === data.recipesCount) this.showMoreButton = false;
+                else this.showMoreButton = true;
         });
     }
 }

@@ -15,7 +15,7 @@ import { of } from 'rxjs';
 
 export class RecipePreviewComponent {
     @Input() recipe: Recipe;
-
+    time: number;
     constructor(
         private userService: UserService,
         private recipeService: RecipeService,

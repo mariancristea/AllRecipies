@@ -10,18 +10,23 @@
       </div>
       <div class="filters-bar" fxLayout="row" fxLayoutAlign="center" fxLayoutGap="50px">
         <button mat-button [matMenuTriggerFor]="menuCategory">Category</button>
-        <button mat-button [matMenuTriggerFor]="menuCuisine">Main Ingredients</button>
+        <button mat-button [matMenuTriggerFor]="menuIngredients">Main Ingredients</button>
         <button mat-button [matMenuTriggerFor]="menuCuisine">Cuisine</button>
         <mat-menu #menuCategory="matMenu">
           <div *ngFor="let unit of categories[0];let i=index">
               <mat-checkbox  [(ngModel)]="unit.checked" (click)="onCheck($event,categories[0],unit,i)">{{ unit.name }}</mat-checkbox>
           </div>
         </mat-menu>
-        <mat-menu #menuCuisine="matMenu">
+        <mat-menu #menuIngredients="matMenu">
             <div *ngFor="let unit of categories[1];let i=index">
                 <mat-checkbox  [(ngModel)]="unit.checked" (click)="onCheck($event,categories[0],unit,i)">{{ unit.name }}</mat-checkbox>
             </div>
-          </mat-menu>
+        </mat-menu>
+        <mat-menu #menuCuisine="matMenu">
+            <div *ngFor="let unit of categories[2];let i=index">
+                <mat-checkbox  [(ngModel)]="unit.checked" (click)="onCheck($event,categories[0],unit,i)">{{ unit.name }}</mat-checkbox>
+            </div>
+        </mat-menu>
      </div>
     </header>
 

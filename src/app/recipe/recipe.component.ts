@@ -42,6 +42,7 @@ export class RecipeComponent implements OnInit {
 
   ngOnInit() {
     this.comments = [];
+    
     this.runQuery();
     this.route.data.subscribe(
       (data: { recipe: Recipe }) => {
@@ -51,8 +52,8 @@ export class RecipeComponent implements OnInit {
       }
     )
     
-    console.log('RECIPE',this.recipe.author)
-
+    console.log('RECIPE',this.recipe)
+     // this.recipe.image = "https://images.kitchenstories.io/wagtailOriginalImages/R1607-photo-final-02/R1607-photo-final-02-medium-landscape-150.jpg"
     this.userService.currentUser.subscribe(
       (userData: User) => {
         this.currentUser = userData;

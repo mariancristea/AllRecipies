@@ -20,11 +20,7 @@ form{
         float:left;
         
     }
-    .time mat-form-field
-    {
-        padding-right: 5px;
-        width: 30%;
-    }
+
 }
 @media only screen and (max-width: 768px) {
     .left-column{

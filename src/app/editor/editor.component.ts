@@ -29,8 +29,7 @@ export class EditorComponent implements OnInit {
             'title': ['', Validators.required],
             'image': [''],
             'description': [''],
-            'prep-time': [''],
-            'cook-time': [''],
+            'time': [''],
             'servings': [''],
             'ingredients': [''],
             'steps': [''],
@@ -54,6 +53,7 @@ export class EditorComponent implements OnInit {
             this.recipe.ingredients = [];
             this.recipe.steps = [];
             for (const [key, value] of Object.entries(this.recipeForm.value)) {
+                console.log(key);
                 if(key != 'ingredients' && key != 'steps') this.recipe[key] = value;
                 else {
                     console.log(key, this.recipeForm.value[key]);
@@ -68,7 +68,7 @@ export class EditorComponent implements OnInit {
 
             this.recipe.tagList.push(this.recipeForm.value.category);
             this.recipe.tagList.push(this.recipeForm.value.cuisine);
-           
+           console.log(this.recipe);
             this.recipeService
                 .save(this.recipe)
                 .subscribe(recipe => this.router.navigateByUrl('/recipe/' + recipe.slug));
