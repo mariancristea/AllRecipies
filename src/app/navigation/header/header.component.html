@@ -22,7 +22,7 @@
                     <a (click)="isAuth ? false : openDialog('login')" routerLink="/editor">Edit</a>
                 </li>
                 <li>
-                 <a (mouseover)="showCategories()" (mouseleave)="inCategories = false; hideCategories()" routerLink="/categories">Categories</a>
+                 <a  (click)="hideInstant(); inCategories=false" (mouseover)="showCategories()" (mouseleave)="inCategories = false; hideCategories()" routerLink="/categories">Categories</a>
                 </li>
 
             </ul>
@@ -31,7 +31,7 @@
                     <mat-icon routerLink="/search">search</mat-icon>
                 </li>
                 <li *appShowAuthed="false">
-                    <button mat-raised-button (click)="openDialog('register')">Sign Up</button>
+                    <button fxHide fxShow.gt-xs mat-raised-button (click)="openDialog('register')">Sign Up</button>
                 </li>
                 <mat-divider [vertical]="true"></mat-divider>
                 <li *appShowAuthed="false">

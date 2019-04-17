@@ -71,7 +71,8 @@ export class EditorComponent implements OnInit {
            console.log(this.recipe);
             this.recipeService
                 .save(this.recipe)
-                .subscribe(recipe => this.router.navigateByUrl('/recipe/' + recipe.slug));
+                .subscribe();
+            this.router.navigateByUrl('/');
         }
        
     }

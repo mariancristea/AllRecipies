@@ -56,15 +56,20 @@ export class HeaderComponent implements OnInit {
   }
 
   showCategories() {
+    console.log('show')
     this.inCategories = true;
     document.getElementById('row2').style.cssText = 'display:inline-block !important';
   }
 
   hideCategories() {
+    console.log('hide')
     setTimeout(() => {
       if(!this.inCategories) document.getElementById('row2').style.cssText = 'display: none !important;';
     }, 200)
     
+  }
+  hideInstant(){
+    document.getElementById('row2').style.cssText = 'display: none !important;';
   }
 
   runQuery()  {

@@ -26,6 +26,9 @@ form{
     .left-column{
         width: 100%;
     }
+    mat-form-field {
+        width: 100%;
+    }
     .right-column{
         width: 100%;
     }
@@ -36,5 +39,12 @@ form{
       padding: 20px;
   }
 .button-div {
-    display: block;
+    display:block;
+    color: #fff;
+    min-width: 100px;
+    background-color: #0a7f78;
+    font-size: 1rem;
+    margin: auto;
+    margin-bottom: 30px;
+    text-align: center;
 }
