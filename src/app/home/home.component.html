@@ -4,22 +4,22 @@
         <h1>Find recipes</h1>
         <form class="search-bar" >
           <mat-form-field class="example-full-width">
-            <input matInput placeholder="Favorite food" value="Sushi" (input)="onSearchChange($event.target.value)">
+            <input matInput placeholder="Favorite food" (input)="onSearchChange($event.target.value)">
           </mat-form-field>
        </form>
       </div>
-      <div class="filters-bar" fxLayout="row" fxLayoutAlign="center" fxLayoutGap="50px">
-        <button mat-button [matMenuTriggerFor]="menuCategory">Category</button>
-        <button mat-button [matMenuTriggerFor]="menuIngredients">Main Ingredients</button>
+      <div class="filters-bar" fxLayout="row" fxLayoutAlign="center">
+        <button  mat-button [matMenuTriggerFor]="menuCategory">Category</button>
+        <button mat-button [matMenuTriggerFor]="menuTime">Preparation Time</button>
         <button mat-button [matMenuTriggerFor]="menuCuisine">Cuisine</button>
         <mat-menu #menuCategory="matMenu">
           <div *ngFor="let unit of categories[0];let i=index">
               <mat-checkbox  [(ngModel)]="unit.checked" (click)="onCheck($event,categories[0],unit,i)">{{ unit.name }}</mat-checkbox>
           </div>
         </mat-menu>
-        <mat-menu #menuIngredients="matMenu">
+        <mat-menu #menuTime="matMenu">
             <div *ngFor="let unit of categories[1];let i=index">
-                <mat-checkbox  [(ngModel)]="unit.checked" (click)="onCheck($event,categories[0],unit,i)">{{ unit.name }}</mat-checkbox>
+                <mat-checkbox  [(ngModel)]="unit.checked" (click)="onCheck($event,1,unit,i)">{{ unit.name }}</mat-checkbox>
             </div>
         </mat-menu>
         <mat-menu #menuCuisine="matMenu">

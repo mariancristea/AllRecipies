@@ -7,7 +7,8 @@ export interface RecipeListConfig {
       author?: string,
       favorited?: string,
       limit?: number,
-      offset?: number
+      offset?: number,
+      underTime?: number
     };
   }
   

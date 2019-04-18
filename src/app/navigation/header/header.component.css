@@ -78,3 +78,8 @@ a:hover, a:active{
     float: left;
   }
 
+  .search{
+      cursor: pointer;
+      outline: none;
+      border: 0;
+  }

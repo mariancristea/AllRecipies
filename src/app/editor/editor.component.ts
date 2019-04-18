@@ -30,7 +30,7 @@ export class EditorComponent implements OnInit {
             'image': [''],
             'description': [''],
             'time': [''],
-            'servings': [''],
+            'difficulty': [''],
             'ingredients': [''],
             'steps': [''],
             'category': ['', Validators.required],

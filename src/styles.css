@@ -6,6 +6,8 @@
 
 html, body { 
     padding: auto;
+    outline: none;
+    border: 0;
 }
 
 .grid-list {
@@ -58,24 +60,16 @@ ul {
   padding-inline-start: 40px;
 }
 
-mat-card {
-    width: calc(75% - 16x);
-    height: calc(75% - 16px);
-  }
-mat-card img{
-    object-fit: cover; /*this makes de image in src fit to the size of specified below*/
-    width: 100%; /* Here you can use wherever you want to specify the width and also the height of the <img>*/
-    height: 100%;
-  }
+
   dialog { 
     border: none !important;
   }
   mat-dialog-content {
     overflow-y: hidden !important;
+    outline: none;
+    border: 0;
 }
-  .div {
-      border: none;
-  }
+
 .mat-divider {
     border-color: white;
 } 
@@ -88,4 +82,5 @@ mat-card img{
   font-family: LyonDisplay,serif;
   font-weight: 700;
   line-height: 1.5;
+  
 }

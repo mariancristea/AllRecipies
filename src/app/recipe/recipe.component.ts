@@ -42,12 +42,12 @@ export class RecipeComponent implements OnInit {
 
   ngOnInit() {
     this.comments = [];
-    
+   
     this.runQuery();
     this.route.data.subscribe(
       (data: { recipe: Recipe }) => {
         this.recipe = data.recipe;
-
+        window.scroll(0,0);
         this.populateComments();
       }
     )

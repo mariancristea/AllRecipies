@@ -22,13 +22,13 @@
                     <a (click)="isAuth ? false : openDialog('login')" routerLink="/editor">Edit</a>
                 </li>
                 <li>
-                 <a  (click)="hideInstant(); inCategories=false" (mouseover)="showCategories()" (mouseleave)="inCategories = false; hideCategories()" routerLink="/categories">Categories</a>
+                 <a  (click)="hideInstant(); inCategories=falseb" (mouseover)="showCategories()" (mouseleave)="inCategories = false; hideCategories()" routerLink="/categories">Categories</a>
                 </li>
 
             </ul>
             <ul fxLayout fxLayoutAlign="end" fxLayoutGap="1vw" style="margin-right:10px;" class="navigation-items">
                 <li>
-                    <mat-icon routerLink="/search">search</mat-icon>
+                    <mat-icon class="search" routerLink="/search">search</mat-icon>
                 </li>
                 <li *appShowAuthed="false">
                     <button fxHide fxShow.gt-xs mat-raised-button (click)="openDialog('register')">Sign Up</button>
@@ -57,7 +57,7 @@
                 <a routerLink="/categories/Asian">Breakfast</a>
                 <a routerLink="/categories/Asian">One-Pot</a>
             </div>
-            <div class="list" fxLayout="row wrap" fxLayoutGap="32px" fxLayoutAlign="center">
+            <div class="list" fxLayout="row wrap" fxLayoutGap="64px" fxLayoutAlign="center">
                 <app-small-recipe-preview *ngFor="let recipe of results"
                     [recipe] = "recipe">
                 </app-small-recipe-preview>

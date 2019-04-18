@@ -8,7 +8,7 @@
     flex-flow: column;
     margin: 0 auto;
     max-width: 55.5rem;
-    padding: 0 .6rem;
+    padding: 0 1.6rem;
     width: 100%;
     margin-top: 100px;
 }
@@ -63,6 +63,9 @@
         -webkit-box-flex: 0;
         -ms-flex: 0 0 100%;
         flex: 0 0 100%;
+    }
+    .right-col {
+        display: none;
     }
     }
 

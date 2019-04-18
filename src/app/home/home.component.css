@@ -31,8 +31,30 @@
 .filters-bar{
   box-sizing: border-box;
   margin: auto;
-  max-width: 55.5rem;
+  max-width: 100%;
+
+  -webkit-box-shadow: 0 6px 4px -4px rgb(139, 119, 119);
+  -moz-box-shadow: 0 6px 4px -4px rgb(161, 143, 143);
+  box-shadow: 0 6px 4px -4px rgb(143, 131, 131);
   
+}
+.filters-bar > button  {
+  color: #0a7f78;
+  text-transform: uppercase;
+  letter-spacing: .07rem;
+  cursor: pointer;
+  font-size: .75rem;
+  padding: 0 3rem;
+  overflow: auto;
+  outline: none;
+  border: 0;
+}
+@media screen and (max-width: 360px){
+  .filters-bar > button  {
+    padding: 0 1rem;
+    letter-spacing: .02rem;
+    font-size: .6rem;
+  }
 }
 
 .fill-height-or-more{
@@ -47,5 +69,6 @@
   font-size: 1rem;
   margin: auto;
   margin-bottom: 30px;
-     
+
+  
 }

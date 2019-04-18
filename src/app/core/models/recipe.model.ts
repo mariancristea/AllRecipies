@@ -10,6 +10,7 @@ export interface Recipe {
     time: number;
     ingredients: string[];
     steps: string[];
+    difficulty: string;
     favorited: boolean;
     favoritesCount: number;
     author: Profile;

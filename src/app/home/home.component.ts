@@ -31,10 +31,9 @@ export class HomeComponent implements OnInit {
             new Categories("Snack",false)
         ],
         [
-            new Categories("Beef",false),
-            new Categories("Pasta",false),
-            new Categories("Poultry",false),
-            new Categories("Pork",false),
+            new Categories("under 20 min.",false, 20),
+            new Categories("under 30 min.",false, 30),
+            new Categories("under 60 min.",false, 60),
         ],
         [
             new Categories("Chinese",false),
@@ -82,20 +81,28 @@ export class HomeComponent implements OnInit {
     }
 
 
-    onCheck($event:any, categories, checkedName, index) {
-        console.log('oncheck');
+    onCheck($event:any, categoryIndex, checkedName, index) {
+        console.log(checkedName);
         $event.stopPropagation();
-
-        var pos = this.listConfig.filters.tag.indexOf((checkedName.name as string).toLowerCase())
-        if(pos > -1) this.listConfig.filters.tag.splice(pos, 1);
-            else this.listConfig.filters.tag.push((checkedName.name as string).toLowerCase());
-
         this.results = [];
-        this.filters = {tag: this.listConfig.filters.tag, limit: 4, offset: 0};
-        this.listConfig = {type: 'allx',search: true, filters: this.filters};
+        if(categoryIndex === 1) {
+            for(var i = 0; i < this.categories[categoryIndex].length; i++) {
+                if(index != i) this.categories[categoryIndex][i].checked = false;
+            }
+            console.log(checkedName.checked);
+            if(checkedName.checked === false){console.log('bra 1'); this.listConfig.filters.underTime = this.categories[categoryIndex][index].value;}
+            else {console.log('bra2');delete this.listConfig.filters.underTime}
+        }
+        else{
+            var pos = this.listConfig.filters.tag.indexOf((checkedName.name as string).toLowerCase())
+            if(pos > -1) this.listConfig.filters.tag.splice(pos, 1);
+                else this.listConfig.filters.tag.push((checkedName.name as string).toLowerCase());
+
+           
+            console.log(this.filters);
+        }
         if(this.listConfig.search) this.runQuerySearch();
             else this.runQuery();
-        console.log(this.filters);
     }
 
     onMore() {
@@ -110,6 +117,7 @@ export class HomeComponent implements OnInit {
         console.log(this.listConfig);
         this.recipesService.query(this.listConfig)
         .subscribe(data => {
+            console.log('aa',data.recipes);
             this.results = this.results.concat(data.recipes);
             if(data.recipes.length < 4 || this.results.length === data.recipesCount) this.showMoreButton = false;
                 else this.showMoreButton = true;
@@ -117,6 +125,7 @@ export class HomeComponent implements OnInit {
     }
 
     runQuerySearch() {
+        console.log('!!!!',this.listConfig.filters);
         this.searchService.tags.next(this.listConfig);
         this.searchService.searchEntries(this.searchService.searchTerm$.getValue())
         .subscribe(data =>{
