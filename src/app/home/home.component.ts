@@ -41,6 +41,7 @@ export class HomeComponent implements OnInit {
             new Categories("Italian",false),
             new Categories("Spanish",false),
             new Categories("American",false),
+            new Categories("European", false),
         ]
 
     ];
@@ -84,6 +85,7 @@ export class HomeComponent implements OnInit {
     onCheck($event:any, categoryIndex, checkedName, index) {
         console.log(checkedName);
         $event.stopPropagation();
+        this.listConfig.filters.offset = 0;
         this.results = [];
         if(categoryIndex === 1) {
             for(var i = 0; i < this.categories[categoryIndex].length; i++) {

@@ -1,13 +1,23 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { FormBuilder, FormGroup, FormControl, Validators} from '@angular/forms';
+import { FormBuilder, FormGroup, FormControl, Validators, FormGroupDirective, NgForm} from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { UserService, Errors } from '../core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialogRef, MAT_DIALOG_DATA, ErrorStateMatcher } from '@angular/material';
 import { HeaderComponent } from '../navigation/header/header.component';
 import { TouchSequence } from 'selenium-webdriver';
 import { FavoriteButtonComponent } from '../shared/buttons';
 import { RecipeCommentComponent } from '../recipe/recipe comment/recipe-comment.component';
+
+
+export class MyErrorStateMatcher implements ErrorStateMatcher {
+  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
+      const invalidCtrl = !!(control && control.invalid && control.parent.dirty);
+      const invalidParent = !!(control && control.parent && control.parent.invalid && control.parent.dirty);
+      
+      return (invalidCtrl || invalidParent);
+    }
+}
 
 @Component({
   selector: 'app-auth',
@@ -20,9 +30,10 @@ export class AuthComponent implements OnInit {
   authType : String;
   title: String;
   isSubmitting = false;
-  errors: Errors = {error: {}};
+  formattedErrors: Array<string> = [];
   navigated : boolean = false;
 
+  matcher = new MyErrorStateMatcher();
   constructor(
     private route : ActivatedRoute,
     private router : Router,
@@ -34,13 +45,14 @@ export class AuthComponent implements OnInit {
     { 
     this.authForm = this.fb.group({
       'email': ['', [Validators.required, Validators.email]],
-      'password': ['']
+      'password': [''],
+      'error': ['']
     });
   }
 
   ngOnInit() {
     this.authType = this.data;
-    console.log('!ss!',this.authType);
+    
     this.title = (this.authType === 'login') ? 'Sign in' : 'Sign up';
     if (this.authType === 'register') {
       this.authForm.addControl('username' as string, new FormControl());
@@ -62,6 +74,7 @@ export class AuthComponent implements OnInit {
     });
   }
   getErrorMessage() {
+    console.log(this.authForm.errors);
     return this.authForm.hasError('required') ? 'You must enter a value' :
         this.authForm.hasError('email') ? 'Not a valid email' :
             '';
@@ -70,33 +83,26 @@ export class AuthComponent implements OnInit {
   submitForm() {
     console.log(this.authType)
     this.isSubmitting = true;
-    this.errors ={error : {}};
+
     this.userService
       .attemptAuth(this.authType, this.authForm.value)
       .subscribe(
         data => {
           this.dialogRef.close();
           return null;
-      }, err => {
-        if(err.status == 422)
-        {
-          const validationErrors = err.error.errors;
-          console.log(validationErrors);
-          Object.keys(validationErrors).forEach(prop => {
-            prop = 'email';
-            const formControl = this.authForm.get(prop);
-            if (formControl) {
-              console.log(prop);
-              formControl.setErrors({
-                serverError: validationErrors[prop]
-              });
-            }
-          })
-          console.log('ssdd',err);
-        }
+      }, errorList => {
+        this.formattedErrors = Object.keys(errorList.error.errors || {})
+        .map(key => { 
+            return `${errorList.error.errors[key]}`
+        });
+
+        this.authForm.setErrors({ass: true});
+        //this.authForm.value.error = err;
+        console.log(this.formattedErrors);
       });
     
   }
+
   changeAuthType() {
     this.authType = (this.authType === 'register') ? 'login' : 'register'
     this.title = (this.authType === 'login') ? 'Sign in' : 'Sign up';

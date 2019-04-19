@@ -34,7 +34,7 @@ export class EditorComponent implements OnInit {
             'ingredients': [''],
             'steps': [''],
             'category': ['', Validators.required],
-            'cuisine': ['', Validators.required]
+            'cuisine': ['']
         });
 
       }  

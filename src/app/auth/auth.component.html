@@ -17,8 +17,13 @@
           <input matInput placeholder="Enter your username" formControlName="username" required>
         </mat-form-field> 
         <mat-form-field>
-          <input matInput placeholder="Enter your email" formControlName="email" required>
-         
+          
+          <input matInput [errorStateMatcher]="matcher" placeholder="Enter your email" formControlName="email" required>
+          <mat-error *ngIf="authForm.hasError('ass')">
+              <li *ngFor="let error of formattedErrors">
+                  {{ error }}
+                </li>
+          </mat-error> 
 
         </mat-form-field> 
         <mat-form-field>
