@@ -20,7 +20,7 @@ export class CategoriesComponent implements OnInit{
         filters: {}
       };
     results: Recipe[];
-    categories: String[] = ['Asian','italian','ttest1', 'indian'];
+    categories: object[] = [{title: 'Asian', image: 'https://images.kitchenstories.io/wagtailOriginalImages/maincourse_new/maincourse_new-small-portrait-150.jpg'}];
 
 
     constructor(private route: ActivatedRoute,
