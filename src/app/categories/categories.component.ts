@@ -20,7 +20,47 @@ export class CategoriesComponent implements OnInit{
         filters: {}
       };
     results: Recipe[];
-    categories: object[] = [{title: 'Asian', image: 'https://images.kitchenstories.io/wagtailOriginalImages/maincourse_new/maincourse_new-small-portrait-150.jpg'}];
+    categories: object[] = [
+        {
+            title: 'Chinese',
+            image: 'https://images.kitchenstories.io/wagtailOriginalImages/RP16_04_132_3x4/RP16_04_132_3x4-small-portrait-150.jpg'
+        },
+        {   
+            title: 'American',
+            image: 'https://images.kitchenstories.io/wagtailOriginalImages/American/American-small-portrait-150.jpg'
+        },
+        {
+            title: 'Breakfast',
+            image: 'https://images.kitchenstories.io/featuredSearchImages/breakfast_and_brunch_f8624b76/breakfast_and_brunch_f8624b76-small-portrait-150.jpg'
+        },
+        {
+            title: 'European',
+            image: 'https://images.kitchenstories.io/wagtailOriginalImages/European/European-small-portrait-150.jpg'
+        },
+        {
+            title: 'Dessert',
+            image: 'https://images.kitchenstories.io/wagtailOriginalImages/Dessert/Dessert-small-portrait-150.jpg'
+        },
+        {
+            title: 'French',
+            image: 'https://images.kitchenstories.io/wagtailOriginalImages/french_new/french_new-small-portrait-150.jpg'
+        },
+        {
+            title: 'German',
+            image: 'https://images.kitchenstories.io/wagtailOriginalImages/German/German-small-portrait-150.jpg'
+        },
+        {
+            title: 'Indian',
+            image: 'https://images.kitchenstories.io/wagtailOriginalImages/Indian/Indian-small-portrait-150.jpg'
+        },
+        {
+            title: 'Italian',
+            image: 'https://images.kitchenstories.io/wagtailOriginalImages/Italian/Italian-small-portrait-150.jpg'
+        },
+        {
+            title: 'Main',
+            image: 'https://images.kitchenstories.io/wagtailOriginalImages/maincourse_new/maincourse_new-small-portrait-150.jpg'
+        }];
 
 
     constructor(private route: ActivatedRoute,

@@ -53,9 +53,9 @@
         <div class="toolbar-container">
             <div fxLayout="column" class="dropdown-categories" (click)="hideCategories(); inCategories=false;">
                 <a routerLink="/categories">Recipes</a>
-                <a routerLink="/categories/Asian">Asian</a>
-                <a routerLink="/categories/Asian">Breakfast</a>
-                <a routerLink="/categories/Asian">One-Pot</a>
+                <a routerLink="/categories/American">American</a>
+                <a routerLink="/categories/Breakfast">Breakfast</a>
+                <a routerLink="/categories/Italian">Italian</a>
             </div>
             <div class="list" fxLayout="row wrap" fxLayoutGap="64px" fxLayoutAlign="center">
                 <app-small-recipe-preview *ngFor="let recipe of results"
