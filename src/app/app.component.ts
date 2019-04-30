@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService, RecipeListConfig } from './core';
+import { environment } from 'src/environments/environment.prod';
 
 
 @Component({
@@ -12,6 +13,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.userService.populate();
+    console.log(environment.production);
 
   }
 }
