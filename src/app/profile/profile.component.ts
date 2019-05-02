@@ -32,7 +32,6 @@ export class ProfileComponent implements OnInit {
     yourRecipes: Recipe[];
 
     ngOnInit() {
-        
         this.route.data.pipe(
             concatMap((data: { profile: Profile }) => {
                 this.profile = data.profile;
@@ -63,7 +62,7 @@ export class ProfileComponent implements OnInit {
         ).subscribe();
     }
 
-    openSettingsDialog() : void {
+    openSettingsDialog(): void {
         this.dialog.open(SettingsComponent, {
             width: '500px',
             height: '500px'

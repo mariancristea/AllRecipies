@@ -11,7 +11,7 @@ export class EditableRecipeResolver implements Resolve<Recipe> {
         private router: Router,
         private userService: UserService
     ) { }
-    
+
     resolve(
         route: ActivatedRouteSnapshot,
         state: RouterStateSnapshot

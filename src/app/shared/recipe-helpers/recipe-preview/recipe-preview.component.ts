@@ -1,4 +1,4 @@
-import { Component, Input } from "@angular/core";
+import { Component, Input } from '@angular/core';
 import { Recipe, UserService, RecipeService } from 'src/app/core';
 import { switchMap, first } from 'rxjs/operators';
 import { Router } from '@angular/router';
@@ -26,7 +26,7 @@ export class RecipePreviewComponent {
     onToggleFavorite(favorited: boolean)  {
        this.recipe['favorited'] = favorited;
       // this.recipe['favoritesCount']=0;
-       if(favorited) {
+       if (favorited) {
            this.recipe['favoritesCount']++;
        } else {
         this.recipe['favoritesCount']--;
@@ -34,33 +34,27 @@ export class RecipePreviewComponent {
     }
 
     toggleFavorite() {
-        
-       var sub = this.userService.isAuthenticated.pipe(first(),
+       let sub = this.userService.isAuthenticated.pipe(
+            first(),
             switchMap(authenticated => {
-                if(!authenticated)  {
-                    const dialogRef = this.dialog.open(AuthComponent ,{
+                if (!authenticated)  {
+                    const dialogRef = this.dialog.open(AuthComponent , {
                         width: '600px',
                         height: '600px',
                         data: 'login'
                       });
                     return of(null);
-                }
-                else{
+                } else {
                     this.onToggleFavorite(!this.recipe['favorited']);
-                    console.log(this.recipe['favorited']);
-                    if(this.recipe['favorited'])  {console.log('FAVVV')
-                        return this.recipeService.favorite(this.recipe.slug)
-                       
-                    } else {console.log('UNNFAVVV')
-                        return this.recipeService.unfavorite(this.recipe.slug)
-                    } 
+                    if (this.recipe['favorited'])  {
+                        return this.recipeService.favorite(this.recipe.slug);
+                    } else {console.log('UNNFAVVV');
+                        return this.recipeService.unfavorite(this.recipe.slug);
+                    }
                 }
-               
+
             })
         ).subscribe();
-       // sub.unsubscribe();
-        
-
     }
 }
 

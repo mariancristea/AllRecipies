@@ -1,7 +1,7 @@
 export interface RecipeListConfig {
     type: string;
     search: boolean;
-  
+
     filters: {
       tag?: string[],
       author?: string,
@@ -11,4 +11,3 @@ export interface RecipeListConfig {
       underTime?: number
     };
   }
-  

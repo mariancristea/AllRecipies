@@ -3,10 +3,9 @@ import { environment } from '../../../environments/environment';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 
 import { Observable } from 'rxjs';
-import { catchError } from 'rxjs/operators';
 
 @Injectable()
-export class ApiService{
+export class ApiService {
     constructor(private http: HttpClient) { }
 
 
@@ -17,10 +16,8 @@ export class ApiService{
         }),
         withCredentials : true
       };
-      
 
-
-    post(path: string, body: Object = {}) : Observable<any> {
+    post(path: string, body: Object = {}): Observable<any> {
         return this.http.post(
             `${environment.api_url}${path}`,
              JSON.stringify(body));
@@ -33,7 +30,7 @@ export class ApiService{
       );
     }
 
-    get(path: string, params: HttpParams = new HttpParams()) : Observable<any> {
+    get(path: string, params: HttpParams = new HttpParams()): Observable<any> {
       console.log(environment.api_url);
       return this.http.get(
         `${environment.api_url}${path}`, { params }
@@ -43,6 +40,6 @@ export class ApiService{
     delete(path): Observable<any> {
       return this.http.delete(
         `${environment.api_url}${path}`
-      )
+      );
     }
 }

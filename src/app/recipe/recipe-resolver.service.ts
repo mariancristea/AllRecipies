@@ -10,7 +10,6 @@ export class RecipeResolver implements Resolve<Recipe>  {
     constructor(
         private recipeService: RecipeService,
         private router: Router,
-        private userService: UserService
     ) {}
 
     resolve(

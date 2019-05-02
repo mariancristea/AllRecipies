@@ -13,24 +13,24 @@ import { AuthComponent } from 'src/app/auth/auth.component';
 export class HeaderComponent implements OnInit {
 
   @Output() public sidenavToggle = new EventEmitter();
-  inCategories: boolean = false;
-  currentUser : User;
-  isAuth: boolean = false;
+  inCategories = false;
+  currentUser: User;
+  isAuth = false;
   results: Recipe[];
   listConfig: RecipeListConfig = {
     type: 'all',
     search: false,
     filters: {'limit': 3, 'offset': 2}
   };
-  constructor(private userService : UserService,
+  constructor(private userService: UserService,
               private dialog: MatDialog,
               private recipesService: RecipeService) { }
 
   ngOnInit() {
-    
+
     this.runQuery();
     document.getElementById('row2').style.display = 'none';
-    this.userService.isAuthenticated.subscribe(data => this.isAuth = data)
+    this.userService.isAuthenticated.subscribe(data => this.isAuth = data);
     this.userService.currentUser.subscribe(
       (userData) => {
         this.currentUser = userData;
@@ -40,11 +40,11 @@ export class HeaderComponent implements OnInit {
       type => {
         this.openDialog(type);
       }
-    )
+    );
   }
 
-  openDialog(authType: String) : void {
-    const dialogRef = this.dialog.open(AuthComponent ,{
+  openDialog(authType: String): void {
+    const dialogRef = this.dialog.open(AuthComponent , {
       width: '600px',
       height: '600px',
       data: authType
@@ -56,19 +56,19 @@ export class HeaderComponent implements OnInit {
   }
 
   showCategories() {
-    console.log('show')
+    console.log('show');
     this.inCategories = true;
     document.getElementById('row2').style.cssText = 'display:inline-block !important';
   }
 
   hideCategories() {
-    console.log('hide')
+    console.log('hide');
     setTimeout(() => {
-      if(!this.inCategories) document.getElementById('row2').style.cssText = 'display: none !important;';
-    }, 200)
-    
+      if (!this.inCategories) { document.getElementById('row2').style.cssText = 'display: none !important;'; }
+    }, 200);
+
   }
-  hideInstant(){
+  hideInstant() {
     document.getElementById('row2').style.cssText = 'display: none !important;';
   }
 
@@ -76,7 +76,7 @@ export class HeaderComponent implements OnInit {
     this.recipesService.query(this.listConfig)
     .subscribe(data => {
         this.results = data.recipes;
-        
+
     });
 }
 

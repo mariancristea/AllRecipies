@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService, RecipeListConfig } from './core';
-import { environment } from 'src/environments/environment.prod';
+import { UserService } from './core';
+import { environment } from 'src/environments/environment';
 
 
 @Component({
@@ -9,11 +9,11 @@ import { environment } from 'src/environments/environment.prod';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  constructor(private userService : UserService) {}
+  constructor(private userService: UserService) {}
 
   ngOnInit() {
     this.userService.populate();
-    console.log(environment.production);
+    console.log('isProd', environment.production);
 
   }
 }

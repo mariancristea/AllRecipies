@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { RecipeListConfig, RecipeService, Recipe } from '../core';
 
@@ -11,9 +11,9 @@ import { RecipeListConfig, RecipeService, Recipe } from '../core';
 
 })
 
-export class CategoriesComponent implements OnInit{
+export class CategoriesComponent implements OnInit {
     currentCategory: String = '';
-    filters: Object = {}
+    filters: Object = {};
     listConfig: RecipeListConfig = {
         type: 'all',
         search: false,
@@ -25,7 +25,7 @@ export class CategoriesComponent implements OnInit{
             title: 'Chinese',
             image: 'https://images.kitchenstories.io/wagtailOriginalImages/RP16_04_132_3x4/RP16_04_132_3x4-small-portrait-150.jpg'
         },
-        {   
+        {
             title: 'American',
             image: 'https://images.kitchenstories.io/wagtailOriginalImages/American/American-small-portrait-150.jpg'
         },
@@ -69,26 +69,21 @@ export class CategoriesComponent implements OnInit{
     ngOnInit() {
         this.route.url.subscribe(data => {
             this.currentCategory = data[data.length - 1].path;
-            if(this.currentCategory !== 'categories') {
+            if (this.currentCategory !== 'categories') {
                 this.listConfig.filters.tag = [];
                 this.listConfig.filters.tag.push(this.currentCategory.toLowerCase() as string);
-                this.filters = {tag: this.listConfig.filters.tag}
-                this.listConfig = {type: 'all',search: false, filters: this.filters};
+                this.filters = {tag: this.listConfig.filters.tag};
+                this.listConfig = {type: 'all', search: false, filters: this.filters};
                 console.log(this.listConfig);
                 this.runQuery();
             }
-        })
-    }
-    runQuery()  {
-        //this.query.filters.limit = 20;
-        console.log("TTT");
-        this.recipeService.query(this.listConfig)
-        .subscribe(data => {
-            console.log('!!!!', data);
-            this.results = data.recipes;
-            
         });
     }
-    
+    runQuery()  {
+        this.recipeService.query(this.listConfig)
+        .subscribe(data => {
+            this.results = data.recipes;
+        });
+    }
 }
 

@@ -13,17 +13,14 @@ export class RecipeService {
         private apiService: ApiService
     ) {}
 
-    query(config: RecipeListConfig) : Observable<{recipes: Recipe[], recipesCount: number}>  {
+    query(config: RecipeListConfig): Observable<{recipes: Recipe[], recipesCount: number}>  {
         const params = {};
-        
-        
+
         console.log('Recipe Service', config);
         Object.keys(config.filters)
             .forEach((key) => {
                 params[key] = config.filters[key];
-            })
-
-       
+            });
         return this.apiService.get('/recipes', new HttpParams({ fromObject: params }));
     }
 
@@ -40,8 +37,8 @@ export class RecipeService {
         return this.apiService.delete('/recipes/' + slug + '/favorites');
       }
 
-    save(recipe): Observable<Recipe> {
-        console.log('final',recipe);
+    save(recipe: Recipe): Observable<Recipe> {
+        console.log('final', recipe);
         return this.apiService.post('/recipes/', {recipe: recipe});
     }
 }

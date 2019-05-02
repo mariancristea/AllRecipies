@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from "@angular/core";
+import { Component, Inject, OnInit } from '@angular/core';
 import { ProfileComponent } from '../profile/profile.component';
 import { MatDialogRef, MAT_DIALOG_DATA, ErrorStateMatcher } from '@angular/material';
 import { UserService, User } from '../core';
@@ -56,12 +56,12 @@ export class SettingsComponent implements OnInit {
     }
 
     checkPasswords(group: FormGroup) {
-        let pass = group.controls.password.value;
-        let confirmPass = group.controls.confirmPassword.value;
-    
+        const pass = group.controls.password.value;
+        const confirmPass = group.controls.confirmPassword.value;
+
         return pass === confirmPass ? null : { notSame: true }
     }
-    
+
     switchToChangePassword() {
         this.changeActivated = true;
     }
@@ -97,8 +97,10 @@ export class SettingsComponent implements OnInit {
         Object.assign(this.user, values);
     }
     logOut() {
-        this.userService.logOut().subscribe();
-        this.router.navigateByUrl('/');
+        this.userService.logOut().subscribe(
+            () => this.router.navigateByUrl('/')
+          );
+
         this.dialogRef.close();
     }
 

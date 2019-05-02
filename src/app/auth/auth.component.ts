@@ -14,7 +14,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
       const invalidCtrl = !!(control && control.invalid && control.parent.dirty);
       const invalidParent = !!(control && control.parent && control.parent.invalid && control.parent.dirty);
-      
+
       return (invalidCtrl || invalidParent);
     }
 }
@@ -26,23 +26,20 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 })
 export class AuthComponent implements OnInit {
   hide = true;
-  authForm : FormGroup;
-  authType : String;
+  authForm: FormGroup;
+  authType: String;
   title: String;
   isSubmitting = false;
   formattedErrors: Array<string> = [];
-  navigated : boolean = false;
+  navigated = false;
 
   matcher = new MyErrorStateMatcher();
   constructor(
-    private route : ActivatedRoute,
-    private router : Router,
-    private fb : FormBuilder,
-    private userService : UserService,
+    private fb: FormBuilder,
+    private userService: UserService,
     public dialogRef: MatDialogRef<HeaderComponent>,
     @Inject(MAT_DIALOG_DATA) public data
-    ) 
-    { 
+    ) {
     this.authForm = this.fb.group({
       'email': ['', [Validators.required, Validators.email]],
       'password': [''],
@@ -51,37 +48,30 @@ export class AuthComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.authType = this.data;
-    
-    this.title = (this.authType === 'login') ? 'Sign in' : 'Sign up';
-    if (this.authType === 'register') {
-      this.authForm.addControl('username' as string, new FormControl());
+      this.authType = this.data;
+
+      this.title = (this.authType === 'login') ? 'Sign in' : 'Sign up';
+      if (this.authType === 'register') {
+        this.authForm.addControl('username' as string, new FormControl());
     }
 
-    let listener = window.addEventListener('message', (message) => {
-
-
-       var sub = this.userService.isAuthenticated.subscribe((authenticated) => {
-          if(!authenticated){
-            console.log('MERRRRGEEE');
-            return this.userService
-            .setAuth(message.data);
-          }
-        })
-        sub.unsubscribe();
-
-      
+    const listener = window.addEventListener('message', (message) => {
+      const sub = this.userService.isAuthenticated.subscribe((authenticated) => {
+        if (!authenticated) {
+          this.userService.setAuth(message.data);
+        }
+      });
+      sub.unsubscribe();
     });
   }
   getErrorMessage() {
-    console.log(this.authForm.errors);
     return this.authForm.hasError('required') ? 'You must enter a value' :
         this.authForm.hasError('email') ? 'Not a valid email' :
             '';
   }
 
   submitForm() {
-    console.log(this.authType)
+    console.log(this.authType);
     this.isSubmitting = true;
 
     this.userService
@@ -92,31 +82,25 @@ export class AuthComponent implements OnInit {
           return null;
       }, errorList => {
         this.formattedErrors = Object.keys(errorList.error.errors || {})
-        .map(key => { 
-            return `${errorList.error.errors[key]}`
+        .map(key => {
+            return `${errorList.error.errors[key]}`;
         });
-
         this.authForm.setErrors({ass: true});
-        //this.authForm.value.error = err;
-        console.log(this.formattedErrors);
       });
-    
+
   }
 
   changeAuthType() {
-    this.authType = (this.authType === 'register') ? 'login' : 'register'
+    this.authType = (this.authType === 'register') ? 'login' : 'register';
     this.title = (this.authType === 'login') ? 'Sign in' : 'Sign up';
     if (this.authType === 'register') {
       this.authForm.addControl('username' as string, new FormControl());
-    }
-    else this.authForm.removeControl('username');
-  
+    } else { this.authForm.removeControl('username'); }
+
   }
 
   OnNavigate() {
-    window.open("https://recipe77.herokuapp.com/users/facebook","mywindow","location=1,status=1,scrollbars=1, width=800,height=800");
-    console.log('navigate');
-
+    window.open('http://localhost:3000/users/facebook', 'mywindow', 'location=1,status=1,scrollbars=1, width=800,height=800');
     this.dialogRef.close();
     this.navigated = true;
   }

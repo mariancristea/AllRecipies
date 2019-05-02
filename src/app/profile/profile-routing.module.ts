@@ -15,11 +15,10 @@ const routes: Routes = [
         children: [
             {
                 path: '',
-                
             }
         ]
     }
-]
+];
 
 @NgModule({
     imports: [RouterModule.forChild(routes)],

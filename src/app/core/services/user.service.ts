@@ -5,6 +5,7 @@ import { ApiService } from './api.service';
 
 import { Injectable } from '@angular/core';
 import { JwtService } from './jwt.service';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class UserService {
@@ -19,12 +20,12 @@ export class UserService {
 
     constructor(
         private apiService: ApiService,
-        private jwtService: JwtService
-        
+        private jwtService: JwtService,
+        private router: Router,
     ) { }
-    
+
     populate()  {
-        if(this.jwtService.getToken())  {
+        if (this.jwtService.getToken())  {
             this.apiService.get('/user')
             .subscribe(
               data => this.setAuth(data.user),
@@ -37,12 +38,13 @@ export class UserService {
     }
 
 
-    setAuth(user : User) {
-        console.log('bauuuu :',user);
+    setAuth(user: User) {
+        console.log('bauuuu :', user);
         console.log(user.token);
         this.jwtService.saveToken(user.token);
         this.currentUserSubject.next(user);
         this.isAuthenticatedSubject.next(true);
+        this.router.navigateByUrl('/search');
     }
 
     purgeAuth() {
@@ -88,7 +90,7 @@ export class UserService {
           return data.user;
         }));
       }
-      openAuthDialog(type: string){
-          this.openDialogSubject.next(type);
-      }
+    openAuthDialog(type: string){
+        this.openDialogSubject.next(type);
+    }
 }

@@ -11,13 +11,13 @@ export class CommentsService {
         private apiService: ApiService
     )   {  }
 
-    add(slug, payload) : Observable<Comment> {
+    add(slug: string, payload: any): Observable<Comment> {
         return this.apiService
             .post(`/recipes/${slug}/comments`, { comment: { body: payload } }
             ).pipe(map(data => data.comment));
     }
 
-    getAll(slug): Observable<Comment[]> {
+    getAll(slug: string): Observable<Comment[]> {
         return this.apiService.get(`/recipes/${slug}/comments`)
             .pipe(map(data => data.comments));
     }

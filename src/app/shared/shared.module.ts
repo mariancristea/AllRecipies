@@ -5,7 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { ListErrorsComponent } from './list-errors.component';
 import { ShowAuthedDirective } from './show-authed.directive';
-import { RecipeList, RecipePreviewComponent, SmallRecipePreviewComponent } from './recipe-helpers';
+import { RecipePreviewComponent, SmallRecipePreviewComponent } from './recipe-helpers';
 import { FavoriteButtonComponent } from './buttons';
 import { MaterialModule } from '../material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -26,7 +26,6 @@ import { CategoryPreviewComponent } from './categories-helpers';
     declarations: [
         ListErrorsComponent,
         ShowAuthedDirective,
-        RecipeList,
         RecipePreviewComponent,
         SmallRecipePreviewComponent,
         CategoryPreviewComponent,
@@ -41,7 +40,6 @@ import { CategoryPreviewComponent } from './categories-helpers';
         RouterModule,
         ListErrorsComponent,
         ShowAuthedDirective,
-        RecipeList,
         RecipePreviewComponent,
         SmallRecipePreviewComponent,
         CategoryPreviewComponent,

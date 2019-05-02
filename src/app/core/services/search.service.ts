@@ -17,7 +17,7 @@ export class SearchService {
         filters: {}
       };
     tags = new BehaviorSubject<RecipeListConfig>(this.listConfig);
-   
+
     Type : String;
     constructor(private apiService: ApiService) {}
 
@@ -31,14 +31,14 @@ export class SearchService {
         );
     }
 
-    searchEntries(term) : Observable<{recipes: Recipe[], recipesCount: number}> {
+    searchEntries(term): Observable<{recipes: Recipe[], recipesCount: number}> {
         const params = {};
         console.log('Search Service, searchEntries', this.tags.getValue());
         const config = this.tags.getValue();
         Object.keys(config.filters)
         .forEach((key) => {
             params[key] = config.filters[key];
-        })
+        });
 
         return this.apiService
             .get('/recipes' + this.queryUrl + term, new HttpParams({ fromObject: params }))

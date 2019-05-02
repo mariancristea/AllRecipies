@@ -30,19 +30,16 @@
      </div>
     </header>
 
-   <!--  <div>
-        <mat-icon>close</mat-icon>
-     </div> -->
-     
-      <div class="item-archive grid-list">
-          <ng-container *ngFor="let recipe of results" >
-              <app-recipe-preview
+    <h1 class="main-headline noRecipes" *ngIf="showNothingFound && results.length == 0">No Recipes Found</h1>
+    <div class="item-archive grid-list">
 
-                  [recipe] = "recipe">
-              </app-recipe-preview>
-          </ng-container> 
-      </div>
-     
+      <ng-container *ngFor="let recipe of results">
+        <app-recipe-preview
+            [recipe] = "recipe">
+        </app-recipe-preview>
+      </ng-container>
+    </div>
+
 </div>
 
 
@@ -53,8 +50,8 @@
           <app-recipe-preview
               [recipe] = "recipe">
           </app-recipe-preview>
-      </ng-container> 
-    
+      </ng-container>
+
     </div>
 </div>
 

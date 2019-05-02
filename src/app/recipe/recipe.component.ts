@@ -37,33 +37,29 @@ export class RecipeComponent implements OnInit {
     private route: ActivatedRoute,
     private userService: UserService,
     private commentsService: CommentsService,
-    private dialog: MatDialog
     ) {}
 
   ngOnInit() {
     this.comments = [];
-   
+
     this.runQuery();
     this.route.data.subscribe(
       (data: { recipe: Recipe }) => {
         this.recipe = data.recipe;
-        window.scroll(0,0);
+        window.scroll(0, 0);
         this.populateComments();
       }
-    )
-    
-    console.log('RECIPE',this.recipe)
-     // this.recipe.image = "https://images.kitchenstories.io/wagtailOriginalImages/R1607-photo-final-02/R1607-photo-final-02-medium-landscape-150.jpg"
+    );
     this.userService.currentUser.subscribe(
       (userData: User) => {
         this.currentUser = userData;
       }
-    )
+    );
   }
 
   populateComments(){
     this.commentsService.getAll(this.recipe.slug)
-        .subscribe(comments => this.comments = comments)
+        .subscribe(comments => this.comments = comments);
   }
 
 
@@ -76,49 +72,41 @@ export class RecipeComponent implements OnInit {
         comment => {
           this.comments.unshift(comment);
           this.commentControl.reset('');
-        //  this.isSubmitting = false;
         }
       );
    }
 
    runQuery()  {
-    //this.query.filters.limit = 20;
-    console.log("TTT");
     this.recipeService.query(this.listConfig)
     .subscribe(data => {
-        console.log('!!!!',this.results);
         this.results = data.recipes;
     });
     this.recipeService.query(this.listConfig2)
     .subscribe(data => {
-        console.log('!!!!',this.results);
         this.suggestions = data.recipes;
     });
 }
 
-onToggleFavorite(favorited: boolean)  {
-  this.recipe['favorited'] = favorited;
- // this.recipe['favoritesCount']=0;
-  if(favorited) {
-      this.recipe['favoritesCount']++;
-  } else {
-   this.recipe['favoritesCount']--;
+  onToggleFavorite(favorited: boolean)  {
+    this.recipe['favorited'] = favorited;
+    if (favorited) {
+        this.recipe['favoritesCount']++;
+    } else {
+    this.recipe['favoritesCount']--;
+    }
   }
-}
   toggleFavorite() {
     this.onToggleFavorite(!this.recipe['favorited']);
-    if(this.recipe['favorited'])  {
-        console.log('FAVVV')
-         this.recipeService.favorite(this.recipe.slug).subscribe();
+    if (this.recipe['favorited'])  {
+          this.recipeService.favorite(this.recipe.slug).subscribe();
     } else {
-        console.log('UNNFAVVV')
-         this.recipeService.unfavorite(this.recipe.slug).subscribe();
-    } 
+          this.recipeService.unfavorite(this.recipe.slug).subscribe();
+    }
 
-}
-openAuthDialog(authType: string) : void {
-  this.userService.openAuthDialog(authType);
-}
+  }
+  openAuthDialog(authType: string): void {
+    this.userService.openAuthDialog(authType);
+  }
 
 }
 
