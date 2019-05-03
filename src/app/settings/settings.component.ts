@@ -9,7 +9,6 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
     isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
         const invalidCtrl = !!(control && control.invalid && control.parent.dirty);
         const invalidParent = !!(control && control.parent && control.parent.invalid && control.parent.dirty);
-        console.log('error');
         return (invalidCtrl || invalidParent);
       }
 }
@@ -49,7 +48,6 @@ export class SettingsComponent implements OnInit {
     }
 
     ngOnInit() {
-        console.log('initt');
         Object.assign(this.user, this.userService.getCurrentUser());
         // Fill the form
         this.editUserForm.patchValue(this.user);
@@ -69,9 +67,7 @@ export class SettingsComponent implements OnInit {
         this.editActivated = true;
     }
     submitPasswordForm() {
-        console.log({'password': this.passwordForm.value.password});
         this.updateUser({'password': this.passwordForm.value.password});
-        console.log(this.user);
 
         this.userService
             .update(this.user)
@@ -85,7 +81,6 @@ export class SettingsComponent implements OnInit {
 
     submitEditForm() {
         this.updateUser(this.editUserForm.value);
-        console.log(this.user);
         this.userService
         .update(this.user)
         .subscribe(

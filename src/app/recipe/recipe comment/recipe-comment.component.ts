@@ -1,4 +1,5 @@
 import { Component, Input } from "@angular/core";
+import { Comment } from 'src/app/core';
 
 
 @Component({

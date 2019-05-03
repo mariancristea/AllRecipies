@@ -39,8 +39,6 @@ export class UserService {
 
 
     setAuth(user: User) {
-        console.log('bauuuu :', user);
-        console.log(user.token);
         this.jwtService.saveToken(user.token);
         this.currentUserSubject.next(user);
         this.isAuthenticatedSubject.next(true);
@@ -48,7 +46,6 @@ export class UserService {
     }
 
     purgeAuth() {
-        console.log('purge');
         this.jwtService.destroyToken();
         this.currentUserSubject.next({} as User);
         this.isAuthenticatedSubject.next(false);
@@ -69,7 +66,6 @@ export class UserService {
         return this.apiService.post('/users' + route, {user: credentials})
             .pipe(map(
                 data => {
-                    console.log(data.user);
                     this.setAuth(data.user)
                     return data;
                 }
@@ -84,8 +80,6 @@ export class UserService {
         return this.apiService
         .put('/user', { user })
         .pipe(map(data => {
-          // Update the currentUser observable
-          console.log(data.user);
           this.currentUserSubject.next(data.user);
           return data.user;
         }));

@@ -6,7 +6,7 @@
             <div class="column">
                 <div class="page-header">
                     <div [ngStyle]="{'background-image': 'url(' + recipe.image + ')'}" class="photo">
-                        
+
                     </div>
                 </div>
             </div>
@@ -35,15 +35,15 @@
                     <span> {{recipe.difficulty}} </span>
                 </div>
                 <div class="recipe-time dotted-line">
-                        
-                        <div class="time-container"> 
+
+                        <div class="time-container">
                             <div class="time">{{recipe.time}} </div>
                             <div class="unit">min. </div>
                         </div>
                         <div class="title">
                             <div class="time">Preparation </div>
                         </div>
-                    
+
 
                 </div>
                 <div class="recipe-ingredients dotted-line">
@@ -82,9 +82,9 @@
             <div class="left-col">
                 <div>
                     <div *appShowAuthed="true">
-                        
+
                         <form  (ngSubmit)="addComment()">
-                        <fieldset [disabled]="isSubmitting">
+                        <fieldset>
                             <div class="card-block">
                             <textarea class="form-control"
                                 placeholder="Write a comment..."
@@ -101,17 +101,17 @@
                         </fieldset>
                         </form>
                     </div>
-            
+
                     <div class="auth-part" *appShowAuthed="false">
                         <a (click)="openAuthDialog('login')">Sign in</a> or <a (click)="openAuthDialog('register')">sign up</a> to add comments on this article.
                     </div>
-            
+
                     <app-recipe-comment
                         *ngFor="let comment of comments"
                         [comment]="comment"
                         (deleteComment)="onDeleteComment(comment)">
                     </app-recipe-comment>
-            
+
                     </div>
                 </div>
         </div>
@@ -127,7 +127,7 @@
                 <app-recipe-preview
                     [recipe] = "recipe">
                 </app-recipe-preview>
-            </ng-container> 
+            </ng-container>
         </div>
     </div>
 </div>

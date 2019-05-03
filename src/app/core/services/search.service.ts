@@ -33,7 +33,6 @@ export class SearchService {
 
     searchEntries(term): Observable<{recipes: Recipe[], recipesCount: number}> {
         const params = {};
-        console.log('Search Service, searchEntries', this.tags.getValue());
         const config = this.tags.getValue();
         Object.keys(config.filters)
         .forEach((key) => {

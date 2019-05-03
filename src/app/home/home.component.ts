@@ -52,7 +52,6 @@ export class HomeComponent implements OnInit {
     ) {}
 
     ngOnInit()  {
-      console.log('home init');
         this.results = [];
         this.listConfig.filters.tag = [];
         this.route.url.subscribe(() => {

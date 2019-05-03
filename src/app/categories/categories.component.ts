@@ -74,7 +74,6 @@ export class CategoriesComponent implements OnInit {
                 this.listConfig.filters.tag.push(this.currentCategory.toLowerCase() as string);
                 this.filters = {tag: this.listConfig.filters.tag};
                 this.listConfig = {type: 'all', search: false, filters: this.filters};
-                console.log(this.listConfig);
                 this.runQuery();
             }
         });

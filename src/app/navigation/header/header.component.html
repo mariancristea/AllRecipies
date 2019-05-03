@@ -22,7 +22,7 @@
                     <a (click)="isAuth ? false : openDialog('login')" routerLink="/editor">Edit</a>
                 </li>
                 <li>
-                 <a  (click)="hideInstant(); inCategories=falseb" (mouseover)="showCategories()" (mouseleave)="inCategories = false; hideCategories()" routerLink="/categories">Categories</a>
+                 <a  (click)="hideInstant(); inCategories=false" (mouseover)="showCategories()" (mouseleave)="inCategories = false; hideCategories()" routerLink="/categories">Categories</a>
                 </li>
 
             </ul>
@@ -62,7 +62,7 @@
                     [recipe] = "recipe">
                 </app-small-recipe-preview>
             </div>
-            
+
         </div>
     </mat-toolbar-row>
 </mat-toolbar>

@@ -26,7 +26,7 @@ export class RecipeComponent implements OnInit {
     search: false,
     filters: {'limit': 3}
   };
-  listConfig2: RecipeListConfig = {
+  listConfigBottom: RecipeListConfig = {
     type: 'all',
     search: false,
     filters: {'limit': 8}
@@ -81,7 +81,7 @@ export class RecipeComponent implements OnInit {
     .subscribe(data => {
         this.results = data.recipes;
     });
-    this.recipeService.query(this.listConfig2)
+    this.recipeService.query(this.listConfigBottom)
     .subscribe(data => {
         this.suggestions = data.recipes;
     });

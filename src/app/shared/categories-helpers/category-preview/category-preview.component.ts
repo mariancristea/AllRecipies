@@ -9,7 +9,7 @@ import { Component, Input } from '@angular/core';
 })
 
 export class CategoryPreviewComponent {
-    @Input() category: object;
+    @Input() category: any;
 
     constructor() {}
 }

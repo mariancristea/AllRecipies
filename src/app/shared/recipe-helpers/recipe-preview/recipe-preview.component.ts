@@ -19,13 +19,11 @@ export class RecipePreviewComponent {
     constructor(
         private userService: UserService,
         private recipeService: RecipeService,
-        private router: Router,
         private dialog: MatDialog
     )   {}
 
     onToggleFavorite(favorited: boolean)  {
        this.recipe['favorited'] = favorited;
-      // this.recipe['favoritesCount']=0;
        if (favorited) {
            this.recipe['favoritesCount']++;
        } else {
@@ -34,10 +32,11 @@ export class RecipePreviewComponent {
     }
 
     toggleFavorite() {
-       let sub = this.userService.isAuthenticated.pipe(
+        this.userService.isAuthenticated.pipe(
             first(),
             switchMap(authenticated => {
                 if (!authenticated)  {
+                    console.log('WUT');
                     const dialogRef = this.dialog.open(AuthComponent , {
                         width: '600px',
                         height: '600px',
@@ -48,8 +47,6 @@ export class RecipePreviewComponent {
                     this.onToggleFavorite(!this.recipe['favorited']);
                     if (this.recipe['favorited'])  {
                         return this.recipeService.favorite(this.recipe.slug);
-                    } else {console.log('UNNFAVVV');
-                        return this.recipeService.unfavorite(this.recipe.slug);
                     }
                 }
 

@@ -16,7 +16,6 @@ export class RecipeService {
     query(config: RecipeListConfig): Observable<{recipes: Recipe[], recipesCount: number}>  {
         const params = {};
 
-        console.log('Recipe Service', config);
         Object.keys(config.filters)
             .forEach((key) => {
                 params[key] = config.filters[key];
@@ -38,7 +37,6 @@ export class RecipeService {
       }
 
     save(recipe: Recipe): Observable<Recipe> {
-        console.log('final', recipe);
         return this.apiService.post('/recipes/', {recipe: recipe});
     }
 }
